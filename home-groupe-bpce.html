@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engagement Solidaire | Groupe BPCE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palette BPCE / Natixis */
+            --bpce-purple: #5C2D91;
+            --bpce-purple-dark: #4A2475;
+            --bpce-purple-light: #7B4BA8;
+            --bpce-purple-soft: #F3EEF8;
+            
+            --bpce-gray: #3E454A;
+            --bpce-gray-dark: #2D3236;
+            --bpce-gray-light: #F5F6F7;
+            --bpce-gray-medium: #6B7280;
+            
+            /* Accents */
+            --accent-green: #00A86B;
+            --accent-teal: #00B4AA;
+            
+            /* Fond de page */
+            --bg-page: #F8F9FA;
+            --bg-warm: #FAF8FC;
+            
+            /* Neutres */
+            --white: #FFFFFF;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            
+            /* Border radius */
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --shadow-purple: 0 4px 14px rgba(92, 45, 145, 0.25);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--bpce-gray);
+            line-height: 1.6;
+            background-color: var(--bg-page);
+            min-height: 100vh;
+        }
+        
+        /* ==================== HEADER ==================== */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--bpce-purple) 0%, var(--bpce-purple-light) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--white);
+        }
+
+        .logo-image img {
+            width: 200px;
+            vertical-align: middle;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--bpce-purple);
+            line-height: 1;
+            padding-bottom: 1px;
+        }
+        
+        .logo-subtitle {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .lang-selector {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-full);
+            background: var(--white);
+            font-size: 0.9rem;
+            color: var(--bpce-gray);
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        
+        .lang-selector:hover {
+            border-color: var(--bpce-purple);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: var(--bpce-purple);
+            color: var(--white);
+            border-color: var(--bpce-purple);
+        }
+        
+        .btn-primary:hover {
+            background: var(--bpce-purple-dark);
+            border-color: var(--bpce-purple-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-purple);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--bpce-gray);
+            border-color: var(--gray-300);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--bpce-purple);
+            color: var(--bpce-purple);
+        }
+        
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                rgb(39 20 61 / 42%)
+            );
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-3xl) var(--space-lg);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: var(--space-lg);
+            max-width: 544px;
+        }
+        
+        .hero-description {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+        
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: var(--radius-full);
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+        }
+        
+        .hero-tag svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .hero-visual {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-md);
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: var(--space-xs);
+        }
+        
+        /* ==================== ENTITÉS SECTION ==================== */
+        .entities-section {
+            padding: var(--space-3xl) var(--space-lg);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 700;
+            color: var(--bpce-purple);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .entities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: var(--space-md);
+        }
+        
+        .entity-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .entity-card:hover {
+            border-color: var(--bpce-purple);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        
+        .entity-logo {
+            width: 64px;
+            height: 64px;
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-xs);
+            overflow: hidden;
+        }
+        
+        .entity-logo img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+        
+        .entity-logo svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--gray-400);
+        }
+        
+        .entity-card:hover .entity-logo {
+            background: var(--bpce-purple-soft);
+        }
+        
+        .entity-card:hover .entity-logo svg {
+            stroke: var(--bpce-purple);
+        }
+        
+        .entity-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--bpce-gray-dark);
+        }
+        
+        .entity-subtitle {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+        
+        .entity-card:hover .entity-name {
+            color: var(--bpce-purple);
+        }
+        
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--bpce-gray-dark);
+            color: var(--white);
+            padding: var(--space-2xl) var(--space-lg) var(--space-lg);
+            margin-top: var(--space-3xl);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .footer-column h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            color: var(--white);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-column ul a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-column ul a:hover {
+            color: var(--white);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-bottom p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .footer-logo img {
+            height: 24px;
+            opacity: 0.7;
+        }
+        
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-tags {
+                justify-content: center;
+            }
+            
+            .hero-visual {
+                justify-content: center;
+            }
+            
+            .hero-stats {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .entities-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .header-main {
+                padding: var(--space-sm) var(--space-md);
+            }
+            
+            .logo-text {
+                display: none;
+            }
+            
+            .nav-actions {
+                gap: var(--space-sm);
+            }
+            
+            .btn {
+                padding: var(--space-sm) var(--space-md);
+                font-size: 0.85rem;
+            }
+            
+            .entities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-text, .hero-visual {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .hero-visual {
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-main">
+            <a href="#" class="logo">
+                <div class="logo-image">
+                    <img src="logo-bpce.png" alt="Caisse d'Épargne">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Engagement Solidaire</span>
+                </div>
+            </a>
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    FR
+                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </div>
+                <button class="btn btn-outline">Se connecter</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=2000&q=80" alt="Équipe solidaire">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Engagez-vous avec nous<br> auprès d'associations<br>à impact</h1>
+                <p class="hero-description">
+                    Découvrez les programmes solidaires proposés par les entités du Groupe BPCE : 
+                    journées solidaires, bénévolat, mécénat de compétences, don sur salaire et bien plus encore.
+                </p>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Entités engagées</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5 000</div>
+                        <div class="stat-label">Collaborateurs actifs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Associations partenaires</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50k</div>
+                        <div class="stat-label">Heures de bénévolat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entités Section -->
+    <section class="entities-section">
+        <div class="section-header">
+            <h2>Découvrez les programmes de votre entité</h2>
+            <p>Sélectionnez votre entreprise pour accéder à vos programmes solidaires</p>
+        </div>
+        <div class="entities-grid">
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">BPCE SA</span>
+            </a>
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">Natixis</span>
+                <span class="entity-subtitle">Beyond Banking</span>
+            </a>
+            <a href="home-filiale-ce.html" class="entity-card">
+                <img src="https://wpb-webs.com/dev/natixis/logo-ce-desktop.webp"/></svg>
+                <style>
+                    a.entity-card img {
+                        width: 100%;
+                        margin-bottom: 26px;
+                    }
+                </style>
+                <span class="entity-name">Caisse d'Épargne</span>
+            </a>
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">Banque Populaire</span>
+            </a>
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">BRED</span>
+                <span class="entity-subtitle">Banque Populaire</span>
+            </a>
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">CASDEN</span>
+                <span class="entity-subtitle">Banque Populaire</span>
+            </a>
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">Crédit Coopératif</span>
+            </a>
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">Banque Palatine</span>
+            </a>
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">Oney</span>
+            </a>
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">CEGC</span>
+                <span class="entity-subtitle">Garanties & Cautions</span>
+            </a>
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">Coface</span>
+                <span class="entity-subtitle">For Trade</span>
+            </a>
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">AEW</span>
+            </a>
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">BPCE IT</span>
+                <span class="entity-subtitle">Infogérance & Tech</span>
+            </a>
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">BPCE SI</span>
+                <span class="entity-subtitle">Réseau informatique</span>
+            </a>
+            <a href="#" class="entity-card">
+                <div class="entity-logo">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                </div>
+                <span class="entity-name">GFS</span>
+                <span class="entity-subtitle">Financial Services</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Liens utiles</h4>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Mentions légales</h4>
+                    <ul>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Gérer les cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">engagement@bpce.fr</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 KOEO — Tous droits réservés</p>
+                <div class="footer-logo">
+                    <span style="font-size: 0.8rem; color: var(--gray-500);">Propulsé par</span>
+                    <span style="font-weight: 600; color: var(--gray-400);">KOEO</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

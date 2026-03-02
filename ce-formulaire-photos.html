@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster vos photos | Caisse d'Épargne</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palette Caisse d'Épargne */
+            --ce-red: #C5000E;
+            --ce-red-dark: #A3000B;
+            --ce-red-light: #f4cccc;
+            --ce-red-soft: #FDEAEA;
+            
+            --ce-gray: #3E454A;
+            --ce-gray-dark: #2D3236;
+            --ce-gray-light: #F5F6F7;
+            --ce-gray-medium: #6B7280;
+            
+            /* Accents complémentaires */
+            --accent-warm: #E8573D;
+            --accent-coral: #FF6B5B;
+            
+            /* Fond de page */
+            --bg-page: #F8F9FA;
+            --bg-warm: #FEF7F6;
+            
+            /* Neutres */
+            --white: #FFFFFF;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            
+            /* Status */
+            --success: #10B981;
+            --success-light: #D1FAE5;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            
+            /* Border radius */
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --shadow-red: 0 4px 14px rgba(197, 0, 14, 0.25);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--ce-gray);
+            line-height: 1.6;
+            background-color: var(--bg-page);
+            min-height: 100vh;
+        }
+        
+        /* ==================== HEADER ==================== */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-xl);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 44px;
+            width: auto;
+        }
+        
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+        }
+        
+        .nav-main a {
+            color: var(--ce-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: var(--space-sm) 0;
+            position: relative;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .nav-main a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--ce-red);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-main a:hover {
+            color: var(--ce-red);
+        }
+        
+        .nav-main a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-main a.active {
+            color: var(--ce-red);
+        }
+        
+        .nav-main a.active::after {
+            width: 100%;
+        }
+        
+        .dropdown-icon {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-lg);
+            background: var(--white);
+            color: var(--ce-red);
+            border: 2px solid var(--ce-red);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--ce-red);
+            color: var(--white);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-red);
+        }
+        
+        .lang-selector {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-full);
+            background: var(--white);
+            font-size: 0.9rem;
+            color: var(--ce-gray);
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        
+        .lang-selector:hover {
+            border-color: var(--ce-red);
+        }
+        
+        .flag {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        /* ==================== HERO SECTION ==================== */
+        .hero-form {
+            background: linear-gradient(135deg, var(--ce-red) 0%, var(--ce-red-dark) 100%);
+            color: var(--white);
+            padding: var(--space-3xl) var(--space-xl);
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-form h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+        }
+        
+        .hero-form p {
+            font-size: 1.15rem;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+        
+        /* ==================== FORM CONTAINER ==================== */
+        .form-container {
+            max-width: 900px;
+            margin: calc(var(--space-3xl) * -1) auto var(--space-3xl);
+            padding: 0 var(--space-xl);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .form-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            padding: var(--space-3xl);
+        }
+        
+        .form-section {
+            margin-bottom: var(--space-3xl);
+        }
+        
+        .form-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--ce-gray-dark);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .section-icon {
+            width: 28px;
+            height: 28px;
+            stroke: var(--ce-red);
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--ce-gray-dark);
+            margin-bottom: var(--space-sm);
+            font-size: 0.95rem;
+        }
+        
+        .form-label-required::after {
+            content: '*';
+            color: var(--ce-red);
+            margin-left: var(--space-xs);
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: var(--space-md) var(--space-lg);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--ce-gray);
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--ce-red);
+            box-shadow: 0 0 0 3px var(--ce-red-soft);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-help {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin-top: var(--space-xs);
+        }
+        
+        /* ==================== FILE UPLOAD ==================== */
+        .upload-zone {
+            border: 3px dashed var(--gray-300);
+            border-radius: var(--radius-lg);
+            padding: var(--space-3xl);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--gray-50);
+        }
+        
+        .upload-zone:hover {
+            border-color: var(--ce-red);
+            background: var(--ce-red-soft);
+        }
+        
+        .upload-zone.dragover {
+            border-color: var(--ce-red);
+            background: var(--ce-red-soft);
+            transform: scale(1.02);
+        }
+        
+        .upload-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto var(--space-lg);
+            stroke: var(--gray-400);
+            stroke-width: 1.5;
+            fill: none;
+        }
+        
+        .upload-zone:hover .upload-icon {
+            stroke: var(--ce-red);
+        }
+        
+        .upload-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ce-gray-dark);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .upload-subtext {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+        
+        .preview-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 1;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .preview-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .preview-remove {
+            position: absolute;
+            top: var(--space-xs);
+            right: var(--space-xs);
+            width: 28px;
+            height: 28px;
+            background: var(--ce-red);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            opacity: 0.9;
+        }
+        
+        .preview-remove:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        /* ==================== FORM ACTIONS ==================== */
+        .form-actions {
+            display: flex;
+            gap: var(--space-lg);
+            justify-content: flex-end;
+            padding-top: var(--space-xl);
+            border-top: 2px solid var(--gray-100);
+        }
+        
+        .btn-cancel {
+            padding: var(--space-md) var(--space-2xl);
+            background: var(--white);
+            color: var(--gray-600);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-cancel:hover {
+            background: var(--gray-100);
+            border-color: var(--gray-400);
+        }
+        
+        .btn-submit {
+            padding: var(--space-md) var(--space-3xl);
+            background: var(--ce-red);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .btn-submit:hover {
+            background: var(--ce-red-dark);
+            box-shadow: var(--shadow-red);
+            transform: translateY(-2px);
+        }
+        
+        .btn-icon {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .header-main {
+                flex-direction: column;
+                gap: var(--space-lg);
+            }
+            
+            .nav-main {
+                display: none;
+            }
+            
+            .hero-form h1 {
+                font-size: 2rem;
+            }
+            
+            .form-card {
+                padding: var(--space-xl);
+            }
+            
+            .section-title {
+                font-size: 1.25rem;
+            }
+            
+            .form-actions {
+                flex-direction: column-reverse;
+            }
+            
+            .btn-cancel,
+            .btn-submit {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .preview-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+        }
+        
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--ce-gray-dark);
+            color: var(--white);
+            padding: var(--space-2xl) var(--space-xl);
+            margin-top: var(--space-3xl);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .footer-column h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--white);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--space-lg);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-main">
+            <a href="#" class="logo">
+                <img src="https://wpb-webs.com/dev/natixis/logo-ce-desktop.webp" alt="Caisse d'Épargne">
+            </a>
+            
+            <nav class="nav-main">
+                <a href="#">
+                    Programmes
+                    <svg class="dropdown-icon" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
+            </nav>
+            
+            <div class="nav-actions">
+                <a href="ce-galerie-photos.html" class="btn-secondary">← Retour à la galerie</a>
+                <div class="lang-selector">
+                    <span class="flag">🇫🇷</span>
+                    <span>Français</span>
+                    <svg class="dropdown-icon" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-form">
+        <div class="hero-content">
+            <h1>Partagez vos photos d'actions solidaires</h1>
+            <p>Valorisez votre engagement et inspirez vos collègues en partageant les moments forts de vos missions</p>
+        </div>
+    </section>
+    
+    <!-- Form Container -->
+    <div class="form-container">
+        <div class="form-card">
+            <form id="photoUploadForm">
+                <!-- Section 1: Upload Photos -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        Vos photos
+                    </h2>
+                    
+                    <div class="form-group">
+                        <label class="form-label form-label-required">Téléchargez vos photos</label>
+                        <div class="upload-zone" id="uploadZone">
+                            <svg class="upload-icon" viewBox="0 0 24 24">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                            <p class="upload-text">Cliquez pour sélectionner ou glissez-déposez vos photos</p>
+                            <p class="upload-subtext">JPG, PNG jusqu'à 10 MB • Maximum 10 photos</p>
+                        </div>
+                        <input type="file" id="fileInput" class="file-input" accept="image/jpeg,image/png" multiple>
+                        <div id="previewGrid" class="preview-grid"></div>
+                    </div>
+                </div>
+                
+                <!-- Section 2: Information sur l'action -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                        Informations sur l'action
+                    </h2>
+                    
+                    <div class="form-group">
+                        <label for="programme" class="form-label form-label-required">Programme</label>
+                        <select id="programme" class="form-select" required>
+                            <option value="">Sélectionnez un programme</option>
+                            <option value="volontariat">Volontariat</option>
+                            <option value="journees">Journées solidaires</option>
+                            <option value="teambuilding">Team building</option>
+                            <option value="conges">Congés solidaires</option>
+                            <option value="don">Don sur salaire</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="titre" class="form-label form-label-required">Titre de l'action</label>
+                        <input type="text" id="titre" class="form-input" placeholder="Ex: Rénovation d'un foyer d'accueil" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="association" class="form-label form-label-required">Association partenaire</label>
+                        <input type="text" id="association" class="form-input" placeholder="Ex: Les Restos du Cœur" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date" class="form-label form-label-required">Date de l'action</label>
+                        <input type="date" id="date" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lieu" class="form-label">Lieu</label>
+                        <input type="text" id="lieu" class="form-input" placeholder="Ex: Paris 15ème">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea id="description" class="form-textarea" placeholder="Décrivez brièvement l'action et son impact..."></textarea>
+                        <p class="form-help">Partagez les moments forts et l'impact de votre action</p>
+                    </div>
+                </div>
+                
+                <!-- Section 3: Informations personnelles -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <svg class="section-icon" viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Vos coordonnées
+                    </h2>
+                    
+                    <div class="form-group">
+                        <label for="nom" class="form-label form-label-required">Nom et prénom</label>
+                        <input type="text" id="nom" class="form-input" placeholder="Ex: Marie Dupont" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label form-label-required">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="prenom.nom@caisseepargne.fr" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entite" class="form-label">Entité / Direction</label>
+                        <input type="text" id="entite" class="form-input" placeholder="Ex: Direction RSE">
+                    </div>
+                </div>
+                
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel">Annuler</button>
+                    <button type="submit" class="btn-submit">
+                        Publier les photos
+                        <svg class="btn-icon" viewBox="0 0 24 24">
+                            <path d="M22 2L11 13"/>
+                            <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Liens utiles</h4>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Mentions légales</h4>
+                    <ul>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Gérer les cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:contact@caisseepargne.fr">contact@caisseepargne.fr</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Caisse d'Épargne - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Upload Zone functionality
+        const uploadZone = document.getElementById('uploadZone');
+        const fileInput = document.getElementById('fileInput');
+        const previewGrid = document.getElementById('previewGrid');
+        let selectedFiles = [];
+        
+        uploadZone.addEventListener('click', () => fileInput.click());
+        
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+        
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('dragover');
+        });
+        
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+        
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+        
+        function handleFiles(files) {
+            const maxFiles = 10;
+            const maxSize = 10 * 1024 * 1024; // 10 MB
+            
+            if (selectedFiles.length + files.length > maxFiles) {
+                alert(`Vous ne pouvez télécharger que ${maxFiles} photos maximum.`);
+                return;
+            }
+            
+            Array.from(files).forEach(file => {
+                if (file.size > maxSize) {
+                    alert(`Le fichier ${file.name} est trop volumineux (max 10 MB).`);
+                    return;
+                }
+                
+                if (!file.type.match('image/jpeg') && !file.type.match('image/png')) {
+                    alert(`Le fichier ${file.name} n'est pas au bon format (JPG ou PNG uniquement).`);
+                    return;
+                }
+                
+                selectedFiles.push(file);
+                displayPreview(file);
+            });
+        }
+        
+        function displayPreview(file) {
+            const reader = new FileReader();
+            
+            reader.onload = (e) => {
+                const previewItem = document.createElement('div');
+                previewItem.className = 'preview-item';
+                previewItem.innerHTML = `
+                    <img src="${e.target.result}" alt="Preview" class="preview-image">
+                    <button type="button" class="preview-remove" onclick="removePreview(this, '${file.name}')">×</button>
+                `;
+                previewGrid.appendChild(previewItem);
+            };
+            
+            reader.readAsDataURL(file);
+        }
+        
+        function removePreview(button, fileName) {
+            button.parentElement.remove();
+            selectedFiles = selectedFiles.filter(file => file.name !== fileName);
+        }
+        
+        // Form submission
+        document.getElementById('photoUploadForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (selectedFiles.length === 0) {
+                alert('Veuillez sélectionner au moins une photo.');
+                return;
+            }
+            
+            // Here you would handle the actual form submission
+            alert('Formulaire soumis avec succès! (simulation)');
+            console.log('Files:', selectedFiles);
+            console.log('Form data:', new FormData(e.target));
+        });
+        
+        // Cancel button
+        document.querySelector('.btn-cancel').addEventListener('click', () => {
+            if (confirm('Êtes-vous sûr de vouloir annuler ? Les informations saisies seront perdues.')) {
+                window.history.back();
+            }
+        });
+    </script>
+</body>
+</html>

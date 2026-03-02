@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volontariat | Caisse d'Épargne</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palette Caisse d'Épargne */
+            --ce-red: #C5000E;
+            --ce-red-dark: #A3000B;
+            --ce-red-light: #f4cccc;
+            --ce-red-soft: #FDEAEA;
+            
+            --ce-gray: #3E454A;
+            --ce-gray-dark: #2D3236;
+            --ce-gray-light: #F5F6F7;
+            --ce-gray-medium: #6B7280;
+            
+            /* Couleurs des catégories */
+            --cat-alimentaire: #E85D04;
+            --cat-insertion: #7C3AED;
+            --cat-exclusion: #0891B2;
+            --cat-environnement: #059669;
+            --cat-education: #2563EB;
+            --cat-seniors: #DB2777;
+            
+            /* Fond de page */
+            --bg-page: #F8F9FA;
+            
+            /* Neutres */
+            --white: #FFFFFF;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            
+            /* Border radius */
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --shadow-red: 0 4px 14px rgba(197, 0, 14, 0.25);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--ce-gray);
+            line-height: 1.6;
+            background-color: var(--bg-page);
+            min-height: 100vh;
+        }
+        
+        /* ==================== HEADER ==================== */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 44px;
+            width: auto;
+        }
+        
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+        }
+        
+        .nav-main a {
+            color: var(--ce-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: var(--space-sm) 0;
+            position: relative;
+            transition: color 0.2s;
+        }
+        
+        .nav-main a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--ce-red);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-main a:hover,
+        .nav-main a.active {
+            color: var(--ce-red);
+        }
+        
+        .nav-main a:hover::after,
+        .nav-main a.active::after {
+            width: 100%;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .lang-selector {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-full);
+            background: var(--white);
+            font-size: 0.9rem;
+            color: var(--ce-gray);
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        
+        .lang-selector:hover {
+            border-color: var(--ce-red);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--ce-gray);
+            border-color: var(--gray-300);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--ce-red);
+            color: var(--ce-red);
+        }
+        
+        /* ==================== HERO PROGRAMME ==================== */
+        .hero-programme {
+            background: #34b6b8;
+            position: relative;
+            overflow: hidden;
+            min-height: 320px;
+        }
+        
+        .hero-programme-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            min-height: 320px;
+        }
+        
+        .hero-programme-illustration {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding-left: var(--space-lg);
+        }
+        
+        .hero-programme-illustration img {
+            max-height: 300px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+        }
+        
+        .hero-programme-content {
+            padding: var(--space-2xl) var(--space-lg);
+        }
+        
+        .hero-programme-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: var(--space-sm);
+            line-height: 1.1;
+        }
+        
+        .hero-programme-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--ce-red);
+            border-radius: var(--radius-full);
+            margin-top: var(--space-sm);
+        }
+        
+        .hero-programme-subtitle {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .hero-programme-subtitle strong {
+            font-weight: 700;
+        }
+        
+        .hero-programme-description {
+            font-size: 1rem;
+            color: var(--ce-gray);
+            line-height: 1.7;
+            max-width: 480px;
+        }
+        
+        /* ==================== BREADCRUMB ==================== */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--ce-red);
+        }
+        
+        .breadcrumb span {
+            color: var(--gray-400);
+        }
+        
+        .breadcrumb-current {
+            color: var(--ce-gray-dark);
+            font-weight: 500;
+        }
+        
+        /* ==================== CONTENT SECTION ==================== */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-lg) var(--space-3xl);
+        }
+        
+        .section-intro {
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .section-intro h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ce-gray-dark);
+            margin-bottom: var(--space-md);
+        }
+        
+        .section-intro p {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+        
+        /* ==================== FILTERS ==================== */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .filter-btn {
+            padding: var(--space-sm) var(--space-lg);
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-full);
+            background: var(--white);
+            color: var(--ce-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--ce-red);
+            color: var(--ce-red);
+        }
+        
+        .filter-btn.active {
+            background: var(--ce-red);
+            border-color: var(--ce-red);
+            color: var(--white);
+        }
+        
+        /* ==================== MISSIONS GRID ==================== */
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .mission-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .mission-card-image {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .mission-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .mission-card:hover .mission-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .mission-category {
+            position: absolute;
+            top: var(--space-md);
+            left: var(--space-md);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .mission-category.alimentaire { background: var(--cat-alimentaire); }
+        .mission-category.insertion { background: var(--cat-insertion); }
+        .mission-category.exclusion { background: var(--cat-exclusion); }
+        .mission-category.environnement { background: var(--cat-environnement); }
+        .mission-category.education { background: var(--cat-education); }
+        .mission-category.seniors { background: var(--cat-seniors); }
+        
+        .mission-featured {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--ce-red);
+            border-radius: var(--radius-sm);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+        
+        .mission-card-content {
+            padding: var(--space-lg);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mission-card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ce-gray-dark);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+        
+        .mission-card-association {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-bottom: var(--space-md);
+        }
+        
+        .mission-card-meta {
+            margin-top: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--gray-100);
+        }
+        
+        .mission-meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        
+        .mission-meta-item svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--gray-400);
+        }
+        
+        .mission-places {
+            margin-left: auto;
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--ce-red-soft);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--ce-red);
+        }
+        
+        .mission-places.complet {
+            background: var(--gray-100);
+            color: var(--gray-500);
+        }
+        
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--ce-gray-dark);
+            color: var(--white);
+            padding: var(--space-2xl) var(--space-lg) var(--space-lg);
+            margin-top: var(--space-3xl);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .footer-column h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            color: var(--white);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-column ul a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-column ul a:hover {
+            color: var(--white);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-bottom p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+        
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 900px) {
+            .hero-programme-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-programme-illustration {
+                display: none;
+            }
+            
+            .hero-programme-content {
+                text-align: center;
+            }
+            
+            .hero-programme-title::after {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-programme-description {
+                margin: 0 auto;
+            }
+            
+            .nav-main {
+                display: none;
+            }
+            
+            .missions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .header-main {
+                padding: var(--space-sm) var(--space-md);
+            }
+            
+            .logo img {
+                height: 36px;
+            }
+            
+            .filters {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: var(--space-sm);
+            }
+            
+            .filter-btn {
+                white-space: nowrap;
+            }
+        }
+        
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-programme-content {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .mission-card {
+            animation: fadeInUp 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .mission-card:nth-child(1) { animation-delay: 0.05s; }
+        .mission-card:nth-child(2) { animation-delay: 0.1s; }
+        .mission-card:nth-child(3) { animation-delay: 0.15s; }
+        .mission-card:nth-child(4) { animation-delay: 0.2s; }
+        .mission-card:nth-child(5) { animation-delay: 0.25s; }
+        .mission-card:nth-child(6) { animation-delay: 0.3s; }
+        .mission-card:nth-child(7) { animation-delay: 0.35s; }
+        .mission-card:nth-child(8) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-main">
+            <a href="home-filiale-ce.html" class="logo">
+                <img src="https://wpb-webs.com/dev/natixis/logo-ce-desktop.webp" alt="Caisse d'Épargne">
+            </a>
+            <nav class="nav-main">
+                <a href="home-filiale-ce.html">Accueil</a>
+                <a href="#" class="active">Nos programmes</a>
+                <a href="#">À propos</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    FR
+                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </div>
+                <button class="btn btn-outline">Se connecter</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Programme -->
+    <section class="hero-programme">
+        <div class="hero-programme-container">
+            <div class="hero-programme-illustration">
+                <img src="https://wpb-webs.com/dev/natixis/volontariat.png" alt="Volontariat">
+            </div>
+            <div class="hero-programme-content">
+                <h1 class="hero-programme-title">Volontariat</h1>
+                <p class="hero-programme-subtitle"><strong>Engagez-vous</strong> concrètement près de chez vous</p>
+                <p class="hero-programme-description">
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <a href="home-groupe-bpce.html">Accueil</a>
+        <span>›</span>
+        <a href="home-filiale-ce.html">Caisse d'Épargne</a>
+        <span>›</span>
+        <span class="breadcrumb-current">Volontariat</span>
+    </nav>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="section-intro">
+            <p>
+
+                    L'objectif de Natixis Foundation est d'offrir à tous les collaborateurs et les collaboratrices des Métiers de Natixis des opportunités d'engagement en faveur d'actions d'intérêt général qui s'inscrivent  à la fois dans le champ de la protection de l'environnement et de la solidarité, avec un objectif d'impact durable, et en faveur d'une transition juste.
+                
+                    Nous avons trois domaines d'action privilégiés : l'intégration professionnelle des jeunes et l'éducation, l'économie circulaire et la protection de la biodiversité.
+                    Retrouvez ci-dessous les actions de volontariat que nous vous proposons tout au long de l'année.
+
+                    N'hésitez plus, lancez-vous ! 
+
+            </p>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <button class="filter-btn active">Toutes</button>
+            <button class="filter-btn">Aide alimentaire</button>
+            <button class="filter-btn">Insertion</button>
+            <button class="filter-btn">Lutte contre l'exclusion</button>
+            <button class="filter-btn">Environnement</button>
+            <button class="filter-btn">Éducation</button>
+            <button class="filter-btn">Seniors</button>
+        </div>
+
+        <!-- Missions Grid -->
+        <div class="missions-grid">
+            
+            <!-- Mission Card 1 -->
+            <a href="ce-mission-corrections2.html" class="mission-card">
+                <div class="mission-card-image">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&h=250&fit=crop" alt="Restos du coeur">
+                    <span class="mission-category alimentaire">Aide alimentaire</span>
+                </div>
+                <div class="mission-card-content">
+                    <h3 class="mission-card-title">Agissez au cœur des Restos jeudi 20 !</h3>
+                    <p class="mission-card-association">Les Restos du cœur</p>
+                    <div class="mission-card-meta">
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            Jeudi 20/11
+                        </div>
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Paris (75)
+                        </div>
+                        <span class="mission-places">8 places</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mission Card 2 -->
+            <a href="#" class="mission-card">
+                <div class="mission-card-image">
+                    <img src="https://images.unsplash.com/photo-1593113630400-ea4288922497?w=400&h=250&fit=crop" alt="Restos du coeur">
+                    <span class="mission-category alimentaire">Aide alimentaire</span>
+                </div>
+                <div class="mission-card-content">
+                    <h3 class="mission-card-title">Agissez au cœur des Restos mercredi 19 !</h3>
+                    <p class="mission-card-association">Les Restos du cœur</p>
+                    <div class="mission-card-meta">
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            Mercredi 19/11
+                        </div>
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Paris (75)
+                        </div>
+                        <span class="mission-places">5 places</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mission Card 3 - Featured -->
+            <a href="ce-mission.html" class="mission-card">
+                <div class="mission-card-image">
+                    <img src="https://wpb-webs.com/dev/natixis/photo-ce-mission.jpeg" alt="Insertion">
+                    <span class="mission-category insertion">Insertion</span>
+                    <span class="mission-featured">À la une</span>
+                </div>
+                <div class="mission-card-content">
+                    <h3 class="mission-card-title">Aidez des jeunes talents à décrocher leur futur job !</h3>
+                    <p class="mission-card-association">Les Déterminés</p>
+                    <div class="mission-card-meta">
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            Lundi 17/11
+                        </div>
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Paris (75)
+                        </div>
+                        <span class="mission-places">12 places</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mission Card 4 -->
+            <a href="#" class="mission-card">
+                <div class="mission-card-image">
+                    <img src="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=400&h=250&fit=crop" alt="MaMaMa">
+                    <span class="mission-category exclusion">Lutte contre l'exclusion</span>
+                </div>
+                <div class="mission-card-content">
+                    <h3 class="mission-card-title">Aidez MaMaMa à chouchouter les mamans et leurs enfants !</h3>
+                    <p class="mission-card-association">MaMaMa</p>
+                    <div class="mission-card-meta">
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            Vendredi 21/11
+                        </div>
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Aubervilliers (93)
+                        </div>
+                        <span class="mission-places">6 places</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mission Card 5 -->
+            <a href="#" class="mission-card">
+                <div class="mission-card-image">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=250&fit=crop" alt="Environnement">
+                    <span class="mission-category environnement">Environnement</span>
+                </div>
+                <div class="mission-card-content">
+                    <h3 class="mission-card-title">Participez à une journée de plantation d'arbres</h3>
+                    <p class="mission-card-association">Reforest'Action</p>
+                    <div class="mission-card-meta">
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            Samedi 22/11
+                        </div>
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Fontainebleau (77)
+                        </div>
+                        <span class="mission-places">3 places</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mission Card 6 -->
+            <a href="#" class="mission-card">
+                <div class="mission-card-image">
+                    <img src="https://images.unsplash.com/photo-1609234656388-0ff363383899?w=400&h=250&fit=crop" alt="Banque Alimentaire">
+                    <span class="mission-category alimentaire">Aide alimentaire</span>
+                </div>
+                <div class="mission-card-content">
+                    <h3 class="mission-card-title">Triez et distribuez des produits alimentaires</h3>
+                    <p class="mission-card-association">Banque Alimentaire</p>
+                    <div class="mission-card-meta">
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            Jeudi 27/11
+                        </div>
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Créteil (94)
+                        </div>
+                        <span class="mission-places">15 places</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mission Card 7 -->
+            <a href="#" class="mission-card">
+                <div class="mission-card-image">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400&h=250&fit=crop" alt="Éducation">
+                    <span class="mission-category education">Éducation</span>
+                </div>
+                <div class="mission-card-content">
+                    <h3 class="mission-card-title">Accompagnez des élèves dans leurs devoirs</h3>
+                    <p class="mission-card-association">ZUPdeCO</p>
+                    <div class="mission-card-meta">
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            Mardi 25/11
+                        </div>
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Saint-Denis (93)
+                        </div>
+                        <span class="mission-places">10 places</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mission Card 8 - Complet -->
+            <a href="#" class="mission-card">
+                <div class="mission-card-image">
+                    <img src="https://wpb-webs.com/dev/natixis/personnage-agee.jpg" alt="Seniors">
+                    <span class="mission-category seniors">Seniors</span>
+                </div>
+                <div class="mission-card-content">
+                    <h3 class="mission-card-title">Rendez visite à des personnes âgées isolées</h3>
+                    <p class="mission-card-association">Petits Frères des Pauvres</p>
+                    <div class="mission-card-meta">
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            Mercredi 26/11
+                        </div>
+                        <div class="mission-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Paris (75)
+                        </div>
+                        <span class="mission-places complet">Complet</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Liens utiles</h4>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Mentions légales</h4>
+                    <ul>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Gérer les cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">engagement@caisse-epargne.fr</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 KOEO — Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

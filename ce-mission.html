@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Solidaire | Caisse d'Épargne</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palette Caisse d'Épargne */
+            --ce-red: #C5000E;
+            --ce-red-dark: #A3000B;
+            --ce-red-light: #f4cccc;
+            --ce-red-soft: #FDEAEA;
+            
+            --ce-gray: #3E454A;
+            --ce-gray-dark: #2D3236;
+            --ce-gray-light: #F5F6F7;
+            --ce-gray-medium: #6B7280;
+            
+            /* Accents complémentaires */
+            --accent-warm: #E8573D;
+            --accent-coral: #FF6B5B;
+            
+            /* Fond de page */
+            --bg-page: #F8F9FA;
+            --bg-warm: #FEF7F6;
+            
+            /* Neutres */
+            --white: #FFFFFF;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            
+            /* Status */
+            --success: #10B981;
+            --success-light: #D1FAE5;
+            --warning: #F59E0B;
+            --warning-light: #FEF3C7;
+            --error: #EF4444;
+            --error-light: #FEE2E2;
+            
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            
+            /* Border radius */
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --shadow-red: 0 4px 14px rgba(197, 0, 14, 0.25);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--ce-gray);
+            line-height: 1.6;
+            background-color: var(--bg-page);
+            min-height: 100vh;
+        }
+        
+        /* ==================== HEADER ==================== */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 44px;
+            width: auto;
+        }
+        
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+        }
+        
+        .nav-main a {
+            color: var(--ce-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: var(--space-sm) 0;
+            position: relative;
+            transition: color 0.2s;
+        }
+        
+        .nav-main a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--ce-red);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-main a:hover {
+            color: var(--ce-red);
+        }
+        
+        .nav-main a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-main a.active {
+            color: var(--ce-red);
+        }
+        
+        .nav-main a.active::after {
+            width: 100%;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .lang-selector {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-full);
+            background: var(--white);
+            font-size: 0.9rem;
+            color: var(--ce-gray);
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        
+        .lang-selector:hover {
+            border-color: var(--ce-red);
+        }
+        
+        /* ==================== BREADCRUMB ==================== */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+        
+        .breadcrumb a {
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--ce-red);
+        }
+        
+        .breadcrumb span {
+            color: var(--gray-400);
+        }
+        
+        .breadcrumb-current {
+            color: var(--ce-gray);
+            font-weight: 500;
+        }
+        
+        /* ==================== HERO SECTION ==================== */
+        .hero-banner {
+            background: var(--ce-red-dark);
+            padding: var(--space-2xl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(197, 0, 14, 0.15) 100%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl);
+            align-items: start;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-image-container {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-badges {
+            position: absolute;
+            top: var(--space-md);
+            left: var(--space-md);
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .badge-primary {
+            background: var(--ce-red);
+            color: var(--white);
+        }
+        
+        .badge-secondary {
+            background: var(--ce-gray);
+            color: var(--white);
+        }
+        
+        .badge-outline {
+            background: rgba(255,255,255,0.95);
+            color: var(--ce-gray);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .hero-info {
+            padding-top: var(--space-md);
+        }
+        
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.3;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .hero-tags {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-lg);
+        }
+        
+        /* Tags en couleur claire pour meilleure visibilité */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 6px var(--space-md);
+            background: var(--bg-page);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--ce-gray);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .tag svg {
+            width: 14px;
+            height: 14px;
+            color: var(--ce-red);
+        }
+        
+        /* Sidebar Card */
+        .sidebar-card {
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+        }
+
+        .cta-dispo {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: var(--space-2xl);
+            align-items: start;
+            margin-top: var(--space-lg);
+            padding-top: 75px;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .places-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px 0;
+        }
+        
+        .places-label {
+            font-size: 0.95rem;
+            color: #fff;
+        }
+        
+        .places-count {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--gray-500);
+            border-radius: var(--radius-full);
+            transition: width 0.5s ease;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: #fff;
+            color: var(--ce-red);
+            box-shadow: var(--shadow-red);
+            padding: 20px 30px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 0, 14, 0.35);
+        }
+        
+        .btn-secondary {
+            background: var(--ce-gray);
+            color: var(--white);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--ce-gray-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--ce-red);
+            border: 2px solid var(--ce-red);
+        }
+        
+        .btn-outline:hover {
+            background: var(--ce-red);
+            color: var(--white);
+        }
+        
+        .btn-disabled {
+            background: var(--gray-300);
+            color: var(--gray-500);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        .btn-disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .share-section {
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .share-label {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-bottom: var(--space-md);
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        .share-btn {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            color: var(--gray-500);
+            background: var(--white);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .share-btn:hover {
+            border-color: var(--ce-red);
+            color: var(--ce-red);
+            background: var(--ce-red-light);
+        }
+        
+        .share-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* ==================== MAIN CONTENT ==================== */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--space-2xl);
+        }
+        
+        .content-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--space-xl);
+            border: 1px solid var(--gray-100);
+        }
+        
+        /* Titres de section SANS pictos */
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--ce-red);
+            margin-bottom: var(--space-lg);
+            /* padding-bottom: var(--space-md);
+            border-bottom: 2px solid var(--ce-red-light); */
+        }
+        
+        .content-text {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .content-subtitle {
+            font-weight: 600;
+            color: var(--ce-gray);
+            margin-bottom: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+        
+        .mission-list {
+            list-style: none;
+            margin: var(--space-md) 0;
+        }
+        
+        .mission-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            padding: var(--space-sm) 0;
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+        
+        .mission-list li::before {
+            content: '•';
+            color: var(--ce-red);
+            font-size: 1.5rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        
+        /* Infos Pratiques Grid - Style épuré */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        /* Icônes directement sur fond blanc, sans carré */
+        .info-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--ce-red);
+            flex-shrink: 0;
+        }
+        
+        .info-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Seulement la valeur, sans label */
+        .info-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ce-gray);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+        
+        /* Association Card - En haut de la sidebar */
+        .association-sidebar-card {
+            background: var(--ce-red-light);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--ce-red-light);
+            text-align: center;
+        }
+        
+        .association-sidebar-card .card-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--ce-red);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .association-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        
+        .association-logo {
+            width: 100%;
+            max-width: 180px;
+            height: auto;
+            border-radius: 0;
+            overflow: visible;
+            box-shadow: none;
+            border: none;
+        }
+        
+        .association-logo img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        .association-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--ce-gray);
+            line-height: 1.3;
+        }
+        
+        .association-description {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+            text-align: left;
+        }
+        
+        .association-link, .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--ce-red);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .association-link:hover {
+            color: var(--ce-red-dark);
+            text-decoration: underline;
+        }
+        
+        .association-link svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .sidebar-info-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-100);
+        }
+        
+        .sidebar-info-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ce-gray);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .sidebar-info-card h4 svg {
+            width: 20px;
+            height: 20px;
+            color: var(--ce-red);
+        }
+        
+        .alert-box {
+            background: linear-gradient(135deg, var(--ce-red-light) 0%, var(--ce-red-soft) 100%);
+            border-left: 4px solid var(--ce-red);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+        }
+        
+        .alert-box p {
+            font-size: 0.9rem;
+            color: var(--ce-gray);
+        }
+        
+        .highlight-card {
+            background: linear-gradient(135deg, var(--ce-gray) 0%, var(--ce-gray-dark) 100%);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            color: var(--white);
+        }
+        
+        .highlight-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--white);
+        }
+        
+        .highlight-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: var(--space-md);
+            line-height: 1.6;
+        }
+        
+        .highlight-card .btn {
+            background: var(--ce-red);
+            color: var(--white);
+        }
+        
+        .highlight-card .btn:hover {
+            background: var(--ce-red-dark);
+        }
+        
+        /* ==================== PHOTO GALLERY ==================== */
+        .gallery-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg) var(--space-3xl);
+        }
+        
+        .gallery-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .gallery-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ce-gray);
+            text-align: center;
+        }
+        
+        .gallery-line {
+            flex: 1;
+            max-width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--ce-red) 0%, transparent 100%);
+        }
+        
+        .gallery-line:last-child {
+            background: linear-gradient(90deg, transparent 0%, var(--ce-red) 100%);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-md);
+        }
+        
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(197, 0, 14, 0.2) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        
+        /* ==================== BACK LINK ==================== */
+        .back-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--ce-red);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        
+        .back-link:hover {
+            color: var(--ce-red-dark);
+            background: var(--ce-red-light);
+        }
+        
+        .back-link svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: linear-gradient(180deg, var(--ce-gray) 0%, var(--ce-gray-dark) 100%);
+            color: var(--white);
+            padding: var(--space-2xl) 0 var(--space-lg);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .footer-column h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-column a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--white);
+        }
+        
+        .footer-bottom {
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-bottom p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .footer-logo {
+            height: 32px;
+            opacity: 0.8;
+        }
+        
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar-card {
+                max-width: 400px;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .gallery-item.large {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-main {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+            
+            .nav-main {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: var(--space-md);
+            }
+            
+            .hero-title {
+                font-size: 1.35rem;
+            }
+            
+            .hero-tags {
+                flex-direction: column;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+                text-align: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+        }
+        
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .content-card {
+            animation: fadeInUp 0.5s ease-out backwards;
+        }
+        
+        .content-card:nth-child(1) { animation-delay: 0.1s; }
+        .content-card:nth-child(2) { animation-delay: 0.2s; }
+        .content-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        .sidebar > * {
+            animation: slideInRight 0.5s ease-out backwards;
+        }
+        
+        .sidebar > *:nth-child(1) { animation-delay: 0.1s; }
+        .sidebar > *:nth-child(2) { animation-delay: 0.2s; }
+        .sidebar > *:nth-child(3) { animation-delay: 0.3s; }
+        
+        .gallery-item {
+            animation: fadeInUp 0.4s ease-out backwards;
+        }
+        
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.15s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.25s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.35s; }
+        .gallery-item:nth-child(7) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(8) { animation-delay: 0.45s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-main">
+            <a href="#" class="logo">
+                <img src="logo-ce-desktop.webp" alt="Caisse d'Épargne">
+            </a>
+            <nav class="nav-main">
+                <a href="#">Actions Solidaires</a>
+                <a href="#" class="active">Ma participation</a>
+                <a href="#">FAQ</a>
+                <a href="#">Galerie de la journée</a>
+                <a href="ce-formulaire-photos.html">Postez vos photos</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    Français
+                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <a href="home-groupe-bpce.html">Accueil</a>
+        <span>›</span>
+        <a href="home-filiale-ce.html">Caisse d'Épargne</a>
+        <span>›</span>
+        <a href="#">Journées Solidaires IDF</a>
+        <span>›</span>
+        <span class="breadcrumb-current">Mission</span>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            
+            <!-- Sidebar Card -->
+            <div class="sidebar-card">
+                <div class="hero-info">
+                    <h1 class="hero-title">Aidez des jeunes talents à décrocher leur futur job !</h1>
+                    <div class="hero-tags">
+                        <span class="tag">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M17 1l4 4-4 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3 11V9a4 4 0 0 1 4-4h14" stroke-width="2" stroke-linecap="round"/>
+
+                                <path d="M7 23l-4-4 4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M21 13v2a4 4 0 0 1-4 4H3" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            Mensuel
+                        </span>
+                        <span class="tag">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Paris 2ème (75)
+                        </span>
+                        <span class="tag">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                            Insertion professionnelle
+                        </span>
+                    </div>
+                </div>
+                <div class="cta-dispo">
+                    <button class="btn btn-primary">
+                        Je m'engage !
+                    </button>
+                    <div class="dispo">
+                        <div class="places-info">
+                            <span class="places-label">Places disponibles</span>
+                            <span class="places-count">12/20</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-photo">
+                <div class="hero-image-container">
+                    <img src="photo-ce-mission.jpeg" alt="Mission solidaire" class="hero-image">
+                    <div class="hero-badges">
+                        <span class="badge badge-primary">À la une</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-area">
+            <!-- Description -->
+            <div class="content-card">
+                <h2 class="section-title">Description de la mission</h2>
+                <p class="content-text">
+                    Rejoignez-nous pour une journée exceptionnelle dédiée à l'accompagnement de jeunes talents issus de quartiers prioritaires ! En partenariat avec l'association Les Déterminés, vous aurez l'opportunité de partager votre expérience professionnelle et d'aider ces jeunes à préparer leurs entretiens d'embauche.
+                </p>
+                
+                <h3 class="content-subtitle">Au programme de cette journée :</h3>
+                <ul class="mission-list">
+                    <li>Accueil et présentation de l'association (9h00 - 9h30)</li>
+                    <li>Ateliers de simulation d'entretiens (9h30 - 12h00)</li>
+                    <li>Déjeuner convivial avec les jeunes et les bénévoles (12h00 - 13h30)</li>
+                    <li>Sessions de conseil personnalisé sur les CV (13h30 - 16h00)</li>
+                    <li>Débriefing et retours d'expérience (16h00 - 17h00)</li>
+                </ul>
+                
+                <p class="content-text">
+                    Aucune compétence particulière n'est requise, juste l'envie de partager et d'accompagner ! Cette expérience est enrichissante tant pour les jeunes accompagnés que pour les collaborateurs participants.
+                </p>
+            </div>
+            
+            <!-- Informations pratiques -->
+            <div class="content-card">
+                <h2 class="section-title">Informations pratiques</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                        </div>
+                        <span class="info-value">Lundi 17 novembre 2025</span>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <span class="info-value">9h00 - 17h00</span>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <span class="info-value">15 rue de la Paix, 75002 Paris</span>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <span class="info-value">En groupe (10-15 personnes)</span>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <span class="info-value">Direction RSE - Caisse d'Épargne</span>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <span class="info-value">Marie Dupont - RH (<a class="contact-link" href="#">Contact</a>)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="share-section">
+                <p class="share-label">Partager cette mission</p>
+                <div class="share-buttons">
+                    <button class="share-btn" title="Twitter">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </button>
+                    <button class="share-btn" title="LinkedIn">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </button>
+                    <button class="share-btn" title="Email">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </button>
+                    <button class="share-btn" title="Copier le lien">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Association Card - EN PREMIER pour visibilité immédiate -->
+            <div class="association-sidebar-card">
+                <div class="association-header">
+                    <div class="association-logo">
+                        <img src="https://wpb-webs.com/dev/natixis/determines.jpeg" alt="Les Déterminés" title="Les Déterminés">
+                    </div>
+                </div>
+                <p class="association-description">
+                    Les Déterminés est une association fondée en 2015 qui œuvre pour l’égalité des chances et l’insertion professionnelle des jeunes et des personnes éloignées de l’emploi, notamment dans les quartiers prioritaires et les zones rurales. Son programme Employabilité accompagne les participants dans la construction de leur projet professionnel grâce à des formations gratuites, adaptées aux besoins réels du marché du travail (hôtellerie-restauration, communication, logistique, e-commerce, etc.). Alternant ateliers pratiques, coaching et immersions en entreprise, il permet aux bénéficiaires de développer leurs compétences et de renforcer leur confiance. Avec déjà plus de 250 jeunes formés et un taux de retour à l’emploi de 60 %, ce programme constitue un véritable tremplin vers une insertion durable.                </p>
+                <a href="#" class="association-link">
+                    Visiter le site web
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="sidebar-info-card">
+                <h4>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    Bon à savoir
+                </h4>
+                <div class="alert-box">
+                    <p>
+                        <strong>Tenue décontractée</strong> recommandée. Le déjeuner est offert sur place.
+                    </p>
+                </div>
+            </div>
+            
+        </aside>
+    </main>
+    
+    <!-- Photo Gallery -->
+    <section class="gallery-section">
+        <div class="gallery-header">
+            <div class="gallery-line"></div>
+            <h2 class="gallery-title">Galerie photos</h2>
+            <div class="gallery-line"></div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item large">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=600&fit=crop" alt="Équipe en action">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=300&h=300&fit=crop" alt="Session de travail">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=300&h=300&fit=crop" alt="Présentation">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=300&h=300&fit=crop" alt="Discussion">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=300&h=300&fit=crop" alt="Atelier">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=300&h=300&fit=crop" alt="Collaboration">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?w=300&h=300&fit=crop" alt="Moment convivial">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Back Link -->
+    <div class="back-section">
+        <a href="#" class="back-link">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <line x1="19" y1="12" x2="5" y2="12"/>
+                <polyline points="12 19 5 12 12 5"/>
+            </svg>
+            Retour aux actions solidaires
+        </a>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Liens utiles</h4>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Mentions légales</h4>
+                    <ul>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Gérer les cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:engagement@caisse-epargne.fr">engagement@caisse-epargne.fr</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 KOEO - Tous droits réservés</p>
+                <img src="https://mvp.journeesolidaire.cc/assets/img/logo/logo-ce-desktop.webp" alt="Caisse d'Épargne" class="footer-logo">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
