@@ -600,10 +600,10 @@
         /* Row 1: 2 wide cards */
         .programme-card:nth-child(1) { grid-column: span 3; }
         .programme-card:nth-child(2) { grid-column: span 3; }
-        /* Row 2: 3 standard cards */
-        .programme-card:nth-child(3) { grid-column: span 2; }
-        .programme-card:nth-child(4) { grid-column: span 2; }
-        .programme-card:nth-child(5) { grid-column: span 2; }
+        /* Row 2: 3 standard cards – centred via 6-col grid */
+        .programme-card:nth-child(3) { grid-column: 1 / span 2; }
+        .programme-card:nth-child(4) { grid-column: 3 / span 2; }
+        .programme-card:nth-child(5) { grid-column: 5 / span 2; }
 
         .programme-card__header {
             background: var(--brand-color);
