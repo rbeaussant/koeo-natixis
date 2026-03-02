@@ -3,129 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engagement Solidaire | Caisse d'Épargne</title>
+    <title>Engagement Solidaire | Natixis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Palette Caisse d'Épargne */
-            --ce-red: #C5000E;
-            --ce-red-dark: #A3000B;
-            --ce-red-light: #f4cccc;
-            --ce-red-soft: #FDEAEA;
-            
-            --ce-gray: #3E454A;
-            --ce-gray-dark: #2D3236;
-            --ce-gray-light: #F5F6F7;
-            --ce-gray-medium: #6B7280;
-            
+            /* Palette Natixis */
+            --nat-purple:       #5C2D91;
+            --nat-purple-dark:  #4A2475;
+            --nat-purple-light: #7B4BA8;
+            --nat-purple-soft:  #F3EEF8;
+            --nat-purple-mid:   #EDE5F6;
+
+            --nat-gray:        #3E454A;
+            --nat-gray-dark:   #2D3236;
+            --nat-gray-light:  #F5F6F7;
+            --nat-gray-medium: #6B7280;
+
+            /* Couleurs programmes */
+            --prog-journees:  #FABA0A;
+            --prog-volontariat: #34B6B8;
+            --prog-teambuilding: #EA6C1D;
+            --prog-conges:    #5C2D91;
+            --prog-don:       #E5375A;
+
             /* Fond de page */
             --bg-page: #F8F9FA;
-            --bg-warm: #FEF7F6;
-            
+            --bg-warm: #FAF8FC;
+
             /* Neutres */
-            --white: #FFFFFF;
-            --gray-50: #F9FAFB;
-            --gray-100: #F3F4F6;
-            --gray-200: #E5E7EB;
-            --gray-300: #D1D5DB;
-            --gray-400: #9CA3AF;
-            --gray-500: #6B7280;
-            --gray-600: #4B5563;
-            --gray-700: #374151;
-            --gray-800: #1F2937;
-            --gray-900: #111827;
-            
+            --white:     #FFFFFF;
+            --gray-50:   #F9FAFB;
+            --gray-100:  #F3F4F6;
+            --gray-200:  #E5E7EB;
+            --gray-300:  #D1D5DB;
+            --gray-400:  #9CA3AF;
+            --gray-500:  #6B7280;
+            --gray-600:  #4B5563;
+            --gray-700:  #374151;
+            --gray-800:  #1F2937;
+            --gray-900:  #111827;
+
             /* Spacing */
-            --space-xs: 0.25rem;
-            --space-sm: 0.5rem;
-            --space-md: 1rem;
-            --space-lg: 1.5rem;
-            --space-xl: 2rem;
+            --space-xs:  0.25rem;
+            --space-sm:  0.5rem;
+            --space-md:  1rem;
+            --space-lg:  1.5rem;
+            --space-xl:  2rem;
             --space-2xl: 3rem;
             --space-3xl: 4rem;
-            
+
             /* Border radius */
-            --radius-sm: 6px;
-            --radius-md: 10px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
+            --radius-sm:   6px;
+            --radius-md:   10px;
+            --radius-lg:   16px;
+            --radius-xl:   24px;
             --radius-full: 9999px;
-            
+
             /* Shadows */
             --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
             --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
             --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-            --shadow-red: 0 4px 14px rgba(197, 0, 14, 0.25);
+            --shadow-purple: 0 4px 14px rgba(92, 45, 145, 0.3);
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--ce-gray);
+            color: var(--nat-gray);
             line-height: 1.6;
             background-color: var(--bg-page);
-            min-height: 100vh;
         }
-        
-        /* ==================== TOP BAR ==================== */
-        .top-bar {
-            background: var(--ce-gray-dark);
-            padding: var(--space-sm) var(--space-lg);
-        }
-        
-        .top-bar-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .back-to-group {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        
-        .back-to-group:hover {
-            color: var(--white);
-        }
-        
-        .back-to-group svg {
-            width: 16px;
-            height: 16px;
-        }
-        
-        .top-bar-right {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-        }
-        
-        .top-bar-right a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 0.8rem;
-            transition: color 0.2s;
-        }
-        
-        .top-bar-right a:hover {
-            color: var(--white);
-        }
-        
+
         /* ==================== HEADER ==================== */
         .header {
             background: var(--white);
@@ -134,77 +86,84 @@
             top: 0;
             z-index: 1000;
         }
-        
+
         .header-main {
             max-width: 1200px;
             margin: 0 auto;
-            padding: var(--space-md) var(--space-lg);
+            padding: var(--space-lg) var(--space-xl);
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: var(--space-xl);
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
             gap: var(--space-sm);
             text-decoration: none;
+            flex-shrink: 0;
         }
-        
-        .logo img {
-            height: 44px;
-            width: auto;
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--nat-purple);
+            letter-spacing: -0.5px;
         }
-        
+
+        .logo-badge {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--nat-purple);
+            background: var(--nat-purple-soft);
+            padding: 2px 7px;
+            border-radius: var(--radius-full);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
         .nav-main {
             display: flex;
             align-items: center;
             gap: var(--space-xl);
+            flex: 1;
+            justify-content: center;
         }
-        
+
         .nav-main a {
-            color: var(--ce-gray);
+            color: var(--nat-gray);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
             padding: var(--space-sm) 0;
             position: relative;
+            white-space: nowrap;
             transition: color 0.2s;
         }
-        
+
         .nav-main a::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--ce-red);
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--nat-purple);
             transition: width 0.3s ease;
         }
-        
-        .nav-main a:hover {
-            color: var(--ce-red);
-        }
-        
-        .nav-main a:hover::after {
-            width: 100%;
-        }
-        
-        .nav-main a.active {
-            color: var(--ce-red);
-        }
-        
-        .nav-main a.active::after {
-            width: 100%;
-        }
-        
+
+        .nav-main a:hover { color: var(--nat-purple); }
+        .nav-main a:hover::after { width: 100%; }
+        .nav-main a.active { color: var(--nat-purple); }
+        .nav-main a.active::after { width: 100%; }
+
         .nav-actions {
             display: flex;
             align-items: center;
             gap: var(--space-md);
+            flex-shrink: 0;
         }
-        
+
         .lang-selector {
             display: flex;
             align-items: center;
@@ -213,230 +172,482 @@
             border: 1px solid var(--gray-200);
             border-radius: var(--radius-full);
             background: var(--white);
-            font-size: 0.9rem;
-            color: var(--ce-gray);
+            font-size: 0.85rem;
+            color: var(--nat-gray);
             cursor: pointer;
             transition: border-color 0.2s;
         }
-        
-        .lang-selector:hover {
-            border-color: var(--ce-red);
-        }
-        
+
+        .lang-selector:hover { border-color: var(--nat-purple); }
+
         .btn {
             display: inline-flex;
             align-items: center;
             gap: var(--space-sm);
-            padding: var(--space-sm) var(--space-lg);
+            padding: 0.6rem var(--space-lg);
             border-radius: var(--radius-full);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             text-decoration: none;
-            transition: all 0.3s ease;
             cursor: pointer;
             border: 2px solid transparent;
+            transition: all 0.25s ease;
+            white-space: nowrap;
         }
-        
+
         .btn-outline {
             background: transparent;
-            color: var(--ce-gray);
+            color: var(--nat-gray);
             border-color: var(--gray-300);
         }
-        
+
         .btn-outline:hover {
-            border-color: var(--ce-red);
-            color: var(--ce-red);
+            border-color: var(--nat-purple);
+            color: var(--nat-purple);
         }
-        
-        /* ==================== HERO SECTION ==================== */
+
+        .btn-primary {
+            background: var(--nat-purple);
+            color: var(--white);
+            border-color: var(--nat-purple);
+        }
+
+        .btn-primary:hover {
+            background: var(--nat-purple-dark);
+            border-color: var(--nat-purple-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-purple);
+        }
+
+        /* ==================== HERO ==================== */
         .hero {
             position: relative;
-            min-height: 60vh;
+            min-height: 72vh;
             display: flex;
             align-items: center;
             overflow: hidden;
         }
-        
+
         .hero-background {
             position: absolute;
             inset: 0;
             z-index: 0;
         }
-        
+
         .hero-background img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center 30%;
         }
-        
+
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background:rgb(65 25 28 / 58%);
+            background: linear-gradient(
+                105deg,
+                rgba(46, 14, 80, 0.82) 0%,
+                rgba(92, 45, 145, 0.70) 55%,
+                rgba(92, 45, 145, 0.45) 100%
+            );
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
-            padding: var(--space-3xl) var(--space-lg);
+            padding: var(--space-3xl) var(--space-xl);
             width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: var(--space-3xl);
+            align-items: center;
         }
-        
-        .hero-inner {
-            max-width: 800px;
-        }
-        
+
+        .hero-text { }
+
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: var(--space-sm);
             padding: var(--space-sm) var(--space-md);
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.35);
             border-radius: var(--radius-full);
             color: var(--white);
-            font-size: 0.85rem;
-            font-weight: 500;
+            font-size: 0.82rem;
+            font-weight: 600;
             margin-bottom: var(--space-lg);
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(6px);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
-        
-        .hero-badge svg {
-            width: 18px;
-            height: 18px;
-        }
-        
-        .hero-content h1 {
+
+        .hero-badge svg { width: 16px; height: 16px; }
+
+        .hero-text h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: 42px;
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
             color: var(--white);
-            line-height: 1.15;
+            line-height: 1.18;
             margin-bottom: var(--space-lg);
         }
-        
+
         .hero-description {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.7;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.88);
+            line-height: 1.75;
             margin-bottom: var(--space-xl);
+            max-width: 520px;
         }
-        
-        .hero-stats {
+
+        .hero-cta {
             display: flex;
-            gap: var(--space-2xl);
-            padding-top: var(--space-lg);
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            gap: var(--space-md);
+            flex-wrap: wrap;
         }
-        
+
+        .btn-hero-primary {
+            background: var(--white);
+            color: var(--nat-purple);
+            border-color: var(--white);
+            font-size: 0.95rem;
+            padding: 0.75rem 1.75rem;
+        }
+
+        .btn-hero-primary:hover {
+            background: var(--nat-purple-soft);
+            border-color: var(--nat-purple-soft);
+        }
+
+        .btn-hero-outline {
+            background: transparent;
+            color: var(--white);
+            border-color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+            padding: 0.75rem 1.75rem;
+        }
+
+        .btn-hero-outline:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: var(--white);
+        }
+
+        /* Stats panel (droite) */
+        .hero-stats-panel {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl) var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+
         .hero-stat {
-            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding-bottom: var(--space-lg);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
         }
-        
+
+        .hero-stat:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .hero-stat-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.18);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .hero-stat-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--white);
+        }
+
+        .hero-stat-info { }
+
         .hero-stat-number {
             font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
+            font-size: 1.9rem;
             font-weight: 700;
             color: var(--white);
             line-height: 1;
         }
-        
+
         .hero-stat-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-top: var(--space-xs);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.75);
+            margin-top: 3px;
         }
-        
-        /* ==================== PROGRAMMES SECTION ==================== */
-        .programs-section {
-            padding: var(--space-3xl) var(--space-lg);
-            max-width: 1300px;
+
+        /* ==================== ACTUS ==================== */
+        .actus-section {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: var(--space-3xl) var(--space-xl) var(--space-2xl);
         }
-        
+
         .section-header {
-            text-align: center;
-            margin-bottom: var(--space-2xl);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: var(--space-xl);
         }
-        
+
         .section-header h2 {
             font-family: 'Poppins', sans-serif;
-            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
             font-weight: 700;
-            color: var(--ce-gray-dark);
+            color: var(--nat-gray-dark);
+        }
+
+        .section-header p {
+            font-size: 1rem;
+            color: var(--gray-500);
+            margin-top: var(--space-xs);
+        }
+
+        .section-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--nat-purple);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            white-space: nowrap;
+            transition: gap 0.2s;
+        }
+
+        .section-link:hover { gap: var(--space-sm); }
+
+        .actus-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+        }
+
+        /* Post-it card */
+        .actu-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+
+        .actu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .actu-card__tape {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 22px;
+            border-radius: 3px;
+            opacity: 0.65;
+            z-index: 2;
+        }
+
+        .actu-card__header {
+            padding: var(--space-xl) var(--space-lg) var(--space-lg);
+            position: relative;
+        }
+
+        /* Spiral notebook top */
+        .actu-card__spirals {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 18px;
+            display: flex;
+            align-items: flex-end;
+            gap: 18px;
+            padding: 0 var(--space-lg);
+        }
+
+        .actu-card__spiral {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 3px solid rgba(0,0,0,0.18);
+            background: var(--white);
+            flex-shrink: 0;
+        }
+
+        .actu-card__prog-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: var(--space-md);
+            margin-top: var(--space-sm);
+        }
+
+        .actu-card__date {
+            font-size: 0.8rem;
+            color: var(--gray-400);
             margin-bottom: var(--space-sm);
         }
-        
-        .section-header p {
-            font-size: 1.1rem;
+
+        .actu-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            line-height: 1.35;
+            margin-bottom: var(--space-sm);
+        }
+
+        .actu-card p {
+            font-size: 0.92rem;
             color: var(--gray-500);
-            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .actu-card__footer {
+            padding: var(--space-md) var(--space-lg) var(--space-lg);
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .actu-card__read-more {
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .actu-card__img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        /* ==================== PROGRAMMES SECTION ==================== */
+        .programs-section {
+            background: var(--nat-purple-soft);
+            padding: var(--space-3xl) var(--space-xl);
+        }
+
+        .programs-inner {
+            max-width: 1200px;
             margin: 0 auto;
         }
-        
-        /* ===== PROGRAMME CARDS GRID ===== */
+
+        .programs-section .section-header {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .programs-section .section-header h2 {
+            color: var(--nat-purple-dark);
+        }
+
+        /* Triangle: 2 cartes larges + 3 cartes standard */
         .programs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: var(--space-xl);
-            justify-items: center;
+            grid-template-columns: repeat(6, 1fr);
+            gap: var(--space-lg);
         }
-        
-        /* ===== PROGRAMME CARD COMPONENT ===== */
+
         .programme-card, .programme-card * { box-sizing: border-box; }
 
         .programme-card {
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-            border-radius: 22px;
+            border-radius: 20px;
             overflow: hidden;
-            background: #fff;
-            box-shadow: 0 14px 34px rgba(0,0,0,.14);
-            max-width: 370px;
-            width: 100%;
+            background: var(--white);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.10);
             display: flex;
             flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
+
         .programme-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 45px rgba(0,0,0,.18);
+            transform: translateY(-7px);
+            box-shadow: 0 20px 44px rgba(0,0,0,0.16);
         }
+
+        /* Row 1: 2 wide cards */
+        .programme-card:nth-child(1) { grid-column: span 3; }
+        .programme-card:nth-child(2) { grid-column: span 3; }
+        /* Row 2: 3 standard cards */
+        .programme-card:nth-child(3) { grid-column: span 2; }
+        .programme-card:nth-child(4) { grid-column: span 2; }
+        .programme-card:nth-child(5) { grid-column: span 2; }
 
         .programme-card__header {
             background: var(--brand-color);
             display: grid;
             grid-template-rows: 1fr 1fr;
-            min-height: 240px;
+            min-height: 220px;
             position: relative;
+        }
+
+        /* Large cards are taller */
+        .programme-card:nth-child(1) .programme-card__header,
+        .programme-card:nth-child(2) .programme-card__header {
+            min-height: 260px;
         }
 
         .programme-card__header-title {
             display: flex;
             flex-direction: column;
-            justify-content: end;
+            justify-content: flex-end;
             align-items: flex-end;
             padding: 18px 18px 10px;
-            gap: 10px;
+            gap: 8px;
         }
 
         .programme-card__title {
             margin: 0;
             padding: 3px 12px;
             border-radius: 7px;
-            color: #fff;
+            color: var(--white);
             font-weight: 900;
-            line-height: 1.02;
-            letter-spacing: .6px;
+            line-height: 1.05;
+            letter-spacing: .5px;
             text-transform: uppercase;
-            font-size: 26px;
+            font-size: 22px;
             text-align: right;
         }
 
+        .programme-card:nth-child(1) .programme-card__title,
+        .programme-card:nth-child(2) .programme-card__title {
+            font-size: 26px;
+        }
+
         .programme-card__title-underline {
-            width: 78px;
+            width: 64px;
             height: 4px;
             border-radius: 999px;
             background: var(--underline-color);
@@ -453,521 +664,1031 @@
 
         .programme-card__picto {
             width: 75%;
-            max-width: 290px;
-            height: 120px;
+            max-width: 280px;
+            height: 110px;
             background-image: var(--picto-url);
             background-repeat: no-repeat;
             background-size: contain;
             background-position: left bottom;
-            margin-bottom: -20px;
-            filter: drop-shadow(0 10px 16px rgba(0,0,0,.12));
+            margin-bottom: -18px;
+            filter: drop-shadow(0 8px 14px rgba(0,0,0,.12));
             pointer-events: none;
         }
 
+        .programme-card:nth-child(1) .programme-card__picto,
+        .programme-card:nth-child(2) .programme-card__picto {
+            height: 130px;
+            max-width: 320px;
+        }
+
         .programme-card__body {
-            padding: 26px 22px 22px;
+            padding: 24px 20px 20px;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
             flex: 1;
         }
 
         .programme-card__desc {
             margin: 0;
-            color: var(--ce-gray-dark);
-            font-size: 20px;
-            line-height: 1.25;
-            font-weight: 550;
+            color: var(--nat-gray-dark);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-weight: 500;
             flex: 1;
         }
 
+        .programme-card:nth-child(1) .programme-card__desc,
+        .programme-card:nth-child(2) .programme-card__desc {
+            font-size: 1.05rem;
+        }
+
         .programme-card__desc-underline {
-            width: 68px;
-            height: 4px;
+            width: 56px;
+            height: 3px;
             border-radius: 999px;
             background: var(--underline-color);
         }
 
         .programme-card__cta {
-            margin: 10px auto 0;
+            margin-top: 8px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 14px;
+            gap: 10px;
             width: 100%;
-            padding: 12px 18px;
-            border-radius: 42px;
-            background: #ffffff;
-            color: var(--ce-red);
-            font-weight: 600;
-            font-size: 20px;
+            padding: 10px 16px;
+            border-radius: 40px;
+            background: var(--white);
+            color: var(--brand-color);
+            font-weight: 700;
+            font-size: 0.9rem;
             text-decoration: none;
-            box-shadow: navajowhite;
-            transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
-            user-select: none;
-            line-height: 1em;
-            border: 1px solid;
-            padding: 10px 10px 15px;
+            border: 2px solid var(--brand-color);
+            transition: all 0.2s ease;
         }
 
         .programme-card__cta:hover {
+            background: var(--brand-color);
+            color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 16px 24px rgba(0,0,0,.22);
-            filter: brightness(.98);
-        }
-        
-        .programme-card__cta:active { 
-            transform: translateY(0); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
-        .programme-card__cta-icon { 
-            color: var(--ce-red); 
+        /* ==================== "CES MISSIONS SONT POUR TOI" ==================== */
+        .missions-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-3xl) var(--space-xl);
         }
-        
+
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .mission-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.25s, box-shadow 0.25s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .mission-card__img-wrap {
+            position: relative;
+            height: 160px;
+            overflow: hidden;
+        }
+
+        .mission-card__img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .mission-card:hover .mission-card__img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .mission-card__prog-label {
+            position: absolute;
+            top: var(--space-sm);
+            left: var(--space-sm);
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+
+        .mission-card__body {
+            padding: var(--space-md) var(--space-lg) var(--space-lg);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .mission-card__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            font-size: 0.72rem;
+            font-weight: 600;
+            background: var(--nat-purple-soft);
+            color: var(--nat-purple);
+            border: 1px solid var(--nat-purple-mid);
+        }
+
+        .tag.tag-location {
+            background: var(--gray-100);
+            color: var(--gray-600);
+            border-color: var(--gray-200);
+        }
+
+        .tag.tag-duration {
+            background: #FEF3C7;
+            color: #92400E;
+            border-color: #FDE68A;
+        }
+
+        .mission-card h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            line-height: 1.3;
+        }
+
+        .mission-card p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            line-height: 1.55;
+            flex: 1;
+        }
+
+        .mission-card__footer {
+            padding: 0 var(--space-lg) var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mission-card__assoc {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+            font-weight: 500;
+        }
+
+        .mission-card__arrow {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--nat-purple-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .mission-card:hover .mission-card__arrow {
+            background: var(--nat-purple);
+            transform: translateX(2px);
+        }
+
+        .mission-card__arrow svg {
+            width: 14px;
+            height: 14px;
+            color: var(--nat-purple);
+            transition: color 0.2s;
+        }
+
+        .mission-card:hover .mission-card__arrow svg {
+            color: var(--white);
+        }
+
+        .missions-cta-wrap {
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+
+        /* ==================== QUIZ SECTION ==================== */
+        .quiz-section {
+            background: linear-gradient(135deg, var(--nat-purple-dark) 0%, var(--nat-purple) 60%, var(--nat-purple-light) 100%);
+            padding: var(--space-3xl) var(--space-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-section::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 360px; height: 360px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            pointer-events: none;
+        }
+
+        .quiz-section::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; left: -60px;
+            width: 280px; height: 280px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            pointer-events: none;
+        }
+
+        .quiz-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quiz-text h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.6rem, 3vw, 2.25rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: var(--space-md);
+        }
+
+        .quiz-text p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.82);
+            line-height: 1.7;
+            margin-bottom: var(--space-xl);
+        }
+
+        .quiz-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl) var(--space-lg);
+        }
+
+        .quiz-card__question {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: var(--space-lg);
+            line-height: 1.4;
+        }
+
+        .quiz-card__question span {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: var(--space-sm);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md) var(--space-lg);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s;
+            color: rgba(255,255,255,0.88);
+            font-size: 0.92rem;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255,255,255,0.18);
+            border-color: rgba(255,255,255,0.4);
+            color: var(--white);
+        }
+
+        .quiz-option-letter {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255,255,255,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
         /* ==================== FOOTER ==================== */
         .footer {
-            background: var(--ce-gray-dark);
+            background: var(--nat-gray-dark);
             color: var(--white);
-            padding: var(--space-2xl) var(--space-lg) var(--space-lg);
-            margin-top: var(--space-3xl);
+            padding: var(--space-2xl) var(--space-xl) var(--space-lg);
         }
-        
+
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
-        .footer-grid {
+
+        .footer-top {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: var(--space-2xl);
             margin-bottom: var(--space-2xl);
+            padding-bottom: var(--space-2xl);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        
+
+        .footer-brand .logo-text {
+            color: var(--white);
+            font-size: 1.3rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            color: var(--gray-400);
+            margin-top: var(--space-sm);
+            line-height: 1.65;
+        }
+
         .footer-column h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 700;
             margin-bottom: var(--space-md);
             color: var(--white);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: var(--space-sm);
-        }
-        
+
+        .footer-column ul { list-style: none; }
+
+        .footer-column ul li { margin-bottom: var(--space-sm); }
+
         .footer-column ul a {
             color: var(--gray-400);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             transition: color 0.2s;
         }
-        
-        .footer-column ul a:hover {
-            color: var(--white);
-        }
-        
+
+        .footer-column ul a:hover { color: var(--white); }
+
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: var(--space-lg);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .footer-bottom p {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--gray-500);
         }
-        
-        .footer-logo {
+
+        .footer-bottom-links {
             display: flex;
-            align-items: center;
-            gap: var(--space-sm);
+            gap: var(--space-lg);
         }
-        
+
+        .footer-bottom-links a {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom-links a:hover { color: var(--gray-300); }
+
         /* ==================== RESPONSIVE ==================== */
-        @media (max-width: 900px) {
-            .programs-grid {
+        @media (max-width: 1024px) {
+            .hero-content {
                 grid-template-columns: 1fr;
             }
-            
-            .hero-stats {
+            .hero-stats-panel {
+                flex-direction: row;
                 flex-wrap: wrap;
-                gap: var(--space-lg);
             }
-            
-            .nav-main {
-                display: none;
+            .hero-stat {
+                flex: 1;
+                min-width: 140px;
+                padding-bottom: 0;
+                border-bottom: none;
+                border-right: 1px solid rgba(255,255,255,0.15);
+                padding-right: var(--space-lg);
             }
-            
-            .footer-grid {
+            .hero-stat:last-child { border-right: none; padding-right: 0; }
+            .programs-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .programme-card:nth-child(1),
+            .programme-card:nth-child(2),
+            .programme-card:nth-child(3),
+            .programme-card:nth-child(4),
+            .programme-card:nth-child(5) {
+                grid-column: span 1;
+            }
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-xl);
+            }
+            .quiz-inner {
                 grid-template-columns: 1fr;
-                gap: var(--space-lg);
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                gap: var(--space-md);
-                text-align: center;
+                gap: var(--space-xl);
             }
         }
-        
-        @media (max-width: 600px) {
-            .top-bar-content {
-                flex-direction: column;
-                gap: var(--space-sm);
-            }
-            
-            .header-main {
-                padding: var(--space-sm) var(--space-md);
-            }
-            
-            .logo img {
-                height: 36px;
-            }
-            
-            .nav-actions {
-                gap: var(--space-sm);
-            }
-            
-            .btn {
-                padding: var(--space-sm) var(--space-md);
-                font-size: 0.85rem;
-            }
-            
-            .hero-stats {
-                flex-direction: column;
-                gap: var(--space-md);
-            }
-            
-            .programme-card {
-                max-width: 100%;
-            }
-            
-            .programme-card__header { 
-                min-height: 220px; 
-            }
-            
-            .programme-card__title { 
-                font-size: 22px; 
-            }
-            
-            .programme-card__picto { 
-                height: 100px; 
-                width: 68%; 
-                margin-bottom: -18px; 
-            }
-            
-            .programme-card__desc { 
-                font-size: 18px; 
-            }
-            
-            .programme-card__cta { 
-                font-size: 18px; 
-                padding: 14px 16px; 
-            }
+
+        @media (max-width: 768px) {
+            .header-main { padding: var(--space-md) var(--space-lg); }
+            .nav-main { display: none; }
+            .actus-grid { grid-template-columns: 1fr; }
+            .missions-grid { grid-template-columns: 1fr; }
+            .programs-grid { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: var(--space-md); text-align: center; }
         }
-        
+
         /* ==================== ANIMATIONS ==================== */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(22px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
-        
-        .hero-inner {
-            animation: fadeInUp 0.8s ease-out;
-        }
-        
+
+        .hero-text { animation: fadeInUp 0.8s ease-out; }
+        .hero-stats-panel { animation: fadeInUp 0.8s ease-out 0.2s both; }
+
         .programme-card {
-            animation: fadeInUp 0.6s ease-out;
-            animation-fill-mode: both;
+            animation: fadeInUp 0.5s ease-out both;
         }
-        
-        .programme-card:nth-child(1) { animation-delay: 0.1s; }
-        .programme-card:nth-child(2) { animation-delay: 0.2s; }
-        .programme-card:nth-child(3) { animation-delay: 0.3s; }
-        .programme-card:nth-child(4) { animation-delay: 0.4s; }
-        .programme-card:nth-child(5) { animation-delay: 0.5s; }
-        .programme-card:nth-child(6) { animation-delay: 0.6s; }
+        .programme-card:nth-child(1) { animation-delay: 0.05s; }
+        .programme-card:nth-child(2) { animation-delay: 0.12s; }
+        .programme-card:nth-child(3) { animation-delay: 0.20s; }
+        .programme-card:nth-child(4) { animation-delay: 0.28s; }
+        .programme-card:nth-child(5) { animation-delay: 0.36s; }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-bar-content">
-            <a href="home-groupe-bpce.html" class="back-to-group">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                </svg>
-                Retour au Groupe BPCE
-            </a>
-            <div class="top-bar-right">
-                <a href="#">FR</a>
-                <a href="#">EN</a>
-            </div>
-        </div>
-    </div>
 
-    <!-- Header -->
+    <!-- ==================== HEADER ==================== -->
     <header class="header">
         <div class="header-main">
             <a href="#" class="logo">
-                <img src="https://wpb-webs.com/dev/natixis/logo-ce-desktop.webp" alt="Caisse d'Épargne">
+                <span class="logo-text">NATIXIS</span>
+                <span class="logo-badge">Engagement</span>
             </a>
             <nav class="nav-main">
                 <a href="#" class="active">Accueil</a>
                 <a href="#">Nos programmes</a>
-                <a href="#">À propos</a>
-                <a href="#">Contact</a>
+                <a href="#">Je trouve une mission</a>
+                <a href="#">Mon impact</a>
             </nav>
             <div class="nav-actions">
                 <div class="lang-selector">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="10"/>
                         <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                     </svg>
                     FR
-                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <polyline points="6 9 12 15 18 9"/>
                     </svg>
                 </div>
-                <button class="btn btn-outline">Se connecter</button>
+                <a href="#" class="btn btn-outline">Se connecter</a>
+                <a href="#" class="btn btn-primary">Rejoindre</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ==================== HERO ==================== -->
     <section class="hero">
         <div class="hero-background">
-            <img src="https://wpb-webs.com/dev/natixis/equipe.jpg" alt="Équipe Caisse d'Épargne engagée">
+            <img src="https://wpb-webs.com/dev/natixis/equipe.jpg" alt="Collaborateurs Natixis engagés">
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
-            <div class="hero-inner">
-                <h1>Venez vous engager avec nous<br>auprès d'associations locales<br>à impact !</h1>
+            <!-- Texte gauche -->
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                    Portail d'engagement Natixis
+                </div>
+                <h1>Agissez concrètement<br>pour un monde<br>plus solidaire</h1>
                 <p class="hero-description">
-                    Découvrez les programmes solidaires proposés par la Caisse d'Épargne : 
-                    journées solidaires, bénévolat, mécénat de compétences et bien plus encore.
+                    Journées solidaires, bénévolat, don sur salaire, mécénat de compétences…
+                    Découvrez tous les programmes Natixis et trouvez la mission qui vous ressemble.
                 </p>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="hero-stat-number">6</div>
-                        <div class="hero-stat-label">Programmes actifs</div>
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-hero-primary">
+                        Je trouve une mission
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
+                        </svg>
+                    </a>
+                    <a href="#programmes" class="btn btn-hero-outline">Voir les programmes</a>
+                </div>
+            </div>
+
+            <!-- Stats droite -->
+            <div class="hero-stats-panel">
+                <div class="hero-stat">
+                    <div class="hero-stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/>
+                        </svg>
                     </div>
-                    <div class="hero-stat">
+                    <div class="hero-stat-info">
                         <div class="hero-stat-number">850</div>
                         <div class="hero-stat-label">Collaborateurs engagés</div>
                     </div>
-                    <div class="hero-stat">
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <div class="hero-stat-info">
                         <div class="hero-stat-number">45</div>
                         <div class="hero-stat-label">Associations partenaires</div>
                     </div>
                 </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                    </div>
+                    <div class="hero-stat-info">
+                        <div class="hero-stat-number">5</div>
+                        <div class="hero-stat-label">Programmes solidaires</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Programmes Section -->
-    <section class="programs-section">
+    <!-- ==================== ACTUS ==================== -->
+    <section class="actus-section">
         <div class="section-header">
-            <h2>Nos programmes solidaires</h2>
-            <p>Choisissez le programme qui vous correspond et engagez-vous dès maintenant</p>
+            <div>
+                <h2>Actualités</h2>
+                <p>Les dernières nouvelles de nos programmes solidaires</p>
+            </div>
+            <a href="#" class="section-link">
+                Voir toutes les actus
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
+                </svg>
+            </a>
         </div>
-        
-        <div class="programs-grid">
-            
-            <!-- Card 1: Journées solidaires - Bleu -->
-            <div class="programme-card" style="--brand-color: #faba0a; --underline-color: #C83B2C; --picto-url: url('https://wpb-webs.com/dev/natixis/journees.png');">
-                <div class="programme-card__header">
-                    <div class="programme-card__header-title">
-                        <h3 class="programme-card__title">JOURNÉES SOLIDAIRES</h3>
-                        <span class="programme-card__title-underline" aria-hidden="true"></span>
+
+        <div class="actus-grid">
+
+            <!-- Actu 1 – Journées solidaires -->
+            <a class="actu-card" href="#">
+                <img class="actu-card__img" src="https://wpb-webs.com/dev/natixis/determines.jpeg" alt="Journées solidaires 2026">
+                <div class="actu-card__header">
+                    <!-- Spirales notebook -->
+                    <div class="actu-card__spirals">
+                        <div class="actu-card__spiral" style="border-color: #FABA0A;"></div>
+                        <div class="actu-card__spiral" style="border-color: #FABA0A;"></div>
+                        <div class="actu-card__spiral" style="border-color: #FABA0A;"></div>
+                        <div class="actu-card__spiral" style="border-color: #FABA0A;"></div>
+                        <div class="actu-card__spiral" style="border-color: #FABA0A;"></div>
                     </div>
-                    <div class="programme-card__header-picto" aria-hidden="true">
-                        <div class="programme-card__picto"></div>
-                    </div>
-                </div>
-                <div class="programme-card__body">
-                    <p class="programme-card__desc">
-                        Découvrez les journées solidaires 2026 le temps d'une journée dans une association !
-                    </p>
-                    <a class="programme-card__cta" href="#" aria-label="Voir le programme">
-                        <span>Voir le programme</span>
-                        <svg class="programme-card__cta-icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M13 5l7 7-7 7M20 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <div class="actu-card__prog-tag" style="background:#FABA0A; color:#7a5800; margin-top: 28px;">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                         </svg>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Card 2: Don de temps - Teal -->
-            <div class="programme-card" style="--brand-color: #34b6b8; --underline-color: #C83B2C; --picto-url: url('https://wpb-webs.com/dev/natixis/volontariat.png');">
-                <div class="programme-card__header">
-                    <div class="programme-card__header-title">
-                        <h3 class="programme-card__title">VOLONTARIAT</h3>
-                        <span class="programme-card__title-underline" aria-hidden="true"></span>
+                        Journées solidaires
                     </div>
-                    <div class="programme-card__header-picto" aria-hidden="true">
-                        <div class="programme-card__picto"></div>
-                    </div>
+                    <div class="actu-card__date">12 mars 2026</div>
+                    <h3>Les inscriptions pour les Journées solidaires 2026 sont ouvertes !</h3>
+                    <p>Plus de 20 associations partenaires vous accueillent cette année pour une journée d'engagement unique. Découvrez le catalogue et choisissez votre mission.</p>
                 </div>
-                <div class="programme-card__body">
-                    <p class="programme-card__desc">
-                        Donnez un peu de votre temps au bénéfice de nos associations partenaires
-                    </p>
-                    <a class="programme-card__cta" href="volontariat.html" aria-label="Voir le programme">
-                        <span>Voir le programme</span>
-                        <svg class="programme-card__cta-icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M13 5l7 7-7 7M20 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <div class="actu-card__footer">
+                    <span class="actu-card__read-more" style="color: #a07000;">
+                        Lire la suite
+                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
                         </svg>
-                    </a>
+                    </span>
                 </div>
-            </div>
-            
-            <!-- Card 3: Team-building - Vert -->
-            <div class="programme-card" style="--brand-color: #ea6c1d; --underline-color: #C83B2C; --picto-url: url('https://wpb-webs.com/dev/natixis/team-building.png');">
-                <div class="programme-card__header">
-                    <div class="programme-card__header-title">
-                        <h3 class="programme-card__title">TEAM-BUILDING</h3>
-                        <span class="programme-card__title-underline" aria-hidden="true"></span>
+            </a>
+
+            <!-- Actu 2 – Congés solidaires -->
+            <a class="actu-card" href="#">
+                <img class="actu-card__img" src="https://wpb-webs.com/dev/natixis/partie-poetique.jpg" alt="Congés solidaires">
+                <div class="actu-card__header">
+                    <div class="actu-card__spirals">
+                        <div class="actu-card__spiral" style="border-color: var(--nat-purple);"></div>
+                        <div class="actu-card__spiral" style="border-color: var(--nat-purple);"></div>
+                        <div class="actu-card__spiral" style="border-color: var(--nat-purple);"></div>
+                        <div class="actu-card__spiral" style="border-color: var(--nat-purple);"></div>
+                        <div class="actu-card__spiral" style="border-color: var(--nat-purple);"></div>
                     </div>
-                    <div class="programme-card__header-picto" aria-hidden="true">
-                        <div class="programme-card__picto"></div>
-                    </div>
-                </div>
-                <div class="programme-card__body">
-                    <p class="programme-card__desc">
-                        Envie d'engager votre équipe ? Découvrez les 6 offres du catalogue pour vos collaborateurs !
-                    </p>
-                    <a class="programme-card__cta" href="team-building.html" aria-label="Voir le programme">
-                        <span>Voir le programme</span>
-                        <svg class="programme-card__cta-icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M13 5l7 7-7 7M20 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <div class="actu-card__prog-tag" style="background: var(--nat-purple); margin-top: 28px;">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                         </svg>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Card 4: Don sur salaire - Rouge/Orange -->
-            <div class="programme-card" style="--brand-color: #e5375a; --underline-color: #B91C1C; --picto-url: url('https://wpb-webs.com/dev/natixis/don.png');">
-                <div class="programme-card__header">
-                    <div class="programme-card__header-title">
-                        <h3 class="programme-card__title">DON SUR SALAIRE</h3>
-                        <span class="programme-card__title-underline" aria-hidden="true"></span>
+                        Congés solidaires
                     </div>
-                    <div class="programme-card__header-picto" aria-hidden="true">
-                        <div class="programme-card__picto"></div>
-                    </div>
+                    <div class="actu-card__date">28 février 2026</div>
+                    <h3>Témoignage : Sophie raconte sa mission avec Planète Urgence au Sénégal</h3>
+                    <p>Collaboratrice au sein de Natixis Asset Management, Sophie a consacré 3 semaines à une mission d'appui pédagogique. Son retour d'expérience vous touche au cœur.</p>
                 </div>
-                <div class="programme-card__body">
-                    <p class="programme-card__desc">
-                        Donnez quelques euros via votre bulletin de paie : 100% des dons reversés à l'association choisie !
-                    </p>
-                    <a class="programme-card__cta" href="#" aria-label="Voir le programme">
-                        <span>Voir le programme</span>
-                        <svg class="programme-card__cta-icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M13 5l7 7-7 7M20 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <div class="actu-card__footer">
+                    <span class="actu-card__read-more" style="color: var(--nat-purple);">
+                        Lire la suite
+                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
                         </svg>
-                    </a>
+                    </span>
                 </div>
-            </div>
-            
-            <!-- Card 5: Congé solidaire - Violet -->
-            <div class="programme-card" style="--brand-color: #542772; --underline-color: #C83B2C; --picto-url: url('https://wpb-webs.com/dev/natixis/conges.png');">
-                <div class="programme-card__header">
-                    <div class="programme-card__header-title">
-                        <h3 class="programme-card__title">CONGÉ SOLIDAIRE</h3>
-                        <span class="programme-card__title-underline" aria-hidden="true"></span>
-                    </div>
-                    <div class="programme-card__header-picto" aria-hidden="true">
-                        <div class="programme-card__picto"></div>
-                    </div>
-                </div>
-                <div class="programme-card__body">
-                    <p class="programme-card__desc">
-                        You want to create a positive impact aligned with a local need? 10 missions are available!
-                    </p>
-                    <a class="programme-card__cta" href="conges-solidaires.html" aria-label="Voir le programme">
-                        <span>Voir le programme</span>
-                        <svg class="programme-card__cta-icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M13 5l7 7-7 7M20 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Card 6: Mécénat de compétences - Orange -->
-            <div class="programme-card" style="--brand-color: #D97706; --underline-color: #C83B2C; --picto-url: url('https://wpb-webs.com/dev/natixis/mecenat.png');">
-                <div class="programme-card__header">
-                    <div class="programme-card__header-title">
-                        <h3 class="programme-card__title">MÉCÉNAT SENIOR</h3>
-                        <span class="programme-card__title-underline" aria-hidden="true"></span>
-                    </div>
-                    <div class="programme-card__header-picto" aria-hidden="true">
-                        <div class="programme-card__picto"></div>
-                    </div>
-                </div>
-                <div class="programme-card__body">
-                    <p class="programme-card__desc">
-                        Mettez vos compétences au service d'une association pendant plusieurs mois !
-                    </p>
-                    <a class="programme-card__cta" href="#" aria-label="Voir le programme">
-                        <span>Voir le programme</span>
-                        <svg class="programme-card__cta-icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M13 5l7 7-7 7M20 12H4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            
+            </a>
+
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ==================== PROGRAMMES ==================== -->
+    <section class="programs-section" id="programmes">
+        <div class="programs-inner">
+            <div class="section-header">
+                <div>
+                    <h2>Nos programmes solidaires</h2>
+                    <p>5 façons de vous engager selon votre disponibilité et vos envies</p>
+                </div>
+            </div>
+
+            <div class="programs-grid">
+
+                <!-- Ligne 1 : 2 grandes cartes -->
+
+                <!-- Card 1: Journées solidaires -->
+                <div class="programme-card" style="--brand-color:#FABA0A; --underline-color:#c8920a; --picto-url:url('https://wpb-webs.com/dev/natixis/journees.png');">
+                    <div class="programme-card__header">
+                        <div class="programme-card__header-title">
+                            <h3 class="programme-card__title">JOURNÉES SOLIDAIRES</h3>
+                            <span class="programme-card__title-underline"></span>
+                        </div>
+                        <div class="programme-card__header-picto">
+                            <div class="programme-card__picto"></div>
+                        </div>
+                    </div>
+                    <div class="programme-card__body">
+                        <p class="programme-card__desc">Partez une journée dans une association partenaire et mettez vos compétences au service d'une cause locale.</p>
+                        <span class="programme-card__desc-underline"></span>
+                        <a class="programme-card__cta" href="#">
+                            Voir le programme
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 5l7 7-7 7M20 12H4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Congés solidaires -->
+                <div class="programme-card" style="--brand-color:#5C2D91; --underline-color:#9b59c8; --picto-url:url('https://wpb-webs.com/dev/natixis/conges.png');">
+                    <div class="programme-card__header">
+                        <div class="programme-card__header-title">
+                            <h3 class="programme-card__title">CONGÉS SOLIDAIRES</h3>
+                            <span class="programme-card__title-underline"></span>
+                        </div>
+                        <div class="programme-card__header-picto">
+                            <div class="programme-card__picto"></div>
+                        </div>
+                    </div>
+                    <div class="programme-card__body">
+                        <p class="programme-card__desc">Consacrez une partie de vos congés à une mission d'intérêt général à l'international ou en France.</p>
+                        <span class="programme-card__desc-underline"></span>
+                        <a class="programme-card__cta" href="conges-solidaires.html">
+                            Voir le programme
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 5l7 7-7 7M20 12H4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ligne 2 : 3 cartes standard -->
+
+                <!-- Card 3: Volontariat -->
+                <div class="programme-card" style="--brand-color:#34B6B8; --underline-color:#1a8a8c; --picto-url:url('https://wpb-webs.com/dev/natixis/volontariat.png');">
+                    <div class="programme-card__header">
+                        <div class="programme-card__header-title">
+                            <h3 class="programme-card__title">VOLONTARIAT</h3>
+                            <span class="programme-card__title-underline"></span>
+                        </div>
+                        <div class="programme-card__header-picto">
+                            <div class="programme-card__picto"></div>
+                        </div>
+                    </div>
+                    <div class="programme-card__body">
+                        <p class="programme-card__desc">Donnez de votre temps régulièrement au bénéfice d'associations partenaires.</p>
+                        <span class="programme-card__desc-underline"></span>
+                        <a class="programme-card__cta" href="volontariat.html">
+                            Voir le programme
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 5l7 7-7 7M20 12H4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4: Team Building -->
+                <div class="programme-card" style="--brand-color:#EA6C1D; --underline-color:#c25310; --picto-url:url('https://wpb-webs.com/dev/natixis/team-building.png');">
+                    <div class="programme-card__header">
+                        <div class="programme-card__header-title">
+                            <h3 class="programme-card__title">TEAM BUILDING</h3>
+                            <span class="programme-card__title-underline"></span>
+                        </div>
+                        <div class="programme-card__header-picto">
+                            <div class="programme-card__picto"></div>
+                        </div>
+                    </div>
+                    <div class="programme-card__body">
+                        <p class="programme-card__desc">Engagez votre équipe ensemble autour d'une action solidaire collective.</p>
+                        <span class="programme-card__desc-underline"></span>
+                        <a class="programme-card__cta" href="team-building.html">
+                            Voir le programme
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 5l7 7-7 7M20 12H4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 5: Don sur salaire -->
+                <div class="programme-card" style="--brand-color:#E5375A; --underline-color:#b01c38; --picto-url:url('https://wpb-webs.com/dev/natixis/don.png');">
+                    <div class="programme-card__header">
+                        <div class="programme-card__header-title">
+                            <h3 class="programme-card__title">DON SUR SALAIRE</h3>
+                            <span class="programme-card__title-underline"></span>
+                        </div>
+                        <div class="programme-card__header-picto">
+                            <div class="programme-card__picto"></div>
+                        </div>
+                    </div>
+                    <div class="programme-card__body">
+                        <p class="programme-card__desc">Faites un don mensuel via votre bulletin de paie — 100% reversé à l'association choisie.</p>
+                        <span class="programme-card__desc-underline"></span>
+                        <a class="programme-card__cta" href="#">
+                            Voir le programme
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 5l7 7-7 7M20 12H4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== "CES MISSIONS SONT POUR TOI" ==================== -->
+    <section class="missions-section">
+        <div class="section-header">
+            <div>
+                <h2>Ces missions sont pour vous</h2>
+                <p>Sélectionnées selon votre profil et vos disponibilités</p>
+            </div>
+            <a href="#" class="section-link">
+                Voir toutes les missions
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="missions-grid">
+
+            <!-- Mission 1 -->
+            <a class="mission-card" href="ce-mission.html">
+                <div class="mission-card__img-wrap">
+                    <img src="https://wpb-webs.com/dev/natixis/personnage-agee.jpg" alt="Mission Mécénat Senior">
+                    <span class="mission-card__prog-label" style="background:#FABA0A; color:#7a5800;">Journées solidaires</span>
+                </div>
+                <div class="mission-card__body">
+                    <div class="mission-card__tags">
+                        <span class="tag">
+                            <svg width="10" height="10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                            Solidarité
+                        </span>
+                        <span class="tag tag-location">
+                            <svg width="10" height="10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            </svg>
+                            Paris 9e
+                        </span>
+                        <span class="tag tag-duration">1 journée</span>
+                    </div>
+                    <h4>Accompagnement numérique de personnes âgées</h4>
+                    <p>Aidez des seniors à prendre en main les outils numériques du quotidien avec l'association Linkee.</p>
+                </div>
+                <div class="mission-card__footer">
+                    <span class="mission-card__assoc">Linkee</span>
+                    <div class="mission-card__arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mission 2 -->
+            <a class="mission-card" href="#">
+                <div class="mission-card__img-wrap">
+                    <img src="https://wpb-webs.com/dev/natixis/mamama.jpg" alt="Mission éducation">
+                    <span class="mission-card__prog-label" style="background:#34B6B8;">Volontariat</span>
+                </div>
+                <div class="mission-card__body">
+                    <div class="mission-card__tags">
+                        <span class="tag">Éducation</span>
+                        <span class="tag tag-location">Lyon 3e</span>
+                        <span class="tag tag-duration">4 demi-journées</span>
+                    </div>
+                    <h4>Atelier lecture et expression écrite avec des réfugiés</h4>
+                    <p>Animez des séances hebdomadaires pour aider à l'intégration par la maîtrise du français.</p>
+                </div>
+                <div class="mission-card__footer">
+                    <span class="mission-card__assoc">La Cravate Solidaire</span>
+                    <div class="mission-card__arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Mission 3 -->
+            <a class="mission-card" href="#">
+                <div class="mission-card__img-wrap">
+                    <img src="https://wpb-webs.com/dev/natixis/13avenir.jpg" alt="Mission environnement">
+                    <span class="mission-card__prog-label" style="background:#5C2D91;">Congés solidaires</span>
+                </div>
+                <div class="mission-card__body">
+                    <div class="mission-card__tags">
+                        <span class="tag">Environnement</span>
+                        <span class="tag tag-location">Madagascar</span>
+                        <span class="tag tag-duration">2 semaines</span>
+                    </div>
+                    <h4>Conservation de la biodiversité côtière avec Planète Urgence</h4>
+                    <p>Contribuez à la préservation des écosystèmes marins en appuyant les équipes locales sur le terrain.</p>
+                </div>
+                <div class="mission-card__footer">
+                    <span class="mission-card__assoc">Planète Urgence</span>
+                    <div class="mission-card__arrow">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="missions-cta-wrap">
+            <a href="#" class="btn btn-primary" style="padding: 0.8rem 2.5rem; font-size: 1rem;">
+                Explorer toutes les missions
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== QUIZ ==================== -->
+    <section class="quiz-section">
+        <div class="quiz-inner">
+            <div class="quiz-text">
+                <h2>Quel engagé êtes-vous ?<br>Faites le quiz RSE !</h2>
+                <p>
+                    En quelques questions, découvrez votre profil d'engagement,
+                    les causes qui vous correspondent et les programmes faits pour vous.
+                    Le quiz prend moins de 3 minutes.
+                </p>
+                <a href="#" class="btn btn-hero-primary">
+                    Commencer le quiz
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="quiz-card">
+                <div class="quiz-card__question">
+                    <span>Question 1 / 5</span>
+                    Quelle thématique vous tient le plus à cœur ?
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option">
+                        <div class="quiz-option-letter">A</div>
+                        L'environnement et la transition écologique
+                    </div>
+                    <div class="quiz-option">
+                        <div class="quiz-option-letter">B</div>
+                        L'inclusion sociale et la lutte contre l'exclusion
+                    </div>
+                    <div class="quiz-option">
+                        <div class="quiz-option-letter">C</div>
+                        L'éducation et l'égalité des chances
+                    </div>
+                    <div class="quiz-option">
+                        <div class="quiz-option-letter">D</div>
+                        La santé et le bien-être des personnes fragiles
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-grid">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo-text">NATIXIS</div>
+                    <p>Le portail d'engagement solidaire des collaborateurs Natixis — propulsé par KOEO.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Programmes</h4>
+                    <ul>
+                        <li><a href="#">Journées solidaires</a></li>
+                        <li><a href="#">Congés solidaires</a></li>
+                        <li><a href="#">Volontariat</a></li>
+                        <li><a href="#">Team building</a></li>
+                        <li><a href="#">Don sur salaire</a></li>
+                    </ul>
+                </div>
                 <div class="footer-column">
                     <h4>Liens utiles</h4>
                     <ul>
                         <li><a href="#">À propos</a></li>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Mentions légales</h4>
-                    <ul>
-                        <li><a href="#">Conditions d'utilisation</a></li>
-                        <li><a href="#">Politique de confidentialité</a></li>
-                        <li><a href="#">Gérer les cookies</a></li>
+                        <li><a href="#">Quiz RSE</a></li>
+                        <li><a href="#">Mon compte</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="#">engagement@caisse-epargne.fr</a></li>
+                        <li><a href="#">engagement@natixis.com</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Gérer les cookies</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>© 2026 KOEO — Tous droits réservés</p>
-                <div class="footer-logo">
-                    <span style="font-size: 0.8rem; color: var(--gray-500);">Propulsé par</span>
-                    <span style="font-weight: 600; color: var(--gray-400);">KOEO</span>
+                <div class="footer-bottom-links">
+                    <a href="#">Accessibilité</a>
+                    <a href="#">Plan du site</a>
                 </div>
             </div>
         </div>
     </footer>
+
 </body>
 </html>
