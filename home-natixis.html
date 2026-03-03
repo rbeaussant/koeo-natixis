@@ -71,13 +71,14 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--nat-gray);
             line-height: 1.6;
             background-color: var(--bg-page);
+            overflow-x: hidden;
         }
 
         /* ==================== HEADER ==================== */
@@ -1150,10 +1151,17 @@
         @media (max-width: 768px) {
             .header-main { padding: var(--space-md) var(--space-lg); }
             .nav-main { display: none; }
+            .hero-content { padding: var(--space-2xl) var(--space-lg); }
+            .hero-stat { min-width: 0; flex: 1 1 auto; }
             .actu-slide { grid-template-columns: 1fr; }
             .actu-slide__img { height: 200px; }
             .missions-grid { grid-template-columns: 1fr; }
             .programs-grid { grid-template-columns: 1fr; }
+            .programme-card:nth-child(1),
+            .programme-card:nth-child(2),
+            .programme-card:nth-child(3),
+            .programme-card:nth-child(4),
+            .programme-card:nth-child(5) { grid-column: span 1; }
             .footer-top { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; gap: var(--space-md); text-align: center; }
         }
