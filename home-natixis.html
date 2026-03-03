@@ -1186,6 +1186,7 @@
             <nav class="nav-main">
                 <a href="#" class="active">Accueil</a>
                 <a href="#">Nos programmes</a>
+                <a href="ce-galerie-photos.html">Galerie photos</a>
             </nav>
             <div class="nav-actions">
                 <div class="lang-selector">
@@ -1289,7 +1290,7 @@
                 <!-- Slide 1 – Missions solidaires -->
                 <a class="actu-slide" href="#">
                     <div class="actu-slide__img">
-                        <img src="https://wpb-webs.com/dev/natixis/determines.jpeg" alt="Missions solidaires 2026">
+                        <img src="https://wpb-webs.com/dev/natixis/journees.png" alt="Missions solidaires 2026">
                         <span class="actu-slide__prog-tag" style="background:#34B6B8;">Missions solidaires</span>
                     </div>
                     <div class="actu-slide__content">
@@ -1695,9 +1696,12 @@
             });
         }
 
-        function actuNext() { actusIndex = (actusIndex + 1) % actusTotal; actusUpdate(); }
-        function actuPrev() { actusIndex = (actusIndex - 1 + actusTotal) % actusTotal; actusUpdate(); }
-        function actuGo(i)  { actusIndex = i; actusUpdate(); }
+        function actuNext() { actusIndex = (actusIndex + 1) % actusTotal; actusUpdate(); resetActusTimer(); }
+        function actuPrev() { actusIndex = (actusIndex - 1 + actusTotal) % actusTotal; actusUpdate(); resetActusTimer(); }
+        function actuGo(i)  { actusIndex = i; actusUpdate(); resetActusTimer(); }
+
+        var actusTimer = setInterval(function() { actusIndex = (actusIndex + 1) % actusTotal; actusUpdate(); }, 7000);
+        function resetActusTimer() { clearInterval(actusTimer); actusTimer = setInterval(function() { actusIndex = (actusIndex + 1) % actusTotal; actusUpdate(); }, 7000); }
 
         /* ===== Quiz ===== */
         function quizAnswer(correct, clickedId, otherId) {
