@@ -105,23 +105,15 @@
             flex-shrink: 0;
         }
 
-        .logo-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--nat-purple);
-            letter-spacing: -0.5px;
+        .logo-img {
+            height: 36px;
+            width: auto;
+            display: block;
         }
 
-        .logo-badge {
-            font-size: 0.65rem;
-            font-weight: 600;
-            color: var(--nat-purple);
-            background: var(--nat-purple-soft);
-            padding: 2px 7px;
-            border-radius: var(--radius-full);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+        .footer-brand .logo-img {
+            height: 30px;
+            filter: brightness(0) invert(1);
         }
 
         .nav-main {
@@ -1061,11 +1053,6 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .footer-brand .logo-text {
-            color: var(--white);
-            font-size: 1.3rem;
-        }
-
         .footer-brand p {
             font-size: 0.88rem;
             color: var(--gray-400);
@@ -1194,8 +1181,7 @@
     <header class="header">
         <div class="header-main">
             <a href="#" class="logo">
-                <span class="logo-text">NATIXIS</span>
-                <span class="logo-badge">Engagement</span>
+                <img src="logo-natixis.png" alt="Natixis" class="logo-img">
             </a>
             <nav class="nav-main">
                 <a href="#" class="active">Accueil</a>
@@ -1658,7 +1644,7 @@
         <div class="footer-content">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <div class="logo-text">NATIXIS</div>
+                    <img src="logo-natixis.png" alt="Natixis" class="logo-img">
                     <p>Le portail d'engagement solidaire des collaborateurs Natixis — propulsé par KOEO.</p>
                 </div>
                 <div class="footer-column">
