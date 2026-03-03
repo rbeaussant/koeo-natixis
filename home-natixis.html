@@ -110,8 +110,10 @@
 
         .logo-img {
             height: 36px;
+            max-width: 120px;
             width: auto;
             display: block;
+            object-fit: contain;
         }
 
         .footer-brand .logo-img {
@@ -195,6 +197,9 @@
             color: var(--nat-gray);
             border-color: var(--gray-300);
         }
+
+        .btn-connect { gap: 6px; }
+        .btn-connect svg { flex-shrink: 0; }
 
         .btn-outline:hover {
             border-color: var(--nat-purple);
@@ -1151,6 +1156,9 @@
         @media (max-width: 768px) {
             .header-main { padding: var(--space-md) var(--space-lg); }
             .nav-main { display: none; }
+            .logo-img { max-width: 90px; height: 28px; }
+            .btn-connect-label { display: none; }
+            .btn-connect { padding: 0.6rem 0.75rem; }
             .hero-content { padding: var(--space-2xl) var(--space-lg); }
             .hero-stat { min-width: 0; flex: 1 1 auto; }
             .actu-slide { grid-template-columns: 1fr; }
@@ -1209,7 +1217,12 @@
                         <polyline points="6 9 12 15 18 9"/>
                     </svg>
                 </div>
-                <a href="#" class="btn btn-outline">Se connecter</a>
+                <a href="#" class="btn btn-outline btn-connect">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span class="btn-connect-label">Se connecter</span>
+                </a>
             </div>
         </div>
     </header>
