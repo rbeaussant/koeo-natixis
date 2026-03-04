@@ -158,6 +158,13 @@
             padding: var(--space-3xl) var(--space-xl) var(--space-2xl);
         }
 
+        .article-hero__top {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
         .article-hero__back {
             display: inline-flex;
             align-items: center;
@@ -166,7 +173,6 @@
             text-decoration: none;
             font-size: 0.88rem;
             font-weight: 500;
-            margin-bottom: var(--space-xl);
             transition: color 0.2s;
         }
         .article-hero__back:hover { color: var(--white); }
@@ -185,7 +191,6 @@
             border-radius: var(--radius-full);
             text-transform: uppercase;
             letter-spacing: 0.8px;
-            margin-bottom: var(--space-lg);
         }
 
         .article-hero__title {
@@ -625,14 +630,16 @@
             <div class="article-hero__overlay"></div>
         </div>
         <div class="article-hero__content">
-            <a href="home-natixis.html" class="article-hero__back">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7M4 12h16"/>
-                </svg>
-                Retour à l'accueil
-            </a>
-            <div class="article-hero__badge">
-                ⚡ Le Quiz — En savoir plus
+            <div class="article-hero__top">
+                <a href="home-natixis.html" class="article-hero__back">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7M4 12h16"/>
+                    </svg>
+                    Retour à l'accueil
+                </a>
+                <div class="article-hero__badge">
+                    ⚡ Le Quiz — En savoir plus
+                </div>
             </div>
             <h1 class="article-hero__title">
                 1/3 des aliments produits sur la planète sont jetés
