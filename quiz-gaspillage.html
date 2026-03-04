@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le gaspillage alimentaire – En savoir plus | Natixis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nat-purple:       #5C2D91;
+            --nat-purple-dark:  #4A2475;
+            --nat-purple-light: #7B4BA8;
+            --nat-purple-soft:  #F3EEF8;
+            --nat-purple-mid:   #EDE5F6;
+            --nat-gray:        #3E454A;
+            --nat-gray-dark:   #2D3236;
+            --nat-gray-light:  #F5F6F7;
+            --nat-gray-medium: #6B7280;
+            --white:     #FFFFFF;
+            --gray-100:  #F3F4F6;
+            --gray-200:  #E5E7EB;
+            --gray-300:  #D1D5DB;
+            --gray-400:  #9CA3AF;
+            --gray-500:  #6B7280;
+            --gray-600:  #4B5563;
+            --gray-700:  #374151;
+            --gray-800:  #1F2937;
+            --yellow:    #FABA0A;
+            --green-soft: #ECFDF5;
+            --green-mid:  #A7F3D0;
+            --green-dark: #065F46;
+            --space-xs:  0.25rem;
+            --space-sm:  0.5rem;
+            --space-md:  1rem;
+            --space-lg:  1.5rem;
+            --space-xl:  2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            --radius-sm:   6px;
+            --radius-md:   10px;
+            --radius-lg:   16px;
+            --radius-xl:   24px;
+            --radius-full: 9999px;
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--nat-gray);
+            line-height: 1.7;
+            background: #F8F9FA;
+        }
+
+        /* ==================== HEADER ==================== */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-lg) var(--space-xl);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-xl);
+        }
+
+        .logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+        .logo-img { height: 36px; max-width: 120px; width: auto; display: block; object-fit: contain; }
+
+        .nav-main {
+            display: flex; align-items: center;
+            gap: var(--space-xl); flex: 1; justify-content: center;
+        }
+        .nav-main a {
+            color: var(--nat-gray); text-decoration: none; font-weight: 500;
+            font-size: 0.95rem; padding: var(--space-sm) 0;
+            position: relative; white-space: nowrap; transition: color 0.2s;
+        }
+        .nav-main a::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 2px; background: var(--nat-purple); transition: width 0.3s;
+        }
+        .nav-main a:hover { color: var(--nat-purple); }
+        .nav-main a:hover::after { width: 100%; }
+
+        .nav-actions { display: flex; align-items: center; gap: var(--space-md); flex-shrink: 0; }
+
+        .lang-selector {
+            display: flex; align-items: center; gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--gray-200); border-radius: var(--radius-full);
+            background: var(--white); font-size: 0.85rem; color: var(--nat-gray);
+            cursor: pointer; transition: border-color 0.2s;
+        }
+        .lang-selector:hover { border-color: var(--nat-purple); }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: var(--space-sm);
+            padding: 0.6rem var(--space-lg); border-radius: var(--radius-full);
+            font-weight: 600; font-size: 0.9rem; text-decoration: none;
+            cursor: pointer; border: 2px solid transparent;
+            transition: all 0.25s ease; white-space: nowrap;
+        }
+        .btn-outline { background: transparent; color: var(--nat-gray); border-color: var(--gray-300); }
+        .btn-connect { gap: 6px; }
+        .btn-connect svg { flex-shrink: 0; }
+        .btn-outline:hover { border-color: var(--nat-purple); color: var(--nat-purple); }
+
+        /* ==================== HERO ==================== */
+        .article-hero {
+            position: relative;
+            min-height: 420px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .article-hero__bg {
+            position: absolute;
+            inset: 0;
+        }
+
+        .article-hero__bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 60%;
+        }
+
+        .article-hero__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(46, 14, 80, 0.45) 0%,
+                rgba(46, 14, 80, 0.85) 70%,
+                rgba(46, 14, 80, 0.95) 100%
+            );
+        }
+
+        .article-hero__content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: var(--space-3xl) var(--space-xl) var(--space-2xl);
+        }
+
+        .article-hero__back {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            margin-bottom: var(--space-xl);
+            transition: color 0.2s;
+        }
+        .article-hero__back:hover { color: var(--white); }
+        .article-hero__back svg { width: 16px; height: 16px; }
+
+        .article-hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--yellow);
+            color: var(--nat-purple-dark);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 900;
+            padding: 5px 14px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: var(--space-lg);
+        }
+
+        .article-hero__title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.25;
+            max-width: 680px;
+        }
+
+        .article-hero__meta {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+            color: rgba(255,255,255,0.65);
+            font-size: 0.85rem;
+        }
+
+        .article-hero__meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ==================== ARTICLE BODY ==================== */
+        .article-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: var(--space-3xl) var(--space-xl);
+        }
+
+        .article-body {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-3xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Sections */
+        .article-section {
+            margin-bottom: var(--space-3xl);
+        }
+        .article-section:last-child { margin-bottom: 0; }
+
+        .article-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            margin-bottom: var(--space-md);
+            padding-left: var(--space-md);
+            border-left: 4px solid var(--nat-purple);
+            line-height: 1.35;
+        }
+
+        .article-section p {
+            font-size: 1rem;
+            color: var(--nat-gray);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+        .article-section p:last-child { margin-bottom: 0; }
+
+        /* Stat callout */
+        .stat-callout {
+            background: var(--nat-purple-soft);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl) var(--space-2xl);
+            margin: var(--space-xl) 0;
+            display: flex;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .stat-callout__number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--nat-purple);
+            line-height: 1;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .stat-callout__text {
+            font-size: 1rem;
+            color: var(--nat-purple-dark);
+            line-height: 1.65;
+            font-weight: 500;
+        }
+
+        /* Pull quote */
+        .pull-quote {
+            background: var(--nat-purple-dark);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl) var(--space-2xl);
+            margin: var(--space-xl) 0;
+        }
+
+        .pull-quote p {
+            color: var(--white);
+            font-size: 1.05rem;
+            font-weight: 500;
+            line-height: 1.75;
+            margin: 0;
+        }
+
+        .pull-quote p + p {
+            margin-top: var(--space-sm);
+        }
+
+        .pull-quote__icon {
+            font-size: 1.5rem;
+            margin-right: 6px;
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            background: #FFFBEB;
+            border: 1px solid #FDE68A;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg) var(--space-xl);
+            margin: var(--space-xl) 0;
+        }
+
+        .highlight-box p {
+            color: #92400E;
+            font-size: 0.95rem;
+            margin-bottom: var(--space-sm);
+        }
+        .highlight-box p:last-child { margin-bottom: 0; }
+
+        /* Icon list */
+        .icon-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin: var(--space-md) 0;
+        }
+
+        .icon-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            font-size: 1rem;
+            color: var(--nat-gray);
+            line-height: 1.65;
+        }
+
+        .icon-list li .icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* Bullet list */
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin: var(--space-md) 0;
+        }
+
+        .bullet-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            font-size: 0.97rem;
+            color: var(--nat-gray);
+            line-height: 1.65;
+        }
+
+        .bullet-list li::before {
+            content: '●';
+            color: var(--nat-purple);
+            flex-shrink: 0;
+            margin-top: 3px;
+            font-size: 0.6rem;
+        }
+
+        /* Tips grid */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .tip-card {
+            background: var(--green-soft);
+            border: 1px solid var(--green-mid);
+            border-radius: var(--radius-md);
+            padding: var(--space-md) var(--space-lg);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+        }
+
+        .tip-card__icon { font-size: 1.4rem; flex-shrink: 0; }
+
+        .tip-card__text {
+            font-size: 0.92rem;
+            color: var(--green-dark);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Divider */
+        .article-divider {
+            border: none;
+            border-top: 1px solid var(--gray-200);
+            margin: var(--space-2xl) 0;
+        }
+
+        /* External links */
+        .ext-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .ext-link {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            padding: var(--space-md) var(--space-lg);
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--gray-200);
+        }
+
+        .ext-link:hover {
+            background: var(--nat-purple-soft);
+            border-color: var(--nat-purple-mid);
+            box-shadow: var(--shadow-md);
+        }
+
+        .ext-link__source {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--nat-purple);
+            margin-bottom: 2px;
+        }
+
+        .ext-link__title {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--nat-gray-dark);
+            line-height: 1.4;
+        }
+
+        .ext-link__arrow {
+            margin-left: auto;
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--nat-purple-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .ext-link:hover .ext-link__arrow { background: var(--nat-purple); }
+        .ext-link:hover .ext-link__arrow svg { color: var(--white); }
+
+        .ext-link__arrow svg {
+            width: 14px; height: 14px;
+            color: var(--nat-purple);
+            transition: color 0.2s;
+        }
+
+        /* ==================== CTA MISSIONS ==================== */
+        .cta-missions {
+            background: var(--nat-purple-dark);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            margin-top: var(--space-2xl);
+            text-align: center;
+        }
+
+        .cta-missions h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+        }
+
+        .cta-missions p {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.95rem;
+            margin-bottom: var(--space-xl);
+        }
+
+        .cta-missions__actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-yellow {
+            background: var(--yellow);
+            color: var(--nat-purple-dark);
+            border-color: var(--yellow);
+            font-weight: 700;
+        }
+        .btn-yellow:hover {
+            background: #ffd140;
+            border-color: #ffd140;
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--white);
+            border-color: rgba(255,255,255,0.45);
+        }
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--nat-gray-dark);
+            color: var(--white);
+            padding: var(--space-2xl) var(--space-xl) var(--space-lg);
+            margin-top: var(--space-3xl);
+        }
+
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+            padding-bottom: var(--space-2xl);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-brand p { font-size: 0.88rem; color: var(--gray-400); margin-top: var(--space-sm); line-height: 1.65; }
+        .footer-brand .logo-img { height: 30px; filter: brightness(0) invert(1); }
+
+        .footer-column h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: var(--space-md); color: var(--white); letter-spacing: 0.5px; text-transform: uppercase; }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: var(--space-sm); }
+        .footer-column ul a { color: var(--gray-400); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+        .footer-column ul a:hover { color: var(--white); }
+
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+        .footer-bottom p { font-size: 0.82rem; color: var(--gray-500); }
+        .footer-bottom-links { display: flex; gap: var(--space-lg); }
+        .footer-bottom-links a { font-size: 0.82rem; color: var(--gray-500); text-decoration: none; transition: color 0.2s; }
+        .footer-bottom-links a:hover { color: var(--gray-300); }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .header-main { padding: var(--space-md) var(--space-lg); }
+            .nav-main { display: none; }
+            .logo-img { max-width: 90px; height: 28px; }
+            .btn-connect-label { display: none; }
+            .btn-connect { padding: 0.6rem 0.75rem; }
+            .article-hero { min-height: 320px; }
+            .article-hero__content { padding: var(--space-2xl) var(--space-lg) var(--space-xl); }
+            .article-wrap { padding: var(--space-xl) var(--space-lg); }
+            .article-body { padding: var(--space-xl) var(--space-lg); }
+            .stat-callout { flex-direction: column; gap: var(--space-md); text-align: center; padding: var(--space-lg); }
+            .stat-callout__number { font-size: 2.5rem; }
+            .tips-grid { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: var(--space-md); text-align: center; }
+            .cta-missions__actions { flex-direction: column; align-items: center; }
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .article-hero__content { animation: fadeInUp 0.7s ease-out; }
+        .article-body { animation: fadeInUp 0.7s ease-out 0.15s both; }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <div class="header-main">
+            <a href="home-natixis.html" class="logo">
+                <img src="logo-natixis.png" alt="Natixis" class="logo-img">
+            </a>
+            <nav class="nav-main">
+                <a href="home-natixis.html">Accueil</a>
+                <a href="home-natixis.html#programmes">Nos programmes</a>
+                <a href="ce-galerie-photos.html">Galerie photos</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    FR
+                    <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </div>
+                <a href="#" class="btn btn-outline btn-connect">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span class="btn-connect-label">Se connecter</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== HERO ==================== -->
+    <div class="article-hero">
+        <div class="article-hero__bg">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1400&q=85"
+                 alt="Légumes frais – gaspillage alimentaire">
+            <div class="article-hero__overlay"></div>
+        </div>
+        <div class="article-hero__content">
+            <a href="home-natixis.html" class="article-hero__back">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7M4 12h16"/>
+                </svg>
+                Retour à l'accueil
+            </a>
+            <div class="article-hero__badge">
+                ⚡ Le Quiz — En savoir plus
+            </div>
+            <h1 class="article-hero__title">
+                1/3 des aliments produits sur la planète sont jetés
+            </h1>
+            <div class="article-hero__meta">
+                <span>
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    5 min de lecture
+                </span>
+                <span>
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+                    </svg>
+                    Environnement · Solidarité
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ARTICLE ==================== -->
+    <div class="article-wrap">
+        <div class="article-body">
+
+            <!-- Intro -->
+            <div class="article-section">
+                <p>
+                    Chaque année, un tiers de la nourriture produite dans le monde n'est jamais consommé.
+                    Cela représente des milliards de repas gaspillés, alors que des millions de personnes souffrent encore de la faim.
+                </p>
+            </div>
+
+            <hr class="article-divider">
+
+            <!-- Section 1 : Coût -->
+            <div class="article-section">
+                <h2>Un coût colossal, souvent invisible</h2>
+                <p>
+                    Selon la FAO, le gaspillage alimentaire coûte environ 900 milliards d'euros par an à l'économie mondiale.
+                    Si l'on ajoute les coûts environnementaux et sociaux, ce chiffre dépasse 2 300 milliards d'euros.
+                </p>
+
+                <div class="stat-callout">
+                    <div class="stat-callout__number">2 300<br><span style="font-size:1.4rem;">Mds €</span></div>
+                    <div class="stat-callout__text">
+                        Coût total annuel du gaspillage alimentaire dans le monde (économique + environnemental + social), selon la FAO.
+                    </div>
+                </div>
+
+                <div class="pull-quote">
+                    <p><span class="pull-quote__icon">👉</span> Gaspiller de la nourriture, ce n'est pas seulement jeter des aliments.</p>
+                    <p><span class="pull-quote__icon">👉</span> C'est aussi gaspiller de l'eau, de l'énergie, des terres agricoles et du travail humain.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <p>
+                        En France, chaque personne jette en moyenne <strong>20 à 30 kg de nourriture par an</strong>,
+                        dont environ <strong>7 kg encore emballés</strong>.
+                    </p>
+                    <p>
+                        À l'échelle d'un pays, ces petits gaspillages du quotidien représentent des tonnes de ressources perdues.
+                    </p>
+                </div>
+            </div>
+
+            <hr class="article-divider">
+
+            <!-- Section 2 : Ce qu'on gaspille -->
+            <div class="article-section">
+                <h2>Ce que l'on gaspille le plus</h2>
+                <p>
+                    Contrairement à ce que l'on imagine souvent, ce ne sont pas la viande ou le poisson qui finissent le plus souvent à la poubelle.
+                </p>
+                <div class="stat-callout">
+                    <div class="stat-callout__number">&gt; 50%</div>
+                    <div class="stat-callout__text">
+                        Des aliments jetés sont des <strong>fruits et légumes</strong>, souvent parce qu'ils sont abîmés, hors calibre ou jugés "pas assez beaux".
+                    </div>
+                </div>
+            </div>
+
+            <hr class="article-divider">
+
+            <!-- Section 3 : Problème environnemental -->
+            <div class="article-section">
+                <h2>Pourquoi c'est un vrai problème environnemental</h2>
+                <p>Le gaspillage alimentaire génère :</p>
+                <ul class="bullet-list">
+                    <li>des émissions de gaz à effet de serre inutiles</li>
+                    <li>une pression supplémentaire sur l'eau et les sols</li>
+                    <li>une agriculture plus intensive que nécessaire</li>
+                </ul>
+                <div class="pull-quote" style="background: rgba(92,45,145,0.12); border: 1px solid rgba(92,45,145,0.25);">
+                    <p style="color: var(--nat-purple-dark); font-size: 1rem;">
+                        Réduire le gaspillage alimentaire est l'un des <strong>leviers climatiques les plus simples et les plus efficaces</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <hr class="article-divider">
+
+            <!-- Section 4 : Que faire -->
+            <div class="article-section">
+                <h2>Ok, mais qu'est-ce qu'on peut faire, concrètement ?</h2>
+
+                <p style="font-weight: 600; color: var(--nat-gray-dark); margin-bottom: var(--space-md);">Réduire sans perdre en confort</p>
+
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <span class="tip-card__icon">🛒</span>
+                        <span class="tip-card__text">Faire une liste de courses avant de partir</span>
+                    </div>
+                    <div class="tip-card">
+                        <span class="tip-card__icon">👀</span>
+                        <span class="tip-card__text">Vérifier les dates de péremption (DLC ≠ DDM)</span>
+                    </div>
+                    <div class="tip-card">
+                        <span class="tip-card__icon">🍏</span>
+                        <span class="tip-card__text">Transformer fruits et légumes en soupes, compotes, plats</span>
+                    </div>
+                    <div class="tip-card">
+                        <span class="tip-card__icon">🫴</span>
+                        <span class="tip-card__text">Donner ou partager les surplus quand c'est possible</span>
+                    </div>
+                </div>
+
+                <p style="font-weight: 600; color: var(--nat-gray-dark); margin-top: var(--space-xl); margin-bottom: var(--space-md);">Utiliser les bons outils</p>
+                <p>
+                    Des applications comme <strong>Too Good To Go</strong> ou <strong>Phenix</strong> permettent de lutter contre le gaspillage tout en faisant des économies.
+                </p>
+
+                <div class="pull-quote" style="margin-top: var(--space-xl);">
+                    <p>
+                        <span class="pull-quote__icon">👉</span>
+                        On ne va pas changer le monde en un jour — mais chaque petit geste évite un gaspillage inutile.
+                    </p>
+                </div>
+            </div>
+
+            <hr class="article-divider">
+
+            <!-- Section 5 : Liens externes -->
+            <div class="article-section">
+                <h2>Pour aller plus loin</h2>
+                <div class="ext-links">
+
+                    <a href="http://multimedia.ademe.fr/dossier-presse-etude-masses-pertes-gaspillages/donneesparacteurs.html"
+                       target="_blank" rel="noopener" class="ext-link">
+                        <div>
+                            <div class="ext-link__source">ADEME</div>
+                            <div class="ext-link__title">Pertes et gaspillages alimentaires — données par acteurs</div>
+                        </div>
+                        <div class="ext-link__arrow">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="https://www.fao.org/food-loss-and-food-waste/fr/"
+                       target="_blank" rel="noopener" class="ext-link">
+                        <div>
+                            <div class="ext-link__source">FAO</div>
+                            <div class="ext-link__title">Food loss and food waste — données mondiales</div>
+                        </div>
+                        <div class="ext-link__arrow">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="https://www.wearephenix.com/gaspillage/"
+                       target="_blank" rel="noopener" class="ext-link">
+                        <div>
+                            <div class="ext-link__source">Phenix</div>
+                            <div class="ext-link__title">Comprendre le gaspillage alimentaire</div>
+                        </div>
+                        <div class="ext-link__arrow">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+        </div><!-- /.article-body -->
+
+        <!-- CTA Missions -->
+        <div class="cta-missions">
+            <h3>Passez à l'action avec Natixis</h3>
+            <p>Ces associations ont besoin de vous — des missions en lien avec la lutte contre le gaspillage alimentaire vous attendent.</p>
+            <div class="cta-missions__actions">
+                <a href="volontariat.html" class="btn btn-yellow">
+                    Voir les missions solidaires
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
+                    </svg>
+                </a>
+                <a href="home-natixis.html" class="btn btn-ghost">
+                    Retour à l'accueil
+                </a>
+            </div>
+        </div>
+
+    </div><!-- /.article-wrap -->
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="logo-natixis.png" alt="Natixis" class="logo-img">
+                    <p>Le portail d'engagement solidaire des collaborateurs Natixis — propulsé par KOEO.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Programmes</h4>
+                    <ul>
+                        <li><a href="#">Missions solidaires</a></li>
+                        <li><a href="#">Team building</a></li>
+                        <li><a href="#">Don sur salaire</a></li>
+                        <li><a href="#">Congés solidaires</a></li>
+                        <li><a href="#">Mécénat senior</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Liens utiles</h4>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="home-natixis.html">Quiz RSE</a></li>
+                        <li><a href="#">Mon compte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">engagement@natixis.com</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Gérer les cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 KOEO — Tous droits réservés</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Accessibilité</a>
+                    <a href="#">Plan du site</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
