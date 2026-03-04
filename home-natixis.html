@@ -1027,6 +1027,139 @@
 
         .quiz-feedback a:hover { text-decoration: underline; }
 
+        /* ==================== QUIZ – MISSIONS SUGGÉRÉES ==================== */
+        #quizMissions {
+            display: none;
+            max-width: 1200px;
+            margin: var(--space-3xl) auto 0;
+            padding-top: var(--space-2xl);
+            border-top: 1px solid rgba(255,255,255,0.15);
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .qm-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .qm-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #FABA0A;
+            margin-bottom: var(--space-sm);
+        }
+
+        .qm-header h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            margin: 0;
+        }
+
+        .qm-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .qm-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .qm-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 48px rgba(0,0,0,0.4);
+        }
+
+        .qm-prog {
+            display: inline-block;
+            align-self: flex-start;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--white);
+        }
+
+        .qm-card h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            line-height: 1.35;
+            margin: 0;
+        }
+
+        .qm-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .qm-tag {
+            font-size: 0.72rem;
+            color: var(--gray-600);
+            background: var(--gray-100);
+            border-radius: var(--radius-full);
+            padding: 3px 10px;
+            font-weight: 500;
+        }
+
+        .qm-assoc {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+            font-weight: 500;
+            margin-top: auto;
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .qm-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 4px;
+            color: var(--nat-purple);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .qm-see-all {
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+
+        .qm-see-all a {
+            display: inline-block;
+            padding: 0.65rem 2rem;
+            border: 2px solid rgba(255,255,255,0.45);
+            border-radius: var(--radius-full);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .qm-see-all a:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: var(--white);
+        }
+
         .quiz-photo-wrap {
             border-radius: var(--radius-xl);
             overflow: hidden;
@@ -1151,6 +1284,7 @@
                 grid-template-columns: 1fr;
                 gap: var(--space-xl);
             }
+            .qm-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -1165,6 +1299,7 @@
             .actu-slide { grid-template-columns: 1fr; }
             .actu-slide__img { height: 200px; }
             .missions-grid { grid-template-columns: 1fr; }
+            .qm-grid { grid-template-columns: 1fr; }
             .programs-grid { grid-template-columns: 1fr; }
             .programme-card:nth-child(1),
             .programme-card:nth-child(2),
@@ -1659,6 +1794,60 @@
             </div>
 
         </div>
+
+        <!-- ==================== MISSIONS SUGGÉRÉES POST-QUIZ ==================== -->
+        <div id="quizMissions">
+            <div class="qm-header">
+                <span class="qm-eyebrow">Passe à l'action</span>
+                <h3>Ces missions font écho à ta réponse</h3>
+            </div>
+            <div class="qm-grid">
+
+                <!-- Mission 1 : Journée solidaire -->
+                <a href="volontariat.html" class="qm-card">
+                    <span class="qm-prog" style="background: var(--prog-journees); color: var(--nat-gray-dark);">Journée solidaire</span>
+                    <h4>Tri et conditionnement de denrées alimentaires</h4>
+                    <div class="qm-meta">
+                        <span class="qm-tag">📍 Paris 13e</span>
+                        <span class="qm-tag">🗓 14 mars 2026</span>
+                        <span class="qm-tag">⏱ 1 journée</span>
+                    </div>
+                    <p class="qm-assoc">Banque Alimentaire de Paris IDF</p>
+                    <span class="qm-cta">Je participe →</span>
+                </a>
+
+                <!-- Mission 2 : Maraude Restos du Cœur -->
+                <a href="volontariat.html" class="qm-card">
+                    <span class="qm-prog" style="background: var(--prog-volontariat);">Volontariat</span>
+                    <h4>Maraude et aide alimentaire d'urgence</h4>
+                    <div class="qm-meta">
+                        <span class="qm-tag">📍 Paris (mobilité)</span>
+                        <span class="qm-tag">🗓 À partir du 18 mars</span>
+                        <span class="qm-tag">⏱ Demi-journée</span>
+                    </div>
+                    <p class="qm-assoc">Les Restos du Cœur</p>
+                    <span class="qm-cta">Je participe →</span>
+                </a>
+
+                <!-- Mission 3 : Anti-gaspillage -->
+                <a href="volontariat.html" class="qm-card">
+                    <span class="qm-prog" style="background: var(--prog-volontariat);">Volontariat</span>
+                    <h4>Sensibilisation anti-gaspillage dans les écoles</h4>
+                    <div class="qm-meta">
+                        <span class="qm-tag">📍 La Défense</span>
+                        <span class="qm-tag">🗓 21 mars 2026</span>
+                        <span class="qm-tag">⏱ 1h30</span>
+                    </div>
+                    <p class="qm-assoc">Réseau Cocagne</p>
+                    <span class="qm-cta">Je participe →</span>
+                </a>
+
+            </div>
+            <div class="qm-see-all">
+                <a href="volontariat.html">Voir toutes les missions solidaires →</a>
+            </div>
+        </div>
+
     </section>
 
     <!-- ==================== FOOTER ==================== -->
@@ -1739,6 +1928,8 @@
             document.getElementById(otherId).style.opacity = '0.35';
             // Afficher le feedback
             document.getElementById(correct ? 'quizCorrect' : 'quizWrong').style.display = 'block';
+            // Afficher les missions suggérées
+            document.getElementById('quizMissions').style.display = 'block';
         }
     </script>
 </body>
