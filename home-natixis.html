@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engagement Solidaire | Natixis</title>
+    <title>Engagement Solidaire | Natixis CIB</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
@@ -109,16 +109,15 @@
         }
 
         .logo-img {
-            height: 36px;
-            max-width: 120px;
+            height: 75px;
+            max-width: 200px;
             width: auto;
             display: block;
             object-fit: contain;
         }
 
         .footer-brand .logo-img {
-            height: 30px;
-            filter: brightness(0) invert(1);
+            height: 46px;
         }
 
         .nav-main {
@@ -246,9 +245,9 @@
             inset: 0;
             background: linear-gradient(
                 105deg,
-                rgba(46, 14, 80, 0.82) 0%,
-                rgba(92, 45, 145, 0.70) 55%,
-                rgba(92, 45, 145, 0.45) 100%
+                rgba(46, 14, 80, 0.55) 0%,
+                rgba(92, 45, 145, 0.40) 55%,
+                rgba(92, 45, 145, 0.20) 100%
             );
         }
 
@@ -288,25 +287,20 @@
 
         .hero-text h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(1.6rem, 4vw, 3rem);
             font-weight: 700;
             color: var(--white);
             line-height: 1.18;
             margin-bottom: var(--space-lg);
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.88);
-            line-height: 1.75;
-            margin-bottom: var(--space-xl);
-            max-width: 520px;
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
 
         .hero-cta {
-            display: flex;
-            gap: var(--space-md);
-            flex-wrap: wrap;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.88);
+            line-height: 1.75;
+            margin-top: var(--space-md);
         }
 
         .btn-hero-primary {
@@ -337,11 +331,6 @@
 
         /* Stats panel (droite) */
         .hero-stats-panel {
-            background: rgba(255,255,255,0.12);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.25);
-            border-radius: var(--radius-xl);
-            padding: var(--space-xl) var(--space-lg);
             display: flex;
             flex-direction: column;
             gap: var(--space-lg);
@@ -351,19 +340,16 @@
             display: flex;
             align-items: center;
             gap: var(--space-md);
-            padding-bottom: var(--space-lg);
-            border-bottom: 1px solid rgba(255,255,255,0.15);
         }
 
         .hero-stat:last-child {
             padding-bottom: 0;
-            border-bottom: none;
         }
 
         .hero-stat-icon {
             width: 48px;
             height: 48px;
-            background: rgba(255,255,255,0.18);
+            background: none;
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -411,7 +397,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: clamp(1.5rem, 2.5vw, 2rem);
             font-weight: 700;
-            color: var(--nat-gray-dark);
+            color: var(--nat-purple);
         }
 
         .section-header p {
@@ -481,13 +467,14 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 4px 12px;
+            padding: 7px 12px 4px;
             border-radius: var(--radius-full);
             font-size: 0.73rem;
             font-weight: 700;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             color: var(--white);
+            line-height: 1;
         }
 
         .actu-slide__content {
@@ -747,7 +734,7 @@
 
         .missions-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: var(--space-lg);
             margin-top: var(--space-xl);
         }
@@ -818,13 +805,14 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            padding: 3px 10px;
+            padding: 6px 10px;
             border-radius: var(--radius-full);
-            font-size: 0.72rem;
-            font-weight: 600;
-            background: var(--nat-purple-soft);
-            color: var(--nat-purple);
+            font-size: 0.92rem;
+            font-weight: 500;
+            background: #bb9bdc;
+            color: #ffffff;
             border: 1px solid var(--nat-purple-mid);
+            justify-content: center;
         }
 
         .tag.tag-location {
@@ -841,30 +829,37 @@
 
         .mission-card h4 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            color: var(--nat-gray-dark);
+            color: var(--gray-900);
             line-height: 1.3;
-        }
-
-        .mission-card p {
-            font-size: 0.85rem;
-            color: var(--gray-500);
-            line-height: 1.55;
-            flex: 1;
+            text-align: center;
         }
 
         .mission-card__footer {
-            padding: 0 var(--space-lg) var(--space-md);
+            padding: var(--space-sm) var(--space-md) var(--space-md);
             display: flex;
             align-items: center;
             justify-content: space-between;
+            border-top: 1px solid var(--gray-100);
+            margin-top: auto;
+        }
+
+        .mission-card__meta-dur,
+        .mission-card__meta-loc {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            display: flex;
+            align-items: center;
+            gap: 3px;
         }
 
         .mission-card__assoc {
             font-size: 0.78rem;
-            color: var(--gray-400);
+            color: var(--gray-500);
             font-weight: 500;
+            text-align: center;
+            display: block;
         }
 
         .mission-card__arrow {
@@ -1260,12 +1255,7 @@
             .hero-stat {
                 flex: 1;
                 min-width: 140px;
-                padding-bottom: 0;
-                border-bottom: none;
-                border-right: 1px solid rgba(255,255,255,0.15);
-                padding-right: var(--space-lg);
             }
-            .hero-stat:last-child { border-right: none; padding-right: 0; }
             .programs-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -1285,12 +1275,13 @@
                 gap: var(--space-xl);
             }
             .qm-grid { grid-template-columns: 1fr 1fr; }
+            .missions-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
             .header-main { padding: var(--space-md) var(--space-lg); }
             .nav-main { display: none; }
-            .logo-img { max-width: 90px; height: 28px; }
+            .logo-img { max-width: 162px; height: 60px; }
             .btn-connect-label { display: none; }
             .btn-connect { padding: 0.6rem 0.75rem; }
             .section-header { flex-direction: column; align-items: flex-start; gap: var(--space-md); }
@@ -1335,7 +1326,7 @@
     <header class="header">
         <div class="header-main">
             <a href="#" class="logo">
-                <img src="logo-natixis.png" alt="Natixis" class="logo-img">
+                <img src="logo-natixis-corporate-banking.jpg" alt="Natixis" class="logo-img">
             </a>
             <nav class="nav-main">
                 <a href="#" class="active">Accueil</a>
@@ -1372,18 +1363,9 @@
         <div class="hero-content">
             <!-- Texte gauche -->
             <div class="hero-text">
-                <div class="hero-badge">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                    </svg>
-                    Portail d'engagement Natixis
-                </div>
-                <h1>Agissez concrètement<br>pour un monde<br>plus solidaire</h1>
-                <p class="hero-description">
-                    Missions solidaires, bénévolat, don sur salaire, mécénat de compétences…
-                    Découvrez tous les programmes Natixis et trouvez la mission qui vous ressemble.
-                </p>
-                <div class="hero-cta">
+                <h1>Venez vous engager auprès d'associations locales à impact !</h1>
+                <p class="hero-cta">Découvrez tous les programmes solidaires proposés par Natixis CIB</p>
+                <div style="display:flex; gap:var(--space-md); margin-top:var(--space-xl); flex-wrap:wrap;">
                     <a href="#programmes" class="btn btn-hero-primary">Voir les programmes</a>
                 </div>
             </div>
@@ -1393,7 +1375,7 @@
                 <div class="hero-stat">
                     <div class="hero-stat-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                         </svg>
                     </div>
                     <div class="hero-stat-info">
@@ -1404,7 +1386,7 @@
                 <div class="hero-stat">
                     <div class="hero-stat-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" points="9 22 9 12 15 12 15 22"/>
                         </svg>
                     </div>
                     <div class="hero-stat-info">
@@ -1419,8 +1401,8 @@
                         </svg>
                     </div>
                     <div class="hero-stat-info">
-                        <div class="hero-stat-number">5</div>
-                        <div class="hero-stat-label">Programmes solidaires</div>
+                        <div class="hero-stat-number">6</div>
+                        <div class="hero-stat-label">Programmes actifs</div>
                     </div>
                 </div>
             </div>
@@ -1432,32 +1414,24 @@
         <div class="section-header">
             <div>
                 <h2>Actualités</h2>
-                <p>Les dernières nouvelles de nos programmes solidaires</p>
             </div>
-            <a href="#" class="section-link">
-                Voir toutes les actus
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
-                </svg>
-            </a>
         </div>
 
         <!-- Carousel -->
         <div class="actus-carousel-wrap">
             <div class="actus-track" id="actusTrack">
 
-                <!-- Slide 1 – Missions solidaires -->
+                <!-- Slide 1 – Journées solidaires -->
                 <a class="actu-slide" href="#">
                     <div class="actu-slide__img">
-                        <img src="https://wpb-webs.com/dev/natixis/journees.png" alt="Missions solidaires 2026">
-                        <span class="actu-slide__prog-tag" style="background:#34B6B8;">Missions solidaires</span>
+                        <img src="benevoles.jpg" alt="Journées solidaires 2026">
+                        <span class="actu-slide__prog-tag" style="background:#34B6B8; display:flex; align-items:center; justify-content:center;">Journées solidaires</span>
                     </div>
                     <div class="actu-slide__content">
-                        <span class="actu-slide__date">12 mars 2026</span>
-                        <h3>Les inscriptions pour les Missions solidaires 2026 sont ouvertes !</h3>
-                        <p>Plus de 20 associations partenaires vous accueillent cette année pour une journée d'engagement unique. Découvrez le catalogue et choisissez votre mission.</p>
+                        <h3>Les inscriptions pour les journées solidaires 2026 sont ouvertes !</h3>
+                        <p>Plus de 20 associations partenaires vous accueillent cette année pour une journée d'engagement unique. Découvrez les actions et choisissez votre mission.</p>
                         <span class="actu-slide__link">
-                            Lire la suite
+                            En savoir plus
                             <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
                             </svg>
@@ -1468,15 +1442,14 @@
                 <!-- Slide 2 – Congés solidaires -->
                 <a class="actu-slide" href="#">
                     <div class="actu-slide__img">
-                        <img src="https://wpb-webs.com/dev/natixis/partie-poetique.jpg" alt="Congés solidaires">
-                        <span class="actu-slide__prog-tag" style="background:#5C2D91;">Congés solidaires</span>
+                        <img src="enfant-souriant-senegal.jpg" alt="Congés solidaires Sénégal">
+                        <span class="actu-slide__prog-tag" style="background:#5C2D91; display:flex; align-items:center; justify-content:center;">Congés solidaires</span>
                     </div>
                     <div class="actu-slide__content">
-                        <span class="actu-slide__date">28 février 2026</span>
                         <h3>Témoignage : Sophie raconte sa mission avec Planète Urgence au Sénégal</h3>
-                        <p>Collaboratrice au sein de Natixis Asset Management, Sophie a consacré 3 semaines à une mission d'appui pédagogique. Son retour d'expérience vous touche au cœur.</p>
+                        <p>Collaboratrice au sein de Natixis CIB, Sophie a consacré 3 semaines à une mission d'appui pédagogique. Son retour d'expérience vous touche au cœur.</p>
                         <span class="actu-slide__link">
-                            Lire la suite
+                            En savoir plus
                             <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
                             </svg>
@@ -1513,7 +1486,6 @@
             <div class="section-header">
                 <div>
                     <h2>Nos programmes solidaires</h2>
-                    <p>5 façons de vous engager selon votre disponibilité et vos envies</p>
                 </div>
             </div>
 
@@ -1583,7 +1555,7 @@
                     <div class="programme-card__body">
                         <p class="programme-card__desc">Donnez quelques euros via votre bulletin de paie : 100% des dons reversés à l'association choisie !</p>
                         <span class="programme-card__desc-underline"></span>
-                        <a class="programme-card__cta" href="#">
+                        <a class="programme-card__cta" href="don-sur-salaire.html">
                             Voir le programme
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M13 5l7 7-7 7M20 12H4"/>
@@ -1616,7 +1588,7 @@
                 </div>
 
                 <!-- Card 5: Mécénat senior -->
-                <div class="programme-card" style="--brand-color:#D97706; --underline-color:#a85d04; --picto-url:url('https://wpb-webs.com/dev/natixis/mecenat.png');">
+                <div class="programme-card" style="--brand-color:#1B6CA8; --underline-color:#145588; --picto-url:url('https://wpb-webs.com/dev/natixis/mecenat.png');">
                     <div class="programme-card__header">
                         <div class="programme-card__header-title">
                             <h3 class="programme-card__title">MÉCÉNAT SENIOR</h3>
@@ -1629,7 +1601,7 @@
                     <div class="programme-card__body">
                         <p class="programme-card__desc">Mettez vos compétences au service d'une association pendant plusieurs mois !</p>
                         <span class="programme-card__desc-underline"></span>
-                        <a class="programme-card__cta" href="#">
+                        <a class="programme-card__cta" href="mecenat-senior.html">
                             Voir le programme
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M13 5l7 7-7 7M20 12H4"/>
@@ -1646,101 +1618,101 @@
     <section class="missions-section">
         <div class="section-header">
             <div>
-                <h2>Ces missions sont pour vous</h2>
-                <p>Sélectionnées selon votre profil et vos disponibilités</p>
+                <h2>Ces missions sont pour toi</h2>
             </div>
-            <a href="#" class="section-link">
-                Voir toutes les missions
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
-                </svg>
-            </a>
         </div>
 
         <div class="missions-grid">
 
-            <!-- Mission 1 -->
+            <!-- Mission 1 – Journée solidaire -->
             <a class="mission-card" href="ce-mission.html">
                 <div class="mission-card__img-wrap">
-                    <img src="https://wpb-webs.com/dev/natixis/personnage-agee.jpg" alt="Mission Mécénat Senior">
-                    <span class="mission-card__prog-label" style="background:#34B6B8;">Missions solidaires</span>
+                    <img src="https://wpb-webs.com/dev/natixis/personnage-agee.jpg" alt="Accompagnement numérique seniors">
+                    <span class="mission-card__prog-label" style="background:#FABA0A; color:#2D3236;">Journée solidaire</span>
                 </div>
                 <div class="mission-card__body">
-                    <div class="mission-card__tags">
-                        <span class="tag">
-                            <svg width="10" height="10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                            </svg>
-                            Solidarité
-                        </span>
-                        <span class="tag tag-location">
-                            <svg width="10" height="10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                            </svg>
-                            Paris 9e
-                        </span>
-                        <span class="tag tag-duration">1 journée</span>
-                    </div>
-                    <h4>Accompagnement numérique de personnes âgées</h4>
-                    <p>Aidez des seniors à prendre en main les outils numériques du quotidien avec l'association Linkee.</p>
+                    <h4>Accompagnez des primos entrepreneurs dans leur projet</h4>
+                    <span class="mission-card__assoc">Initiative Pays de Vilaine</span>
+                    <span class="tag" style="margin-top:4px;">Santé</span>
                 </div>
                 <div class="mission-card__footer">
-                    <span class="mission-card__assoc">Linkee</span>
-                    <div class="mission-card__arrow">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
-                        </svg>
-                    </div>
+                    <span class="mission-card__meta-dur">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        ne sait pas
+                    </span>
+                    <span class="mission-card__meta-loc">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                        35 Redon
+                    </span>
                 </div>
             </a>
 
-            <!-- Mission 2 -->
+            <!-- Mission 2 – Événement -->
             <a class="mission-card" href="#">
                 <div class="mission-card__img-wrap">
-                    <img src="https://wpb-webs.com/dev/natixis/mamama.jpg" alt="Mission éducation">
-                    <span class="mission-card__prog-label" style="background:#34B6B8;">Volontariat</span>
+                    <img src="https://wpb-webs.com/dev/natixis/mamama.jpg" alt="Challenge solidaire">
+                    <span class="mission-card__prog-label" style="background:#EA6C1D;">Événement</span>
                 </div>
                 <div class="mission-card__body">
-                    <div class="mission-card__tags">
-                        <span class="tag">Éducation</span>
-                        <span class="tag tag-location">Lyon 3e</span>
-                        <span class="tag tag-duration">4 demi-journées</span>
-                    </div>
-                    <h4>Atelier lecture et expression écrite avec des réfugiés</h4>
-                    <p>Animez des séances hebdomadaires pour aider à l'intégration par la maîtrise du français.</p>
+                    <h4>Challenge d'équipe solidaire à Paris : relevez le défi du don</h4>
+                    <span class="mission-card__assoc">Renaloo</span>
+                    <span class="tag" style="margin-top:4px;">Éducation</span>
                 </div>
                 <div class="mission-card__footer">
-                    <span class="mission-card__assoc">La Cravate Solidaire</span>
-                    <div class="mission-card__arrow">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
-                        </svg>
-                    </div>
+                    <span class="mission-card__meta-dur">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        ½ journée
+                    </span>
+                    <span class="mission-card__meta-loc">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                        75 Paris
+                    </span>
                 </div>
             </a>
 
-            <!-- Mission 3 -->
+            <!-- Mission 3 – Mécénat de compétences -->
             <a class="mission-card" href="#">
                 <div class="mission-card__img-wrap">
-                    <img src="https://wpb-webs.com/dev/natixis/13avenir.jpg" alt="Mission environnement">
-                    <span class="mission-card__prog-label" style="background:#5C2D91;">Congés solidaires</span>
+                    <img src="https://wpb-webs.com/dev/natixis/13avenir.jpg" alt="Mécénat de compétences">
+                    <span class="mission-card__prog-label" style="background:#5C2D91;">Mécénat de compétences</span>
                 </div>
                 <div class="mission-card__body">
-                    <div class="mission-card__tags">
-                        <span class="tag">Environnement</span>
-                        <span class="tag tag-location">Madagascar</span>
-                        <span class="tag tag-duration">2 semaines</span>
-                    </div>
-                    <h4>Conservation de la biodiversité côtière avec Planète Urgence</h4>
-                    <p>Contribuez à la préservation des écosystèmes marins en appuyant les équipes locales sur le terrain.</p>
+                    <h4>Formez nos référents à Office 365 pour booster leur efficacité</h4>
+                    <span class="mission-card__assoc">Les Compagnons du tour de France</span>
+                    <span class="tag" style="margin-top:4px;">Santé</span>
                 </div>
                 <div class="mission-card__footer">
-                    <span class="mission-card__assoc">Planète Urgence</span>
-                    <div class="mission-card__arrow">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M20 12H4"/>
-                        </svg>
-                    </div>
+                    <span class="mission-card__meta-dur">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        de 1 à 2 jours
+                    </span>
+                    <span class="mission-card__meta-loc">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                        75 Paris
+                    </span>
+                </div>
+            </a>
+
+            <!-- Mission 4 – Bénévolat -->
+            <a class="mission-card" href="#">
+                <div class="mission-card__img-wrap">
+                    <img src="benevoles.jpg" alt="Bénévolat éducation">
+                    <span class="mission-card__prog-label" style="background:#34B6B8;">Bénévolat</span>
+                </div>
+                <div class="mission-card__body">
+                    <h4>Accompagnez l'orientation de collégiens de l'éducation prioritaire</h4>
+                    <span class="mission-card__assoc">Un Stage et Après</span>
+                    <span class="tag" style="margin-top:4px;">Environnement</span>
+                </div>
+                <div class="mission-card__footer">
+                    <span class="mission-card__meta-dur">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        ½ journée
+                    </span>
+                    <span class="mission-card__meta-loc">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                        95 Sarcelles
+                    </span>
                 </div>
             </a>
 
@@ -1855,17 +1827,17 @@
         <div class="footer-content">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <img src="logo-natixis.png" alt="Natixis" class="logo-img">
-                    <p>Le portail d'engagement solidaire des collaborateurs Natixis — propulsé par KOEO.</p>
+                    <img src="logo-natixis-corporate-banking.jpg" alt="Natixis" class="logo-img">
+                    <p>Le portail d'engagement solidaire des collaborateurs Natixis CIB — propulsé par KOEO.</p>
                 </div>
                 <div class="footer-column">
                     <h4>Programmes</h4>
                     <ul>
-                        <li><a href="#">Missions solidaires</a></li>
-                        <li><a href="#">Team building</a></li>
-                        <li><a href="#">Don sur salaire</a></li>
-                        <li><a href="#">Congés solidaires</a></li>
-                        <li><a href="#">Mécénat senior</a></li>
+                        <li><a href="volontariat.html">Missions solidaires</a></li>
+                        <li><a href="team-building.html">Team building</a></li>
+                        <li><a href="don-sur-salaire.html">Don sur salaire</a></li>
+                        <li><a href="conges-solidaires.html">Congés solidaires</a></li>
+                        <li><a href="mecenat-senior.html">Mécénat senior</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">

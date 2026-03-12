@@ -76,7 +76,7 @@
         }
 
         .logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-        .logo-img { height: 36px; max-width: 120px; width: auto; display: block; object-fit: contain; }
+        .logo-img { height: 75px; max-width: 200px; width: auto; display: block; object-fit: contain; }
 
         .nav-main {
             display: flex; align-items: center;
@@ -143,11 +143,29 @@
             inset: 0;
             background: linear-gradient(
                 180deg,
-                rgba(46, 14, 80, 0.45) 0%,
-                rgba(46, 14, 80, 0.85) 70%,
-                rgba(46, 14, 80, 0.95) 100%
+                rgba(46, 14, 80, 0.05) 0%,
+                rgba(46, 14, 80, 0.20) 60%,
+                rgba(46, 14, 80, 0.38) 100%
             );
         }
+
+        .article-back-wrap {
+            max-width: 860px;
+            margin: var(--space-lg) auto 0;
+            padding: 0 var(--space-xl);
+        }
+        .article-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--nat-gray-medium);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .article-back-link:hover { color: var(--nat-purple); }
+        .article-back-link svg { width: 16px; height: 16px; }
 
         .article-hero__content {
             position: relative;
@@ -311,15 +329,15 @@
 
         /* Highlight box */
         .highlight-box {
-            background: #FFFBEB;
-            border: 1px solid #FDE68A;
+            background: var(--nat-gray-light);
+            border: 1px solid var(--gray-200);
             border-radius: var(--radius-lg);
             padding: var(--space-lg) var(--space-xl);
             margin: var(--space-xl) 0;
         }
 
         .highlight-box p {
-            color: #92400E;
+            color: var(--nat-gray);
             font-size: 0.95rem;
             margin-bottom: var(--space-sm);
         }
@@ -545,7 +563,7 @@
         }
 
         .footer-brand p { font-size: 0.88rem; color: var(--gray-400); margin-top: var(--space-sm); line-height: 1.65; }
-        .footer-brand .logo-img { height: 30px; filter: brightness(0) invert(1); }
+        .footer-brand .logo-img { height: 46px; }
 
         .footer-column h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: var(--space-md); color: var(--white); letter-spacing: 0.5px; text-transform: uppercase; }
         .footer-column ul { list-style: none; }
@@ -563,7 +581,7 @@
         @media (max-width: 768px) {
             .header-main { padding: var(--space-md) var(--space-lg); }
             .nav-main { display: none; }
-            .logo-img { max-width: 90px; height: 28px; }
+            .logo-img { max-width: 162px; height: 60px; }
             .btn-connect-label { display: none; }
             .btn-connect { padding: 0.6rem 0.75rem; }
             .article-hero { min-height: 320px; }
@@ -594,7 +612,7 @@
     <header class="header">
         <div class="header-main">
             <a href="home-natixis.html" class="logo">
-                <img src="logo-natixis.png" alt="Natixis" class="logo-img">
+                <img src="logo-natixis-corporate-banking.jpg" alt="Natixis" class="logo-img">
             </a>
             <nav class="nav-main">
                 <a href="home-natixis.html">Accueil</a>
@@ -630,35 +648,21 @@
             <div class="article-hero__overlay"></div>
         </div>
         <div class="article-hero__content">
-            <div class="article-hero__top">
-                <a href="home-natixis.html" class="article-hero__back">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7M4 12h16"/>
-                    </svg>
-                    Retour à l'accueil
-                </a>
-                <div class="article-hero__badge">
-                    ⚡ Le Quiz — En savoir plus
-                </div>
-            </div>
             <h1 class="article-hero__title">
                 1/3 des aliments produits sur la planète sont jetés
             </h1>
-            <div class="article-hero__meta">
-                <span>
-                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    5 min de lecture
-                </span>
-                <span>
-                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
-                    </svg>
-                    Environnement · Solidarité
-                </span>
-            </div>
+
         </div>
+    </div>
+
+    <!-- Retour à l'accueil (sous le bandeau) -->
+    <div class="article-back-wrap">
+        <a href="home-natixis.html" class="article-back-link">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7M4 12h16"/>
+            </svg>
+            Retour à l'accueil
+        </a>
     </div>
 
     <!-- ==================== ARTICLE ==================== -->
@@ -855,7 +859,7 @@
         <div class="footer-content">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <img src="logo-natixis.png" alt="Natixis" class="logo-img">
+                    <img src="logo-natixis-corporate-banking.jpg" alt="Natixis" class="logo-img">
                     <p>Le portail d'engagement solidaire des collaborateurs Natixis — propulsé par KOEO.</p>
                 </div>
                 <div class="footer-column">
