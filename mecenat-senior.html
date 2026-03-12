@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mécénat de compétences senior | Natixis CIB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palette Natixis */
+            --nat-purple:       #5C2D91;
+            --nat-purple-dark:  #4A2475;
+            --nat-purple-soft:  #F3EEF8;
+
+            --nat-gray:        #3E454A;
+            --nat-gray-dark:   #2D3236;
+            --nat-gray-light:  #F5F6F7;
+            --nat-gray-medium: #6B7280;
+
+            /* Couleur programme Mécénat Senior – bleu pétrole */
+            --program-color:       #1B6CA8;
+            --program-color-dark:  #145588;
+            --program-color-light: #E0EFF9;
+
+            /* Fond de page */
+            --bg-page: #F8F9FA;
+
+            /* Neutres */
+            --white:    #FFFFFF;
+            --gray-50:  #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+
+            /* Spacing */
+            --space-xs:  0.25rem;
+            --space-sm:  0.5rem;
+            --space-md:  1rem;
+            --space-lg:  1.5rem;
+            --space-xl:  2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+
+            /* Border radius */
+            --radius-sm:   6px;
+            --radius-md:   10px;
+            --radius-lg:   16px;
+            --radius-xl:   24px;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--nat-gray);
+            line-height: 1.6;
+            background-color: var(--bg-page);
+        }
+
+        /* ==================== HEADER ==================== */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-lg) var(--space-xl);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-xl);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .logo-img {
+            height: 75px;
+            max-width: 200px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-main a {
+            color: var(--nat-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: var(--space-sm) 0;
+            position: relative;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .nav-main a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--nat-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-main a:hover,
+        .nav-main a.active { color: var(--nat-purple); }
+        .nav-main a:hover::after,
+        .nav-main a.active::after { width: 100%; }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            flex-shrink: 0;
+        }
+
+        .lang-selector {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-full);
+            background: var(--white);
+            font-size: 0.85rem;
+            color: var(--nat-gray);
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .lang-selector:hover { border-color: var(--nat-purple); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: 0.6rem var(--space-lg);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--nat-gray);
+            border-color: var(--gray-300);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--nat-purple);
+            color: var(--nat-purple);
+        }
+
+        /* ==================== HERO PROGRAMME ==================== */
+        .hero-programme {
+            background: linear-gradient(135deg, var(--program-color-dark) 0%, var(--program-color) 100%);
+            position: relative;
+            overflow: hidden;
+            min-height: 340px;
+        }
+
+        .hero-programme::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -8%;
+            width: 550px; height: 550px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-programme::after {
+            content: '';
+            position: absolute;
+            bottom: -50%; left: 25%;
+            width: 350px; height: 350px;
+            background: rgba(0,0,0,0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-programme-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            min-height: 340px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-programme-illustration {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-xl) var(--space-lg);
+        }
+
+        .hero-programme-illustration img {
+            max-height: 270px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.22));
+        }
+
+        .hero-programme-content {
+            padding: var(--space-2xl) var(--space-lg) var(--space-2xl) var(--space-xl);
+        }
+
+        .hero-badge-prog {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: 5px var(--space-md);
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: var(--radius-full);
+            color: var(--white);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: var(--space-md);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-programme-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+            line-height: 1.1;
+        }
+
+        .hero-programme-title::after {
+            content: '';
+            display: block;
+            width: 72px;
+            height: 4px;
+            background: #145588;
+            border-radius: var(--radius-full);
+            margin-top: var(--space-sm);
+        }
+
+        .hero-programme-subtitle {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+
+        .hero-programme-subtitle strong { color: var(--white); }
+
+        .hero-programme-description {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.82);
+            line-height: 1.7;
+            max-width: 480px;
+        }
+
+        /* ==================== BREADCRUMB ==================== */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-xl);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 0.88rem;
+        }
+
+        .breadcrumb a {
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover { color: var(--nat-purple); }
+        .breadcrumb span { color: var(--gray-400); }
+        .breadcrumb-current { color: var(--nat-gray-dark); font-weight: 500; }
+
+        /* ==================== CONTENT SECTION ==================== */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-xl) var(--space-3xl);
+        }
+
+        /* ==================== ABOUT SECTION ==================== */
+        .about-section { margin-bottom: var(--space-3xl); }
+
+        .about-header { margin-bottom: var(--space-2xl); }
+
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--program-color);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .about-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            margin-bottom: var(--space-md);
+            line-height: 1.25;
+        }
+
+        .about-header p {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        .about-header p strong { color: var(--program-color); font-weight: 600; }
+
+        /* ==================== ELIGIBILITÉ BLOCK ==================== */
+        .eligibility-block {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
+            margin-top: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl);
+        }
+
+        .eligibility-col h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .eligibility-col h3 svg {
+            width: 20px; height: 20px;
+            stroke: var(--program-color);
+            flex-shrink: 0;
+        }
+
+        .eligibility-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .eligibility-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            font-size: 0.93rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+
+        .eligibility-list li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--program-color);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+
+        /* ==================== AVANTAGES CARDS ==================== */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-2xl);
+        }
+
+        .advantage-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .advantage-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--program-color);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .advantage-card:hover::before { transform: scaleY(1); }
+
+        .advantage-icon {
+            width: 52px; height: 52px;
+            background: var(--program-color-light);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .advantage-icon svg { width: 26px; height: 26px; stroke: var(--program-color); }
+
+        .advantage-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            margin-bottom: var(--space-sm);
+        }
+
+        .advantage-card p { font-size: 0.9rem; color: var(--gray-600); line-height: 1.6; }
+
+        /* ==================== TESTIMONIAL SECTION ==================== */
+        .testimonial-section {
+            margin: var(--space-3xl) 0;
+        }
+
+        .testimonial-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            margin-bottom: var(--space-xl);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-lg);
+            font-family: 'Poppins', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--program-color-light);
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.75;
+            font-style: italic;
+            margin-bottom: var(--space-lg);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .testimonial-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: var(--program-color-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--program-color);
+        }
+
+        .testimonial-info strong {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+        }
+
+        .testimonial-info span {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+        }
+
+        .testimonial-prog-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            background: var(--program-color-light);
+            color: var(--program-color);
+            border-radius: var(--radius-full);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-bottom: var(--space-md);
+        }
+
+        /* ==================== PARCOURS SECTION ==================== */
+        .parcours-section {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: var(--space-3xl);
+            border: 1px solid var(--gray-100);
+        }
+
+        .parcours-inner {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            min-height: 400px;
+        }
+
+        .parcours-content {
+            padding: var(--space-2xl);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .parcours-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xs) var(--space-md);
+            background: var(--program-color-light);
+            border-radius: var(--radius-full);
+            color: var(--program-color);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: var(--space-lg);
+            width: fit-content;
+        }
+
+        .parcours-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            margin-bottom: var(--space-md);
+            line-height: 1.3;
+        }
+
+        .parcours-content p {
+            font-size: 0.97rem;
+            color: var(--gray-600);
+            line-height: 1.75;
+            margin-bottom: var(--space-lg);
+        }
+
+        .parcours-steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .parcours-step {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+        }
+
+        .parcours-step-num {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: var(--program-color);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.82rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .parcours-step-text strong {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            margin-bottom: 2px;
+        }
+
+        .parcours-step-text span {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        .parcours-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .parcours-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .parcours-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(27, 108, 168, 0.08), transparent);
+            z-index: 1;
+        }
+
+        /* ==================== STATS BANNER ==================== */
+        .stats-banner {
+            background: linear-gradient(135deg, var(--program-color) 0%, var(--program-color-dark) 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+            margin-bottom: var(--space-3xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-banner::after {
+            content: '';
+            position: absolute;
+            top: -30%; right: -5%;
+            width: 300px; height: 300px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .stats-banner-item {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-banner-item + .stats-banner-item {
+            border-left: 1px solid rgba(255,255,255,0.2);
+            padding-left: var(--space-lg);
+        }
+
+        .stats-banner-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stats-banner-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.78);
+        }
+
+        /* ==================== GRANDE PHOTO ==================== */
+        .grande-photo {
+            text-align: center;
+            margin-bottom: var(--space-3xl);
+        }
+
+        .grande-photo img {
+            max-width: 100%;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* ==================== CTA SECTION ==================== */
+        .cta-section {
+            background: linear-gradient(135deg, #1B6CA8 0%, #145588 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--space-3xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -10%;
+            width: 420px; height: 420px;
+            background: rgba(255,255,255,0.07);
+            border-radius: 50%;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -40%; left: -5%;
+            width: 280px; height: 280px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+
+        .cta-content { position: relative; z-index: 1; }
+
+        .cta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-lg);
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: var(--radius-full);
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            backdrop-filter: blur(4px);
+        }
+
+        .cta-badge svg { width: 18px; height: 18px; }
+
+        .cta-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.45rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: var(--space-md);
+            line-height: 1.25;
+        }
+
+        .cta-section p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.88);
+            max-width: 580px;
+            margin: 0 auto var(--space-xl);
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-xl);
+        }
+
+        .cta-button-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-2xl);
+            background: var(--white);
+            color: var(--program-color);
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+        }
+
+        .cta-button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+        }
+
+        .cta-button-primary svg { width: 20px; height: 20px; transition: transform 0.3s ease; }
+        .cta-button-primary:hover svg { transform: translateX(4px); }
+
+        .cta-button-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-xl);
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+        }
+
+        .cta-note {
+            margin-top: var(--space-lg);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--nat-gray-dark);
+            color: var(--white);
+            padding: var(--space-2xl) var(--space-xl) var(--space-lg);
+            margin-top: var(--space-3xl);
+        }
+
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+            padding-bottom: var(--space-2xl);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-brand p { font-size: 0.88rem; color: var(--gray-400); margin-top: var(--space-sm); line-height: 1.65; }
+        .footer-brand .logo-img { height: 46px; }
+
+        .footer-column h4 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            color: var(--white);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: var(--space-sm); }
+
+        .footer-column ul a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+
+        .footer-column ul a:hover { color: var(--white); }
+
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+        .footer-bottom p { font-size: 0.82rem; color: var(--gray-500); }
+        .footer-bottom-links { display: flex; gap: var(--space-lg); }
+
+        .footer-bottom-links a {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom-links a:hover { color: var(--gray-300); }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .stats-banner { grid-template-columns: repeat(2, 1fr); }
+            .stats-banner-item + .stats-banner-item:nth-child(3) { border-left: none; }
+        }
+
+        @media (max-width: 900px) {
+            .hero-programme-container { grid-template-columns: 1fr; }
+            .hero-programme-illustration { display: none; }
+            .hero-programme-content { text-align: center; padding: var(--space-2xl) var(--space-lg); }
+            .hero-programme-title::after { margin: var(--space-sm) auto 0; }
+            .hero-programme-description { margin: 0 auto; }
+            .parcours-inner { grid-template-columns: 1fr; }
+            .parcours-image { height: 260px; order: -1; }
+            .eligibility-block { grid-template-columns: 1fr; gap: var(--space-lg); }
+            .footer-top { grid-template-columns: 1fr 1fr; gap: var(--space-xl); }
+        }
+
+        @media (max-width: 768px) {
+            .header-main { padding: var(--space-md) var(--space-lg); }
+            .hamburger { display: flex; }
+            .nav-main { display: none; }
+            .nav-actions { display: none; }
+            .logo-img { height: 60px; max-width: 162px; }
+            .btn-connect-label { display: none; }
+            .btn-connect { padding: 0.6rem 0.75rem; }
+        }
+
+        @media (max-width: 600px) {
+            .content-section { padding: var(--space-lg) var(--space-md) var(--space-2xl); }
+            .breadcrumb { padding: var(--space-md); }
+            .advantages-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .stats-banner { grid-template-columns: 1fr 1fr; }
+            .stats-banner-item + .stats-banner-item:nth-child(3) { border-left: none; }
+            .cta-section { padding: var(--space-2xl) var(--space-lg); }
+            .cta-buttons { flex-direction: column; align-items: stretch; }
+            .footer-top { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: var(--space-md); text-align: center; }
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-programme-content { animation: fadeInUp 0.6s ease-out; }
+        .advantage-card { animation: fadeInUp 0.5s ease-out both; }
+        .advantage-card:nth-child(1) { animation-delay: 0.1s; }
+        .advantage-card:nth-child(2) { animation-delay: 0.2s; }
+        .advantage-card:nth-child(3) { animation-delay: 0.3s; }
+        .advantage-card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* ==================== HAMBURGER MENU MOBILE ==================== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            flex-shrink: 0;
+        }
+        .hamburger span {
+            display: block;
+            height: 2px;
+            background: var(--nat-purple, #5C2D91);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .nav-mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            overflow: hidden;
+            background: #fff;
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .nav-mobile-overlay.is-open { display: flex; }
+        .nav-mobile-logo {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.5rem;
+        }
+        .nav-mobile-logo img { height: 60px; max-width: 162px; }
+        .nav-mobile-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--nat-purple, #5C2D91);
+            padding: 0.5rem;
+            line-height: 0;
+        }
+        .nav-mobile-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.75rem;
+        }
+        .nav-mobile-links a {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-mobile-links a:hover,
+        .nav-mobile-links a.active { color: var(--nat-purple, #5C2D91); }
+        .btn-mobile-connect {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            background: var(--nat-purple, #5C2D91);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+        .btn-mobile-connect:hover { background: var(--nat-purple-dark, #4A2475); color: #fff; }
+        .nav-mobile-lang {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.25rem;
+        }
+        .lang-btn-mobile {
+            background: none;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #aaa;
+            padding: 0.25rem 0.4rem;
+            border-radius: 4px;
+            transition: color 0.2s;
+        }
+        .lang-btn-mobile.active { color: var(--nat-purple, #5C2D91); }
+        .lang-btn-mobile:hover { color: var(--nat-purple, #5C2D91); }
+        .lang-divider { color: #ddd; font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <div class="header-main">
+            <a href="home-natixis.html" class="logo">
+                <img src="logo-natixis-corporate-banking.jpg" alt="Natixis" class="logo-img">
+            </a>
+            <nav class="nav-main">
+                <a href="home-natixis.html">Accueil</a>
+                <a href="home-natixis.html#programmes" class="active">Nos programmes</a>
+                <a href="ce-galerie-photos.html">Galerie photos</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    FR
+                    <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </div>
+                <a href="#" class="btn btn-outline">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span class="btn-connect-label">Se connecter</span>
+                </a>
+            </div>
+            <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="nav-mobile-overlay" id="navMobile">
+        <div class="nav-mobile-logo">
+            <img src="logo-natixis-corporate-banking.jpg" alt="Natixis">
+        </div>
+        <button class="nav-mobile-close" aria-label="Fermer le menu">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <nav class="nav-mobile-links">
+            <a href="home-natixis.html">Accueil</a>
+            <a href="home-natixis.html#programmes" class="active">Nos programmes</a>
+            <a href="ce-galerie-photos.html">Galerie photos</a>
+        </nav>
+        <div class="nav-mobile-lang">
+            <button class="lang-btn-mobile active">FR</button>
+            <span class="lang-divider">|</span>
+            <button class="lang-btn-mobile">EN</button>
+        </div>
+        <a href="#" class="btn-mobile-connect">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+            Se connecter
+        </a>
+    </div>
+
+    <!-- ==================== HERO PROGRAMME ==================== -->
+    <section class="hero-programme">
+        <div class="hero-programme-container">
+            <div class="hero-programme-illustration">
+                <img src="https://wpb-webs.com/dev/natixis/mecenat.png"
+                     alt="Illustration Mécénat Senior"
+                     onerror="this.style.display='none'">
+            </div>
+            <div class="hero-programme-content">
+                <h1 class="hero-programme-title">Mécénat de compétences senior</h1>
+                <p class="hero-programme-subtitle">Vers une fin de <strong>carrière solidaire</strong></p>
+                <p class="hero-programme-description">
+                    Une transition douce vers la retraite au travers d'une mission longue au sein du monde associatif.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BREADCRUMB ==================== -->
+    <nav class="breadcrumb">
+        <a href="home-natixis.html">Accueil</a>
+        <span>›</span>
+        <a href="home-natixis.html#programmes">Nos programmes</a>
+        <span>›</span>
+        <span class="breadcrumb-current">Mécénat de compétences senior</span>
+    </nav>
+
+    <!-- ==================== CONTENT ==================== -->
+    <section class="content-section">
+
+        <!-- About Section -->
+        <div class="about-section">
+            <div class="about-header">
+                <p>
+                    Il s’agit, au travers d’une mission longue en mécénat de compétences dans une association, d’assurer une <strong>passerelle entre l’emploi salarié et le début de retraite</strong>. Cette mission <strong>permet une employabilité alternative solidaire pendant le temps de travail, éventuellement sur un futur lieu de vie.</strong>
+                </p>
+                <p>
+                    Elle prépare la poursuite d’un engagement <strong>bénévole pendant la retraite en maintenant une activité locale et porteuse de sens une fois la carrière professionnelle achevée.</strong>
+                </p>
+                <p>
+                    Natixis CIB <strong>vous accompagne pas à pas</strong> dans cette démarche.
+                </p>
+            </div>
+
+            <!-- Avantages -->
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Mission de 6 à 36 mois</h3>
+                    <p>À temps plein ou partiel, en présentiel ou télétravail — une mission adaptée à votre rythme et à votre projet de vie.</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>CDI et rémunération préservés</h3>
+                    <p>Décision volontaire avec accord de l'entreprise. Votre contrat et votre salaire sont maintenus pendant toute la durée de la mission.</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3>France entière</h3>
+                    <p>Selon votre projet de vie. Trouvez une mission près de chez vous ou dans la région où vous souhaitez vous installer à la retraite.</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <h3>Compétences pro et perso</h3>
+                    <p>Mixez vos expertises professionnelles et vos savoir-faire personnels au service d'une cause qui vous tient à cœur.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PARCOURS SECTION ==================== -->
+        <div class="parcours-section">
+            <div class="parcours-inner">
+                <div class="parcours-content">
+                    <div class="parcours-badge">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                        Un accompagnement individualisé
+                    </div>
+
+                    <h3>Un accompagnement individualisé</h3>
+
+                    <div class="parcours-steps">
+                        <div class="parcours-step">
+                            <div class="parcours-step-num">1</div>
+                            <div class="parcours-step-text">
+                                <span>Vérification de l’éligibilité auprès des RH</span>
+                            </div>
+                        </div>
+                        <div class="parcours-step">
+                            <div class="parcours-step-num">2</div>
+                            <div class="parcours-step-text">
+                                <span>Questionnaire amont : mes compétences, mes centres d’intérêt, mon projet de vie,...</span>
+                            </div>
+                        </div>
+                        <div class="parcours-step">
+                            <div class="parcours-step-num">3</div>
+                            <div class="parcours-step-text">
+                                <span>Cycle de coaching individuel pour être accompagné dans la recherche et la co-construction d’une mission sur mesure avec l’association</span>
+                            </div>
+                        </div>
+                        <div class="parcours-step">
+                            <div class="parcours-step-num">4</div>
+                            <div class="parcours-step-text">
+                                <span>Validation des aspects administratifs (convention)</span>
+                            </div>
+                        </div>
+                        <div class="parcours-step">
+                            <div class="parcours-step-num">5</div>
+                            <div class="parcours-step-text">
+                                <span>Réalisation de la mission (6 à 36 mois)</span>
+                            </div>
+                        </div>
+                        <div class="parcours-step">
+                            <div class="parcours-step-num">6</div>
+                            <div class="parcours-step-text">
+                                <span>Départ en retraite à l’issue de la mission</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="parcours-image">
+                    <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=700&h=600&fit=crop"
+                         alt="Transmission de compétences — Mécénat Senior">
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== CTA SECTION ==================== -->
+        <div class="cta-section">
+            <div class="cta-content">
+
+                <h2>Prêt à vivre une fin de carrière<br>porteuse de sens ?</h2>
+
+                <p>
+                    Pour postuler, contactez votre RRH qui vérifiera avec vous vos conditions d'éligibilité
+                    et vous mettra en contact avec le responsable du programme Mécénat senior.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="logo-natixis-corporate-banking.jpg" alt="Natixis" class="logo-img">
+                    <p>Le portail d'engagement solidaire des collaborateurs Natixis CIB — propulsé par KOEO.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Programmes</h4>
+                    <ul>
+                        <li><a href="#">Missions solidaires</a></li>
+                        <li><a href="#">Team building</a></li>
+                        <li><a href="don-sur-salaire.html">Don sur salaire</a></li>
+                        <li><a href="#">Congés solidaires</a></li>
+                        <li><a href="mecenat-senior.html">Mécénat senior</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Liens utiles</h4>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Quiz RSE</a></li>
+                        <li><a href="#">Mon compte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">engagement@natixis.com</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Gérer les cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 KOEO — Tous droits réservés</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Accessibilité</a>
+                    <a href="#">Plan du site</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        (function() {
+            var btn = document.querySelector('.hamburger');
+            var overlay = document.getElementById('navMobile');
+            var close = document.querySelector('.nav-mobile-close');
+            function open() { overlay.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+            function shut() { overlay.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+            if (btn && overlay && close) {
+                btn.addEventListener('click', open);
+                close.addEventListener('click', shut);
+                overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+            }
+        })();
+    </script>
+</body>
+</html>
