@@ -617,6 +617,9 @@
         }
         
         @media (max-width: 600px) {
+            .hamburger { display: flex; }
+            .nav-main { display: none; }
+            .nav-actions { display: none; }
             .top-bar-content {
                 flex-direction: column;
                 gap: var(--space-sm);
@@ -699,6 +702,107 @@
         .programme-card:nth-child(4) { animation-delay: 0.4s; }
         .programme-card:nth-child(5) { animation-delay: 0.5s; }
         .programme-card:nth-child(6) { animation-delay: 0.6s; }
+
+        /* ==================== HAMBURGER MENU MOBILE ==================== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            flex-shrink: 0;
+        }
+        .hamburger span {
+            display: block;
+            height: 2px;
+            background: var(--ce-red, #C5000E);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .nav-mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            overflow: hidden;
+            background: #fff;
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .nav-mobile-overlay.is-open { display: flex; }
+        .nav-mobile-logo { position: absolute; top: 1.25rem; left: 1.5rem; }
+        .nav-mobile-logo img { height: 32px; }
+        .nav-mobile-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--ce-red, #C5000E);
+            padding: 0.5rem;
+            line-height: 0;
+        }
+        .nav-mobile-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.75rem;
+        }
+        .nav-mobile-links a {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-mobile-links a:hover,
+        .nav-mobile-links a.active { color: var(--ce-red, #C5000E); }
+        .nav-mobile-lang {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.25rem;
+        }
+        .lang-btn-mobile {
+            background: none;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #aaa;
+            padding: 0.25rem 0.4rem;
+            border-radius: 4px;
+            transition: color 0.2s;
+        }
+        .lang-btn-mobile.active { color: var(--ce-red, #C5000E); }
+        .lang-btn-mobile:hover { color: var(--ce-red, #C5000E); }
+        .lang-divider { color: #ddd; font-size: 0.9rem; }
+        .btn-mobile-connect {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            background: var(--ce-red, #C5000E);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+        .btn-mobile-connect:hover { background: var(--ce-red-dark, #A3000B); color: #fff; }
+        @media (max-width: 600px) {
+            .hamburger { display: flex; }
+        }
     </style>
 </head>
 <body>
@@ -743,8 +847,41 @@
                 </div>
                 <button class="btn btn-outline">Se connecter</button>
             </div>
+            <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
+
+    <div class="nav-mobile-overlay" id="navMobile">
+        <div class="nav-mobile-logo">
+            <img src="https://wpb-webs.com/dev/natixis/logo-ce-desktop.webp" alt="Caisse d'Épargne">
+        </div>
+        <button class="nav-mobile-close" aria-label="Fermer le menu">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <nav class="nav-mobile-links">
+            <a href="#" class="active">Accueil</a>
+            <a href="#">Nos programmes</a>
+            <a href="#">À propos</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="nav-mobile-lang">
+            <button class="lang-btn-mobile active">FR</button>
+            <span class="lang-divider">|</span>
+            <button class="lang-btn-mobile">EN</button>
+        </div>
+        <a href="#" class="btn-mobile-connect">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+            Se connecter
+        </a>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -969,5 +1106,20 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        (function() {
+            var btn = document.querySelector('.hamburger');
+            var overlay = document.getElementById('navMobile');
+            var close = document.querySelector('.nav-mobile-close');
+            function open() { overlay.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+            function shut() { overlay.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+            if (btn && overlay && close) {
+                btn.addEventListener('click', open);
+                close.addEventListener('click', shut);
+                overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+            }
+        })();
+    </script>
 </body>
 </html>
