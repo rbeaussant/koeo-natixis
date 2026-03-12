@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don sur salaire | Natixis CIB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palette Natixis */
+            --nat-purple:       #5C2D91;
+            --nat-purple-dark:  #4A2475;
+            --nat-purple-soft:  #F3EEF8;
+
+            --nat-gray:        #3E454A;
+            --nat-gray-dark:   #2D3236;
+            --nat-gray-light:  #F5F6F7;
+            --nat-gray-medium: #6B7280;
+
+            /* Couleur programme Don sur salaire */
+            --program-color:       #E5375A;
+            --program-color-dark:  #C02246;
+            --program-color-light: #FDE8ED;
+
+            /* Fond de page */
+            --bg-page: #F8F9FA;
+
+            /* Neutres */
+            --white:    #FFFFFF;
+            --gray-50:  #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+
+            /* Spacing */
+            --space-xs:  0.25rem;
+            --space-sm:  0.5rem;
+            --space-md:  1rem;
+            --space-lg:  1.5rem;
+            --space-xl:  2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+
+            /* Border radius */
+            --radius-sm:   6px;
+            --radius-md:   10px;
+            --radius-lg:   16px;
+            --radius-xl:   24px;
+            --radius-full: 9999px;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--nat-gray);
+            line-height: 1.6;
+            background-color: var(--bg-page);
+        }
+
+        /* ==================== HEADER ==================== */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-lg) var(--space-xl);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-xl);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .logo-img {
+            height: 75px;
+            max-width: 200px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-main a {
+            color: var(--nat-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: var(--space-sm) 0;
+            position: relative;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .nav-main a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--nat-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-main a:hover,
+        .nav-main a.active { color: var(--nat-purple); }
+        .nav-main a:hover::after,
+        .nav-main a.active::after { width: 100%; }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            flex-shrink: 0;
+        }
+
+        .lang-selector {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-full);
+            background: var(--white);
+            font-size: 0.85rem;
+            color: var(--nat-gray);
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .lang-selector:hover { border-color: var(--nat-purple); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: 0.6rem var(--space-lg);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--nat-gray);
+            border-color: var(--gray-300);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--nat-purple);
+            color: var(--nat-purple);
+        }
+
+        /* ==================== HERO PROGRAMME ==================== */
+        .hero-programme {
+            background: var(--program-color);
+            position: relative;
+            overflow: hidden;
+            min-height: 320px;
+        }
+
+        .hero-programme::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-programme::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: 30%;
+            width: 300px;
+            height: 300px;
+            background: rgba(0,0,0,0.06);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-programme-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            min-height: 320px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-programme-illustration {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-xl) var(--space-lg);
+        }
+
+        .hero-programme-illustration img {
+            max-height: 260px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.2));
+        }
+
+        .hero-programme-content {
+            padding: var(--space-2xl) var(--space-lg) var(--space-2xl) var(--space-xl);
+        }
+
+        .hero-badge-prog {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: 5px var(--space-md);
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: var(--radius-full);
+            color: var(--white);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: var(--space-md);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-programme-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+            line-height: 1.1;
+        }
+
+        .hero-programme-title::after {
+            content: '';
+            display: block;
+            width: 72px;
+            height: 4px;
+            background: #b01c38;
+            border-radius: var(--radius-full);
+            margin-top: var(--space-sm);
+        }
+
+        .hero-programme-subtitle {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+
+        .hero-programme-description {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.82);
+            line-height: 1.7;
+            max-width: 480px;
+        }
+
+        /* ==================== BREADCRUMB ==================== */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-xl);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 0.88rem;
+        }
+
+        .breadcrumb a {
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover { color: var(--nat-purple); }
+
+        .breadcrumb span { color: var(--gray-400); }
+
+        .breadcrumb-current {
+            color: var(--nat-gray-dark);
+            font-weight: 500;
+        }
+
+        /* ==================== CONTENT SECTION ==================== */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-xl) var(--space-3xl);
+        }
+
+        /* ==================== ABOUT SECTION ==================== */
+        .about-section {
+            margin-bottom: var(--space-3xl);
+        }
+
+        .about-header {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--program-color);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .about-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            margin-bottom: var(--space-md);
+            line-height: 1.25;
+        }
+
+        .about-header p {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        .about-header p strong {
+            color: var(--program-color);
+            font-weight: 600;
+        }
+
+        /* Mécanisme illustré */
+        .mecanism-block {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
+            margin-top: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        .mecanism-block h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            margin-bottom: var(--space-lg);
+        }
+
+        .mecanism-steps {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .mecanism-step {
+            flex: 1;
+            min-width: 160px;
+            text-align: center;
+        }
+
+        .mecanism-step-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--program-color-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-sm);
+        }
+
+        .mecanism-step-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--program-color);
+        }
+
+        .mecanism-step h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            margin-bottom: 4px;
+        }
+
+        .mecanism-step p {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+            line-height: 1.5;
+        }
+
+        .mecanism-arrow {
+            align-self: center;
+            color: var(--gray-300);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: -16px;
+        }
+
+        .mecanism-example {
+            margin-top: var(--space-lg);
+            padding: var(--space-md) var(--space-lg);
+            background: var(--program-color-light);
+            border-left: 4px solid var(--program-color);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-size: 0.92rem;
+            color: var(--nat-gray-dark);
+            line-height: 1.7;
+        }
+
+        .mecanism-example strong { color: var(--program-color); }
+
+        /* Avantages Cards */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-2xl);
+        }
+
+        .advantage-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .advantage-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--program-color);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .advantage-card:hover::before { transform: scaleY(1); }
+
+        .advantage-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--program-color-light);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .advantage-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--program-color);
+        }
+
+        .advantage-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            margin-bottom: var(--space-sm);
+        }
+
+        .advantage-card p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* ==================== ASSOCIATION SECTION (microDon) ==================== */
+        .association-section {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: var(--space-3xl);
+            border: 1px solid var(--gray-100);
+        }
+
+        .association-inner {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            min-height: 420px;
+        }
+
+        .association-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .association-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .association-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(229, 55, 90, 0.12) 0%, transparent 55%);
+        }
+
+        .association-content {
+            padding: var(--space-2xl);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .association-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xs) var(--space-md);
+            background: var(--program-color-light);
+            border-radius: var(--radius-full);
+            color: var(--program-color);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: var(--space-lg);
+            width: fit-content;
+        }
+
+        .microdon-logo-wrap {
+            margin-bottom: var(--space-lg);
+        }
+
+        .microdon-logo-img {
+            height: 40px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .association-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--nat-gray-dark);
+            margin-bottom: var(--space-md);
+            line-height: 1.3;
+        }
+
+        .association-content p {
+            font-size: 0.97rem;
+            color: var(--gray-600);
+            line-height: 1.75;
+            margin-bottom: var(--space-lg);
+        }
+
+        .association-stats {
+            display: flex;
+            gap: var(--space-xl);
+            padding: var(--space-lg) 0;
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .stat-item { text-align: left; }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: var(--program-color);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+            margin-top: 3px;
+        }
+
+        .association-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--program-color);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: gap 0.2s ease;
+        }
+
+        .association-link:hover { gap: var(--space-md); }
+
+        .association-link svg { width: 16px; height: 16px; }
+
+        /* ==================== CTA SECTION ==================== */
+        .cta-section {
+            background: linear-gradient(135deg, #E5375A 0%, #b5203d 100%);
+            border-radius: var(--radius-xl);
+            padding: var(--space-3xl) var(--space-3xl) var(--space-3xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -10%;
+            width: 420px; height: 420px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -40%; left: -5%;
+            width: 280px; height: 280px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 640px;
+            width: 100%;
+        }
+
+        .cta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-lg);
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: var(--radius-full);
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            backdrop-filter: blur(4px);
+        }
+
+        .cta-badge svg { width: 18px; height: 18px; }
+
+        .cta-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.45rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: var(--space-md);
+            line-height: 1.25;
+        }
+
+        .cta-section p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.88);
+            max-width: 580px;
+            margin: 0 auto var(--space-xl);
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-2xl);
+            margin-bottom: var(--space-xl);
+            background: var(--white);
+            color: var(--program-color);
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+        }
+
+        .cta-button svg {
+            width: 20px; height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover svg { transform: translateX(4px); }
+
+        .cta-note {
+            margin-top: var(--space-lg);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.65);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--nat-gray-dark);
+            color: var(--white);
+            padding: var(--space-2xl) var(--space-xl) var(--space-lg);
+            margin-top: var(--space-3xl);
+        }
+
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+            padding-bottom: var(--space-2xl);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            color: var(--gray-400);
+            margin-top: var(--space-sm);
+            line-height: 1.65;
+        }
+
+        .footer-brand .logo-img { height: 46px; }
+
+        .footer-column h4 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            color: var(--white);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: var(--space-sm); }
+
+        .footer-column ul a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+
+        .footer-column ul a:hover { color: var(--white); }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p { font-size: 0.82rem; color: var(--gray-500); }
+
+        .footer-bottom-links { display: flex; gap: var(--space-lg); }
+
+        .footer-bottom-links a {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom-links a:hover { color: var(--gray-300); }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 900px) {
+            .hero-programme-container { grid-template-columns: 1fr; }
+            .hero-programme-illustration { display: none; }
+            .hero-programme-content {
+                text-align: center;
+                padding: var(--space-2xl) var(--space-lg);
+            }
+            .hero-programme-title::after { margin: var(--space-sm) auto 0; }
+            .hero-programme-description { margin: 0 auto; }
+            .association-inner { grid-template-columns: 1fr; }
+            .association-image { height: 260px; }
+            .footer-top { grid-template-columns: 1fr 1fr; gap: var(--space-xl); }
+            .mecanism-steps { justify-content: center; }
+            .mecanism-arrow { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .header-main { padding: var(--space-md) var(--space-lg); }
+            .hamburger { display: flex; }
+            .nav-main { display: none; }
+            .nav-actions { display: none; }
+            .logo-img { height: 60px; max-width: 162px; }
+            .btn-connect-label { display: none; }
+            .btn-connect { padding: 0.6rem 0.75rem; }
+        }
+
+        @media (max-width: 600px) {
+            .content-section { padding: var(--space-lg) var(--space-md) var(--space-2xl); }
+            .breadcrumb { padding: var(--space-md); }
+            .advantages-grid { grid-template-columns: 1fr; }
+            .association-stats { flex-direction: column; gap: var(--space-md); }
+            .cta-section { padding: var(--space-2xl) var(--space-lg); }
+            .footer-top { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: var(--space-md); text-align: center; }
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-programme-content { animation: fadeInUp 0.6s ease-out; }
+
+        .advantage-card { animation: fadeInUp 0.5s ease-out both; }
+        .advantage-card:nth-child(1) { animation-delay: 0.1s; }
+        .advantage-card:nth-child(2) { animation-delay: 0.2s; }
+        .advantage-card:nth-child(3) { animation-delay: 0.3s; }
+        .advantage-card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* ==================== HAMBURGER MENU MOBILE ==================== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            flex-shrink: 0;
+        }
+        .hamburger span {
+            display: block;
+            height: 2px;
+            background: var(--nat-purple, #5C2D91);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .nav-mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            overflow: hidden;
+            background: #fff;
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .nav-mobile-overlay.is-open { display: flex; }
+        .nav-mobile-logo {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.5rem;
+        }
+        .nav-mobile-logo img { height: 60px; max-width: 162px; }
+        .nav-mobile-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--nat-purple, #5C2D91);
+            padding: 0.5rem;
+            line-height: 0;
+        }
+        .nav-mobile-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.75rem;
+        }
+        .nav-mobile-links a {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-mobile-links a:hover,
+        .nav-mobile-links a.active { color: var(--nat-purple, #5C2D91); }
+        .btn-mobile-connect {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            background: var(--nat-purple, #5C2D91);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+        .btn-mobile-connect:hover { background: var(--nat-purple-dark, #4A2475); color: #fff; }
+        .nav-mobile-lang {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.25rem;
+        }
+        .lang-btn-mobile {
+            background: none;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #aaa;
+            padding: 0.25rem 0.4rem;
+            border-radius: 4px;
+            transition: color 0.2s;
+        }
+        .lang-btn-mobile.active { color: var(--nat-purple, #5C2D91); }
+        .lang-btn-mobile:hover { color: var(--nat-purple, #5C2D91); }
+        .lang-divider { color: #ddd; font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <div class="header-main">
+            <a href="home-natixis.html" class="logo">
+                <img src="logo-natixis-corporate-banking.jpg" alt="Natixis" class="logo-img">
+            </a>
+            <nav class="nav-main">
+                <a href="home-natixis.html">Accueil</a>
+                <a href="home-natixis.html#programmes" class="active">Nos programmes</a>
+                <a href="ce-galerie-photos.html">Galerie photos</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    FR
+                    <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </div>
+                <a href="#" class="btn btn-outline">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span class="btn-connect-label">Se connecter</span>
+                </a>
+            </div>
+            <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="nav-mobile-overlay" id="navMobile">
+        <div class="nav-mobile-logo">
+            <img src="logo-natixis-corporate-banking.jpg" alt="Natixis">
+        </div>
+        <button class="nav-mobile-close" aria-label="Fermer le menu">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <nav class="nav-mobile-links">
+            <a href="home-natixis.html">Accueil</a>
+            <a href="home-natixis.html#programmes" class="active">Nos programmes</a>
+            <a href="ce-galerie-photos.html">Galerie photos</a>
+        </nav>
+        <div class="nav-mobile-lang">
+            <button class="lang-btn-mobile active">FR</button>
+            <span class="lang-divider">|</span>
+            <button class="lang-btn-mobile">EN</button>
+        </div>
+        <a href="#" class="btn-mobile-connect">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+            Se connecter
+        </a>
+    </div>
+
+    <!-- ==================== HERO PROGRAMME ==================== -->
+    <section class="hero-programme">
+        <div class="hero-programme-container">
+            <div class="hero-programme-illustration">
+                <img src="https://wpb-webs.com/dev/natixis/don.png"
+                     alt="Illustration Don sur salaire"
+                     onerror="this.style.display='none'">
+            </div>
+            <div class="hero-programme-content">
+                <h1 class="hero-programme-title">Don sur salaire</h1>
+                <p class="hero-programme-subtitle">Un petit geste pour de <strong>grandes causes</strong></p>
+                <p class="hero-programme-description">
+                    Soutenez chaque mois une association via votre bulletin de paie et Natixis CIB double vos dons !
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BREADCRUMB ==================== -->
+    <nav class="breadcrumb">
+        <a href="home-natixis.html">Accueil</a>
+        <span>›</span>
+        <a href="home-natixis.html#programmes">Nos programmes</a>
+        <span>›</span>
+        <span class="breadcrumb-current">Don sur salaire</span>
+    </nav>
+
+    <!-- ==================== CONTENT ==================== -->
+    <section class="content-section">
+
+        <!-- About Section -->
+        <div class="about-section">
+            <div class="about-header">
+                <p>
+                    Donnez quelques euros chaque mois via votre bulletin de paie : 100% des dons reversés
+                    à l'association choisie dans le catalogue. Un petit don sans engagement et modifiable
+                    à tout moment. Et en co-solidarité, <strong>Natixis CIB double vos dons !</strong>
+                </p>
+            </div>
+
+            <!-- Avantages -->
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                    </div>
+                    <h3>Sans engagement</h3>
+                    <p>Votre don est modifiable à tout moment. Vous êtes libre de changer de montant, d'association ou d'arrêter quand vous voulez.</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>100% reversé</h3>
+                    <p>La totalité de votre don est reversée à l'association choisie dans le catalogue. Aucun frais de gestion prélevé.</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3>Natixis CIB double vos dons</h3>
+                    <p>En co-solidarité, Natixis CIB abonde votre don : chaque euro versé est doublé par l'entreprise, pour un impact amplifié.</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Avantage fiscal</h3>
+                    <p>Bénéficiez d'une réduction d'impôts : vos dons sont déductibles à 75 % jusqu'à 1 000 €, puis à 66 % au-delà.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== MICRODON SECTION ==================== -->
+        <div class="association-section">
+            <div class="association-inner">
+                <div class="association-image">
+                    <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=800&h=600&fit=crop"
+                         alt="Générosité et solidarité — microDon">
+                </div>
+                <div class="association-content">
+
+                    <div class="microdon-logo-wrap">
+                        <img src="logo-microdon-horizontal-01-1.png"
+                             alt="microDon"
+                             class="microdon-logo-img">
+                    </div>
+
+                    <h3>La solution de référence pour le don sur salaire en entreprise</h3>
+
+                    <p>
+                        Natixis CIB s'appuie sur <strong style="color:var(--program-color);">microDON</strong>, la plateforme pionnière du don sur salaire
+                        en France, pour gérer le programme en toute transparence. <span style="color:var(--program-color); font-weight:600;">microDON</span> accompagne plus de
+                        700 entreprises et garantit que chaque don atteint intégralement l'association désignée.
+                    </p>
+
+                    <div class="association-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">700+</div>
+                            <div class="stat-label">entreprises partenaires</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3 000</div>
+                            <div class="stat-label">associations référencées</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15 M€</div>
+                            <div class="stat-label">collectés depuis 2008</div>
+                        </div>
+                    </div>
+
+                    <a href="https://www.microdon.org" target="_blank" rel="noopener" class="association-link">
+                        Visiter le site microDON
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== CTA MICRODON ==================== -->
+        <div class="cta-section">
+            <div class="cta-content">
+
+                <h2>Activez votre don sur salaire<br>sur la plateforme microDon</h2>
+
+                <p>
+                    Choisissez votre association, paramétrez votre don en quelques minutes
+                    et commencez à soutenir une cause qui vous tient à cœur — dès votre prochain bulletin de salaire.
+                </p>
+
+                <a href="https://www.microdon.org" target="_blank" rel="noopener" class="cta-button">
+                    Accéder à microDon
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="logo-natixis-corporate-banking.jpg" alt="Natixis" class="logo-img">
+                    <p>Le portail d'engagement solidaire des collaborateurs Natixis CIB — propulsé par KOEO.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Programmes</h4>
+                    <ul>
+                        <li><a href="#">Missions solidaires</a></li>
+                        <li><a href="#">Team building</a></li>
+                        <li><a href="don-sur-salaire.html">Don sur salaire</a></li>
+                        <li><a href="#">Congés solidaires</a></li>
+                        <li><a href="mecenat-senior.html">Mécénat senior</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Liens utiles</h4>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Quiz RSE</a></li>
+                        <li><a href="#">Mon compte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">engagement@natixis.com</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Gérer les cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 KOEO — Tous droits réservés</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Accessibilité</a>
+                    <a href="#">Plan du site</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        (function() {
+            var btn = document.querySelector('.hamburger');
+            var overlay = document.getElementById('navMobile');
+            var close = document.querySelector('.nav-mobile-close');
+            function open() { overlay.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+            function shut() { overlay.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+            if (btn && overlay && close) {
+                btn.addEventListener('click', open);
+                close.addEventListener('click', shut);
+                overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+            }
+        })();
+    </script>
+</body>
+</html>
