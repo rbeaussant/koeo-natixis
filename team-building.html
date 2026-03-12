@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team building | Caisse d'Épargne</title>
+    <title>Team building | Natixis Engagement</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Palette Caisse d'Épargne */
+            /* Palette Natixis */
+            --nat-purple: #5C2D91;
+            --nat-purple-dark: #4A2475;
+            /* Palette Caisse d'Épargne (legacy) */
             --ce-red: #C5000E;
             --ce-red-dark: #A3000B;
             --ce-red-light: #f4cccc;
@@ -108,14 +111,55 @@
         }
         
         .logo img {
-            height: 44px;
+            height: 75px;
+            max-width: 200px;
             width: auto;
+            object-fit: contain;
         }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+            padding-bottom: var(--space-2xl);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            color: var(--gray-400);
+            margin-top: var(--space-sm);
+            line-height: 1.65;
+        }
+
+        .footer-logo {
+            height: 46px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .footer-bottom-links { display: flex; gap: var(--space-lg); }
+
+        .footer-bottom-links a {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom-links a:hover { color: var(--gray-300); }
+
+        .btn-connect-label { /* visible by default */ }
         
         .nav-main {
             display: flex;
             align-items: center;
             gap: var(--space-xl);
+            flex: 1;
+            justify-content: center;
         }
         
         .nav-main a {
@@ -135,13 +179,13 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--ce-red);
+            background: var(--nat-purple);
             transition: width 0.3s ease;
         }
-        
+
         .nav-main a:hover,
         .nav-main a.active {
-            color: var(--ce-red);
+            color: var(--nat-purple);
         }
         
         .nav-main a:hover::after,
@@ -170,7 +214,7 @@
         }
         
         .lang-selector:hover {
-            border-color: var(--ce-red);
+            border-color: var(--nat-purple);
         }
         
         .btn {
@@ -194,8 +238,8 @@
         }
         
         .btn-outline:hover {
-            border-color: var(--ce-red);
-            color: var(--ce-red);
+            border-color: var(--nat-purple);
+            color: var(--nat-purple);
         }
         
         /* ==================== HERO PROGRAMME ==================== */
@@ -248,7 +292,7 @@
             display: block;
             width: 80px;
             height: 4px;
-            background: var(--ce-red);
+            background: #c25310;
             border-radius: var(--radius-full);
             margin-top: var(--space-sm);
         }
@@ -577,11 +621,7 @@
             .hero-programme-description {
                 margin: 0 auto;
             }
-            
-            .nav-main {
-                display: none;
-            }
-            
+
             .associations-grid {
                 grid-template-columns: 1fr;
             }
@@ -598,21 +638,24 @@
             }
         }
         
+        @media (max-width: 768px) {
+            .header-main { padding: var(--space-md) var(--space-lg); }
+            .hamburger { display: flex; }
+            .nav-main { display: none; }
+            .nav-actions { display: none; }
+            .logo img { height: 60px; max-width: 162px; }
+            .btn-connect-label { display: none; }
+            .btn-connect { padding: 0.6rem 0.75rem; }
+            .footer-top { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 600px) {
-            .header-main {
-                padding: var(--space-sm) var(--space-md);
-            }
-            
-            .logo img {
-                height: 36px;
-            }
-            
             .filters {
                 overflow-x: auto;
                 flex-wrap: nowrap;
                 padding-bottom: var(--space-sm);
             }
-            
+
             .filter-btn {
                 white-space: nowrap;
             }
@@ -647,36 +690,177 @@
         .association-card:nth-child(6) { animation-delay: 0.3s; }
         .association-card:nth-child(7) { animation-delay: 0.35s; }
         .association-card:nth-child(8) { animation-delay: 0.4s; }
+
+        /* ==================== HAMBURGER MENU MOBILE ==================== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            flex-shrink: 0;
+        }
+        .hamburger span {
+            display: block;
+            height: 2px;
+            background: var(--nat-purple, #5C2D91);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .nav-mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            overflow: hidden;
+            background: #fff;
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .nav-mobile-overlay.is-open { display: flex; }
+        .nav-mobile-logo {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.5rem;
+        }
+        .nav-mobile-logo img { height: 60px; max-width: 162px; }
+        .nav-mobile-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--nat-purple, #5C2D91);
+            padding: 0.5rem;
+            line-height: 0;
+        }
+        .nav-mobile-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.75rem;
+        }
+        .nav-mobile-links a {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-mobile-links a:hover,
+        .nav-mobile-links a.active { color: var(--nat-purple, #5C2D91); }
+        .btn-mobile-connect {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            background: var(--nat-purple, #5C2D91);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+        .btn-mobile-connect:hover { background: var(--nat-purple-dark, #4A2475); color: #fff; }
+        .nav-mobile-lang {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.25rem;
+        }
+        .lang-btn-mobile {
+            background: none;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #aaa;
+            padding: 0.25rem 0.4rem;
+            border-radius: 4px;
+            transition: color 0.2s;
+        }
+        .lang-btn-mobile.active { color: var(--nat-purple, #5C2D91); }
+        .lang-btn-mobile:hover { color: var(--nat-purple, #5C2D91); }
+        .lang-divider { color: #ddd; font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="header-main">
-            <a href="home-filiale-ce.html" class="logo">
-                <img src="https://wpb-webs.com/dev/natixis/logo-ce-desktop.webp" alt="Caisse d'Épargne">
+            <a href="home-natixis.html" class="logo">
+                <img src="logo-natixis-corporate-banking.jpg" alt="Natixis">
             </a>
             <nav class="nav-main">
-                <a href="home-filiale-ce.html">Accueil</a>
-                <a href="#" class="active">Nos programmes</a>
-                <a href="#">À propos</a>
-                <a href="#">Contact</a>
+                <a href="home-natixis.html">Accueil</a>
+                <a href="home-natixis.html#programmes" class="active">Nos programmes</a>
+                <a href="ce-galerie-photos.html">Galerie photos</a>
             </nav>
             <div class="nav-actions">
                 <div class="lang-selector">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="10"/>
                         <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                     </svg>
                     FR
-                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <polyline points="6 9 12 15 18 9"/>
                     </svg>
                 </div>
-                <button class="btn btn-outline">Se connecter</button>
+                <a href="#" class="btn btn-outline">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span class="btn-connect-label">Se connecter</span>
+                </a>
             </div>
+            <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
+
+    <div class="nav-mobile-overlay" id="navMobile">
+        <div class="nav-mobile-logo">
+            <img src="logo-natixis-corporate-banking.jpg" alt="Natixis">
+        </div>
+        <button class="nav-mobile-close" aria-label="Fermer le menu">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <nav class="nav-mobile-links">
+            <a href="home-natixis.html">Accueil</a>
+            <a href="home-natixis.html#programmes" class="active">Nos programmes</a>
+            <a href="ce-galerie-photos.html">Galerie photos</a>
+        </nav>
+        <div class="nav-mobile-lang">
+            <button class="lang-btn-mobile active">FR</button>
+            <span class="lang-divider">|</span>
+            <button class="lang-btn-mobile">EN</button>
+        </div>
+        <a href="#" class="btn-mobile-connect">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+            Se connecter
+        </a>
+    </div>
 
     <!-- Hero Programme -->
     <section class="hero-programme">
@@ -696,9 +880,9 @@
 
     <!-- Breadcrumb -->
     <nav class="breadcrumb">
-        <a href="home-groupe-bpce.html">Accueil</a>
+        <a href="home-natixis.html">Accueil</a>
         <span>›</span>
-        <a href="home-filiale-ce.html">Caisse d'Épargne</a>
+        <a href="home-natixis.html#programmes">Nos programmes</a>
         <span>›</span>
         <span class="breadcrumb-current">Team building</span>
     </nav>
@@ -845,32 +1029,46 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-grid">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="logo-natixis-corporate-banking.jpg" alt="Natixis" class="footer-logo">
+                    <p>Le portail d'engagement solidaire des collaborateurs Natixis — propulsé par KOEO.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Programmes</h4>
+                    <ul>
+                        <li><a href="volontariat.html">Missions solidaires</a></li>
+                        <li><a href="team-building.html">Team building</a></li>
+                        <li><a href="don-sur-salaire.html">Don sur salaire</a></li>
+                        <li><a href="conges-solidaires.html">Congés solidaires</a></li>
+                        <li><a href="mecenat-senior.html">Mécénat senior</a></li>
+                    </ul>
+                </div>
                 <div class="footer-column">
                     <h4>Liens utiles</h4>
                     <ul>
                         <li><a href="#">À propos</a></li>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Mentions légales</h4>
-                    <ul>
-                        <li><a href="#">Conditions d'utilisation</a></li>
-                        <li><a href="#">Politique de confidentialité</a></li>
-                        <li><a href="#">Gérer les cookies</a></li>
+                        <li><a href="#">Quiz RSE</a></li>
+                        <li><a href="#">Mon compte</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="#">contact@koeo.fr</a></li>
+                        <li><a href="#">engagement@natixis.com</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Gérer les cookies</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>© 2026 KOEO — Tous droits réservés</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Accessibilité</a>
+                    <a href="#">Plan du site</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -906,6 +1104,21 @@
                 });
             });
         });
+    </script>
+
+    <script>
+        (function() {
+            var btn = document.querySelector('.hamburger');
+            var overlay = document.getElementById('navMobile');
+            var close = document.querySelector('.nav-mobile-close');
+            function open() { overlay.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+            function shut() { overlay.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+            if (btn && overlay && close) {
+                btn.addEventListener('click', open);
+                close.addEventListener('click', shut);
+                overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+            }
+        })();
     </script>
 </body>
 </html>

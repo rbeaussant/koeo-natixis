@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerie Photos | Caisse d'Épargne</title>
+    <title>Galerie photos | Natixis Engagement</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Palette Caisse d'Épargne */
-            --ce-red: #C5000E;
-            --ce-red-dark: #A3000B;
-            --ce-red-light: #f4cccc;
-            --ce-red-soft: #FDEAEA;
+            /* Palette Natixis */
+            --nat-purple: #5C2D91;
+            --nat-purple-dark: #4A2475;
+            /* Variables CE remappées Natixis */
+            --ce-red: #5C2D91;
+            --ce-red-dark: #4A2475;
+            --ce-red-light: #C9B3E1;
+            --ce-red-soft: #EDE5F6;
             
             --ce-gray: #3E454A;
             --ce-gray-dark: #2D3236;
@@ -26,7 +29,7 @@
             
             /* Fond de page */
             --bg-page: #F8F9FA;
-            --bg-warm: #FEF7F6;
+            --bg-warm: #F3EEF8;
             
             /* Neutres */
             --white: #FFFFFF;
@@ -70,7 +73,7 @@
             --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
             --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-            --shadow-red: 0 4px 14px rgba(197, 0, 14, 0.25);
+            --shadow-red: 0 4px 14px rgba(92, 45, 145, 0.3);
         }
         
         * {
@@ -116,10 +119,48 @@
             width: auto;
         }
         
+        .logo-img {
+            height: 75px;
+            max-width: 200px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: 0.6rem var(--space-lg);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--ce-gray);
+            border-color: var(--gray-300);
+        }
+
+        .btn-connect:hover {
+            color: var(--nat-purple);
+            border-color: var(--nat-purple);
+        }
+
+        .btn-connect-label { /* visible by default */ }
+
         .nav-main {
             display: flex;
             align-items: center;
             gap: var(--space-xl);
+            flex: 1;
+            justify-content: center;
         }
         
         .nav-main a {
@@ -419,15 +460,15 @@
         }
         
         @media (max-width: 768px) {
-            .header-main {
-                flex-direction: column;
-                gap: var(--space-lg);
-            }
-            
-            .nav-main {
-                display: none;
-            }
-            
+            .header-main { padding: var(--space-md) var(--space-lg); }
+            .hamburger { display: flex; }
+            .nav-main { display: none; }
+            .nav-actions { display: none; }
+            .logo-img { height: 60px; max-width: 162px; }
+            .btn-connect-label { display: none; }
+            .btn-connect { padding: 0.6rem 0.75rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+
             .hero-gallery h1 {
                 font-size: 2rem;
             }
@@ -507,43 +548,183 @@
             font-size: 0.9rem;
             opacity: 0.7;
         }
+
+        /* ==================== HAMBURGER MENU MOBILE ==================== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            flex-shrink: 0;
+        }
+        .hamburger span {
+            display: block;
+            height: 2px;
+            background: var(--nat-purple, #5C2D91);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .nav-mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            overflow: hidden;
+            background: #fff;
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .nav-mobile-overlay.is-open { display: flex; }
+        .nav-mobile-logo {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.5rem;
+        }
+        .nav-mobile-logo img { height: 60px; max-width: 162px; }
+        .nav-mobile-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--nat-purple, #5C2D91);
+            padding: 0.5rem;
+            line-height: 0;
+        }
+        .nav-mobile-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.75rem;
+        }
+        .nav-mobile-links a {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-mobile-links a:hover,
+        .nav-mobile-links a.active { color: var(--nat-purple, #5C2D91); }
+        .btn-mobile-connect {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            background: var(--nat-purple, #5C2D91);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+        .btn-mobile-connect:hover { background: var(--nat-purple-dark, #4A2475); color: #fff; }
+        .nav-mobile-lang {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.25rem;
+        }
+        .lang-btn-mobile {
+            background: none;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #aaa;
+            padding: 0.25rem 0.4rem;
+            border-radius: 4px;
+            transition: color 0.2s;
+        }
+        .lang-btn-mobile.active { color: var(--nat-purple, #5C2D91); }
+        .lang-btn-mobile:hover { color: var(--nat-purple, #5C2D91); }
+        .lang-divider { color: #ddd; font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="header-main">
-            <a href="home-filiale-ce" class="logo">
-                <img src="https://wpb-webs.com/dev/natixis/logo-ce-desktop.webp" alt="Caisse d'Épargne">
+            <a href="home-natixis.html" class="logo">
+                <img src="logo-natixis-corporate-banking.jpg" alt="Natixis" class="logo-img">
             </a>
-            
             <nav class="nav-main">
-                <a href="#">
-                    Programmes
-                    <svg class="dropdown-icon" viewBox="0 0 24 24">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </a>
+                <a href="home-natixis.html">Accueil</a>
+                <a href="home-natixis.html#programmes">Nos programmes</a>
+                <a href="ce-galerie-photos.html" class="active">Galerie photos</a>
             </nav>
-            
             <div class="nav-actions">
-                <a href="#" class="btn-primary">Galerie photos</a>
                 <div class="lang-selector">
-                    <span class="flag">🇫🇷</span>
-                    <span>Français</span>
-                    <svg class="dropdown-icon" viewBox="0 0 24 24">
-                        <polyline points="6 9 12 15 18 9"></polyline>
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    FR
+                    <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9"/>
                     </svg>
                 </div>
+                <a href="#" class="btn btn-outline btn-connect">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span class="btn-connect-label">Se connecter</span>
+                </a>
             </div>
+            <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
     
+    <div class="nav-mobile-overlay" id="navMobile">
+        <div class="nav-mobile-logo">
+            <img src="logo-natixis-corporate-banking.jpg" alt="Natixis">
+        </div>
+        <button class="nav-mobile-close" aria-label="Fermer le menu">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <nav class="nav-mobile-links">
+            <a href="home-natixis.html">Accueil</a>
+            <a href="home-natixis.html#programmes">Nos programmes</a>
+            <a href="ce-galerie-photos.html" class="active">Galerie photos</a>
+        </nav>
+        <div class="nav-mobile-lang">
+            <button class="lang-btn-mobile active">FR</button>
+            <span class="lang-divider">|</span>
+            <button class="lang-btn-mobile">EN</button>
+        </div>
+        <a href="#" class="btn-mobile-connect">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+            Se connecter
+        </a>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero-gallery">
         <div class="hero-content">
             <h1>Galerie photos des actions solidaires</h1>
-            <p>Mettez en ligne et consulter les photos de vos actions solidaires !</p>
+            <p>Partagez vos photos d'actions solidaires et découvrez celles de vos collègues !</p>
             
             <div class="hero-actions">
                 <div class="filter-select">
@@ -652,32 +833,55 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-column">
+                    <img src="logo-natixis-corporate-banking.jpg" alt="Natixis" style="height:46px;margin-bottom:1rem;display:block;">
+                    <p style="font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.65;">Engagement solidaire des collaborateurs Natixis & entités du groupe.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Nos programmes</h4>
+                    <ul>
+                        <li><a href="volontariat.html">Volontariat</a></li>
+                        <li><a href="team-building.html">Team Building Solidaire</a></li>
+                        <li><a href="conges-solidaires.html">Congés solidaires</a></li>
+                        <li><a href="don-sur-salaire.html">Don sur salaire</a></li>
+                        <li><a href="mecenat-senior.html">Mécénat Senior</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
                     <h4>Liens utiles</h4>
                     <ul>
                         <li><a href="#">À propos</a></li>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Mentions légales</h4>
-                    <ul>
-                        <li><a href="#">Conditions d'utilisation</a></li>
-                        <li><a href="#">Politique de confidentialité</a></li>
-                        <li><a href="#">Gérer les cookies</a></li>
+                        <li><a href="#">Quiz RSE</a></li>
+                        <li><a href="ce-galerie-photos.html">Galerie photos</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="mailto:contact@caisseepargne.fr">contact@caisseepargne.fr</a></li>
+                        <li><a href="mailto:engagement@natixis.com">engagement@natixis.com</a></li>
+                        <li><a href="#">Nous contacter</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 Caisse d'Épargne - Tous droits réservés</p>
+                <p>© 2026 Natixis — Tous droits réservés</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        (function() {
+            var btn = document.querySelector('.hamburger');
+            var overlay = document.getElementById('navMobile');
+            var close = document.querySelector('.nav-mobile-close');
+            function open() { overlay.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+            function shut() { overlay.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+            if (btn && overlay && close) {
+                btn.addEventListener('click', open);
+                close.addEventListener('click', shut);
+                overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+            }
+        })();
+    </script>
 </body>
 </html>

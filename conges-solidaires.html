@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Congés solidaires | Caisse d'Épargne</title>
+    <title>Congés solidaires | Natixis CIB</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Palette Caisse d'Épargne */
+            /* Palette Natixis */
+            --nat-purple: #5C2D91;
+            --nat-purple-dark: #4A2475;
+            /* Palette Caisse d'Épargne (legacy) */
             --ce-red: #C5000E;
             --ce-red-dark: #A3000B;
             --ce-red-light: #f4cccc;
@@ -105,14 +108,55 @@
         }
         
         .logo img {
-            height: 44px;
+            height: 75px;
+            max-width: 200px;
             width: auto;
+            object-fit: contain;
         }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+            padding-bottom: var(--space-2xl);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            color: var(--gray-400);
+            margin-top: var(--space-sm);
+            line-height: 1.65;
+        }
+
+        .footer-logo {
+            height: 46px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .footer-bottom-links { display: flex; gap: var(--space-lg); }
+
+        .footer-bottom-links a {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom-links a:hover { color: var(--gray-300); }
+
+        .btn-connect-label { /* visible by default */ }
         
         .nav-main {
             display: flex;
             align-items: center;
             gap: var(--space-xl);
+            flex: 1;
+            justify-content: center;
         }
         
         .nav-main a {
@@ -132,13 +176,13 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--ce-red);
+            background: var(--nat-purple);
             transition: width 0.3s ease;
         }
-        
+
         .nav-main a:hover,
         .nav-main a.active {
-            color: var(--ce-red);
+            color: var(--nat-purple);
         }
         
         .nav-main a:hover::after,
@@ -167,7 +211,7 @@
         }
         
         .lang-selector:hover {
-            border-color: var(--ce-red);
+            border-color: var(--nat-purple);
         }
         
         .btn {
@@ -191,8 +235,8 @@
         }
         
         .btn-outline:hover {
-            border-color: var(--ce-red);
-            color: var(--ce-red);
+            border-color: var(--nat-purple);
+            color: var(--nat-purple);
         }
         
         /* ==================== HERO PROGRAMME ==================== */
@@ -245,7 +289,7 @@
             display: block;
             width: 80px;
             height: 4px;
-            background: var(--ce-red);
+            background: #9b59c8;
             border-radius: var(--radius-full);
             margin-top: var(--space-sm);
         }
@@ -377,7 +421,7 @@
         .advantage-icon {
             width: 56px;
             height: 56px;
-            background: var(--ce-red-light);
+            background: var(--program-color-light);
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -534,7 +578,7 @@
         
         /* ==================== CTA SECTION - ÉVOLUTION ==================== */
         .cta-section {
-            background: linear-gradient(135deg, #d91018 0%, #b01116 100%);
+            background: linear-gradient(135deg, #5C2D91 0%, #4A2475 100%);
             border-radius: var(--radius-xl);
             padding: var(--space-3xl);
             text-align: center;
@@ -735,11 +779,7 @@
             .association-image {
                 height: 250px;
             }
-            
-            .nav-main {
-                display: none;
-            }
-            
+
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: var(--space-lg);
@@ -752,24 +792,27 @@
             }
         }
         
+        @media (max-width: 768px) {
+            .header-main { padding: var(--space-md) var(--space-lg); }
+            .hamburger { display: flex; }
+            .nav-main { display: none; }
+            .nav-actions { display: none; }
+            .logo img { height: 60px; max-width: 162px; }
+            .btn-connect-label { display: none; }
+            .btn-connect { padding: 0.6rem 0.75rem; }
+            .footer-top { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 600px) {
-            .header-main {
-                padding: var(--space-sm) var(--space-md);
-            }
-            
-            .logo img {
-                height: 36px;
-            }
-            
             .advantages-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .association-stats {
                 flex-direction: column;
                 gap: var(--space-md);
             }
-            
+
             .cta-section {
                 padding: var(--space-2xl) var(--space-lg);
             }
@@ -800,36 +843,177 @@
         .advantage-card:nth-child(2) { animation-delay: 0.2s; }
         .advantage-card:nth-child(3) { animation-delay: 0.3s; }
         .advantage-card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* ==================== HAMBURGER MENU MOBILE ==================== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            flex-shrink: 0;
+        }
+        .hamburger span {
+            display: block;
+            height: 2px;
+            background: var(--nat-purple, #5C2D91);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .nav-mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            overflow: hidden;
+            background: #fff;
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .nav-mobile-overlay.is-open { display: flex; }
+        .nav-mobile-logo {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.5rem;
+        }
+        .nav-mobile-logo img { height: 60px; max-width: 162px; }
+        .nav-mobile-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--nat-purple, #5C2D91);
+            padding: 0.5rem;
+            line-height: 0;
+        }
+        .nav-mobile-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.75rem;
+        }
+        .nav-mobile-links a {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-mobile-links a:hover,
+        .nav-mobile-links a.active { color: var(--nat-purple, #5C2D91); }
+        .btn-mobile-connect {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            background: var(--nat-purple, #5C2D91);
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+        .btn-mobile-connect:hover { background: var(--nat-purple-dark, #4A2475); color: #fff; }
+        .nav-mobile-lang {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.25rem;
+        }
+        .lang-btn-mobile {
+            background: none;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #aaa;
+            padding: 0.25rem 0.4rem;
+            border-radius: 4px;
+            transition: color 0.2s;
+        }
+        .lang-btn-mobile.active { color: var(--nat-purple, #5C2D91); }
+        .lang-btn-mobile:hover { color: var(--nat-purple, #5C2D91); }
+        .lang-divider { color: #ddd; font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="header-main">
-            <a href="home-filiale-ce.html" class="logo">
-                <img src="https://wpb-webs.com/dev/natixis/logo-ce-desktop.webp" alt="Caisse d'Épargne">
+            <a href="home-natixis.html" class="logo">
+                <img src="logo-natixis-corporate-banking.jpg" alt="Natixis">
             </a>
             <nav class="nav-main">
-                <a href="home-filiale-ce.html">Accueil</a>
-                <a href="#" class="active">Nos programmes</a>
-                <a href="#">À propos</a>
-                <a href="#">Contact</a>
+                <a href="home-natixis.html">Accueil</a>
+                <a href="home-natixis.html#programmes" class="active">Nos programmes</a>
+                <a href="ce-galerie-photos.html">Galerie photos</a>
             </nav>
             <div class="nav-actions">
                 <div class="lang-selector">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="10"/>
                         <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                     </svg>
                     FR
-                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <polyline points="6 9 12 15 18 9"/>
                     </svg>
                 </div>
-                <button class="btn btn-outline">Se connecter</button>
+                <a href="#" class="btn btn-outline">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span class="btn-connect-label">Se connecter</span>
+                </a>
             </div>
+            <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
+
+    <div class="nav-mobile-overlay" id="navMobile">
+        <div class="nav-mobile-logo">
+            <img src="logo-natixis-corporate-banking.jpg" alt="Natixis">
+        </div>
+        <button class="nav-mobile-close" aria-label="Fermer le menu">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <nav class="nav-mobile-links">
+            <a href="home-natixis.html">Accueil</a>
+            <a href="home-natixis.html#programmes" class="active">Nos programmes</a>
+            <a href="ce-galerie-photos.html">Galerie photos</a>
+        </nav>
+        <div class="nav-mobile-lang">
+            <button class="lang-btn-mobile active">FR</button>
+            <span class="lang-divider">|</span>
+            <button class="lang-btn-mobile">EN</button>
+        </div>
+        <a href="#" class="btn-mobile-connect">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+            Se connecter
+        </a>
+    </div>
 
     <!-- Hero Programme -->
     <section class="hero-programme">
@@ -839,7 +1023,7 @@
             </div>
             <div class="hero-programme-content">
                 <h1 class="hero-programme-title">Congés solidaires</h1>
-                <p class="hero-programme-subtitle"><strong>Partez en mission</strong> à l'international ou en France</p>
+                <p class="hero-programme-subtitle"><strong>Partez en mission</strong> à l'international</p>
                 <p class="hero-programme-description">
                     Utilisez vos congés pour créer un impact positif aligné sur un besoin local. 
                     Des missions de 2 à 3 semaines vous attendent partout dans le monde.
@@ -850,9 +1034,9 @@
 
     <!-- Breadcrumb -->
     <nav class="breadcrumb">
-        <a href="home-groupe-bpce.html">Accueil</a>
+        <a href="home-natixis.html">Accueil</a>
         <span>›</span>
-        <a href="home-filiale-ce.html">Caisse d'Épargne</a>
+        <a href="home-natixis.html#programmes">Nos programmes</a>
         <span>›</span>
         <span class="breadcrumb-current">Congés solidaires</span>
     </nav>
@@ -863,10 +1047,9 @@
         <!-- About Section -->
         <div class="about-section">
             <div class="about-header">
-                <h2>À propos de ce programme</h2>
                 <p>
-                    Le programme <strong>Congés solidaires</strong> vous permet de consacrer une partie de vos congés 
-                    à une mission de solidarité internationale ou en France, en partenariat avec <strong>Planète Urgence</strong>.
+                    Le programme <strong>Congés solidaires</strong> vous permet de consacrer une partie de vos congés
+                    à une mission de solidarité internationale, en partenariat avec <strong>Planète Urgence</strong>.
                     Des missions courtes sont proposées dans les domaines de l'environnement, de l'éducation, 
                     du développement économique et de la formation. Chaque mission est co-construite avec des acteurs 
                     locaux pour répondre à leurs besoins réels.
@@ -890,8 +1073,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
                         </svg>
                     </div>
-                    <h3>France & International</h3>
-                    <p>Choisissez parmi des destinations variées : Afrique, Asie, Amérique latine ou territoires français.</p>
+                    <h3>International</h3>
+                    <p>Choisissez parmi des destinations variées : Afrique, Asie, Amérique latine.</p>
                 </div>
                 
                 <div class="advantage-card">
@@ -911,7 +1094,7 @@
                         </svg>
                     </div>
                     <h3>Prise en charge partielle</h3>
-                    <p>La Caisse d'Épargne participe aux frais de mission. Renseignez-vous sur les modalités.</p>
+                    <p>Natixis participe aux frais de mission. Renseignez-vous sur les modalités.</p>
                 </div>
             </div>
         </div>
@@ -963,13 +1146,6 @@
         <!-- CTA Section -->
         <div class="cta-section">
             <div class="cta-content">
-                <span class="cta-badge">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
-                    </svg>
-                    10 missions disponibles
-                </span>
-                
                 <h2>Prêt à vivre une expérience unique ?</h2>
                 
                 <p>
@@ -979,14 +1155,8 @@
                 
                 <a href="https://planete-urgence.org/missions-volontariat/" target="_blank" class="cta-button">
                     Voir les missions Planète Urgence
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                    </svg>
                 </a>
                 
-                <p class="cta-note">
-                    Ce dispositif s'inscrit dans la <a href="home-groupe-bpce.html">Plateforme de l'engagement</a> du Groupe BPCE.
-                </p>
             </div>
         </div>
         
@@ -995,34 +1165,63 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-grid">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="logo-natixis-corporate-banking.jpg" alt="Natixis" class="footer-logo">
+                    <p>Le portail d'engagement solidaire des collaborateurs Natixis CIB — propulsé par KOEO.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Programmes</h4>
+                    <ul>
+                        <li><a href="volontariat.html">Missions solidaires</a></li>
+                        <li><a href="team-building.html">Team building</a></li>
+                        <li><a href="don-sur-salaire.html">Don sur salaire</a></li>
+                        <li><a href="conges-solidaires.html">Congés solidaires</a></li>
+                        <li><a href="mecenat-senior.html">Mécénat senior</a></li>
+                    </ul>
+                </div>
                 <div class="footer-column">
                     <h4>Liens utiles</h4>
                     <ul>
                         <li><a href="#">À propos</a></li>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Mentions légales</h4>
-                    <ul>
-                        <li><a href="#">Conditions d'utilisation</a></li>
-                        <li><a href="#">Politique de confidentialité</a></li>
-                        <li><a href="#">Gérer les cookies</a></li>
+                        <li><a href="#">Quiz RSE</a></li>
+                        <li><a href="#">Mon compte</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="#">engagement@caisse-epargne.fr</a></li>
+                        <li><a href="#">engagement@natixis.com</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Gérer les cookies</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>© 2026 KOEO — Tous droits réservés</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Accessibilité</a>
+                    <a href="#">Plan du site</a>
+                </div>
             </div>
         </div>
     </footer>
+
+    <script>
+        (function() {
+            var btn = document.querySelector('.hamburger');
+            var overlay = document.getElementById('navMobile');
+            var close = document.querySelector('.nav-mobile-close');
+            function open() { overlay.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+            function shut() { overlay.classList.remove('is-open'); btn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+            if (btn && overlay && close) {
+                btn.addEventListener('click', open);
+                close.addEventListener('click', shut);
+                overlay.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+            }
+        })();
+    </script>
 </body>
 </html>
